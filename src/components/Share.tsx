@@ -2,7 +2,7 @@ import siteConfig from '../config/site.config';
 import { FiShare } from 'react-icons/fi';
 import { Button, Image } from '@nextui-org/react';
 import { RiTwitterXFill } from 'react-icons/ri';
-import { BsCheck2, BsFacebook, BsLink45Deg } from 'react-icons/bs';
+import { BsCheck2, BsFacebook, BsLink45Deg, BsTelegram, BsWhatsapp } from 'react-icons/bs';
 import { GoReport } from 'react-icons/go';
 import { useClipboard } from 'use-clipboard-copy';
 import Model from './Tooltip/Model';
@@ -17,6 +17,14 @@ export default function Share() {
   const clipboard = useClipboard();
   const URL = `/api/og/?link=/${asPath}/`;
   const title = (query.path && Array.isArray(query.path) ? query.path[query.path.length - 1] : '').replaceAll('-', ' ').replaceAll('_', ' ');
+
+  const shareOnWhatsApp = () => {
+    window.open(`https://api.whatsapp.com/send?text=${getBaseUrl()}${asPath}`);
+  };
+
+  const shareOnTelegram = () => {
+    window.open(`https://telegram.me/share/url?url=${getBaseUrl()}${asPath}`);
+  };
 
   const shareOnTwitter = () => {
     const text = `${title}`;
@@ -43,6 +51,18 @@ export default function Share() {
     });
   };
 
+  const shareCurrentUrl = async () => {
+    try {
+      if (navigator.share) {
+        await navigator.share({ url: window.location.href });
+      } else {
+        throw new Error('Web Share API not supported');
+      }
+    } catch (error) {
+      console.error('Error sharing:', error);
+    }
+  };
+
   return (
     <main>
       <Model
@@ -53,23 +73,37 @@ export default function Share() {
             viewport={{ once: true }}
             className="flex flex-col items-center w-full mx-auto gap-3"
           >
-            <FiShare size={38} className="bg-gray-200 dark:bg-gray-700 p-2 rounded-full mx-auto" />
+            <Button isIconOnly className="bg-white bg-opacity-70 dark:bg-opacity-50 backdrop-blur-md border dark:border-gray-700 overflow-hidden dark:bg-black dark:text-white hover:bg-gray-100 dark:hover:bg-gray-850 rounded-full" onClick={shareCurrentUrl}><FiShare size={20}/> </Button>
             <h1 className="text-xl font-semibold pr-3 line-clamp-1">Share {title}</h1>
             <Image
-              src={URL}
+              src={URL || siteConfig.noimage}
               alt={title}
               width={1200}
               height={600}
             />
             <div className="flex flex-col w-full h-full gap-2">
+            <div className="flex items-center justify-between gap-2 xss:flex-wrap xs:flex-nowrap">
+                <Button className="w-full bg-green-500 text-white" onPress={shareOnWhatsApp}>
+                  <div className="flex items-center justify-center w-8 h-8">
+                    <BsWhatsapp size={22} />
+                  </div>
+                  <div>Share on WhatsApp</div>
+                </Button>
+                <Button className="w-full bg-blue-500 text-white" onPress={shareOnTelegram}>
+                  <div className="flex items-center justify-center w-8 h-8">
+                    <BsTelegram size={22} />
+                  </div>
+                  <div>Share on Telegram</div>
+                </Button>
+              </div>
               <div className="flex items-center justify-between gap-2 xss:flex-wrap xs:flex-nowrap">
-                <Button className="w-full bg-[rgba(0,112,243,0.1)]" onPress={shareOnTwitter}>
+                <Button className="w-full bg-blue-400 text-white" onPress={shareOnTwitter}>
                   <div className="flex items-center justify-center w-8 h-8">
                     <RiTwitterXFill size={22} />
                   </div>
                   <div>Share on Twitter</div>
                 </Button>
-                <Button className="w-full bg-[rgba(0,112,243,0.1)]" onPress={shareOnFacebook}>
+                <Button className="w-full bg-blue-800 text-white" onPress={shareOnFacebook}>
                   <div className="flex items-center justify-center w-8 h-8">
                     <BsFacebook size={22} />
                   </div>
@@ -77,13 +111,13 @@ export default function Share() {
                 </Button>
               </div>
               <div className="flex items-center justify-between gap-2">
-                <Button className="w-full bg-[rgba(0,112,243,0.1)]" onPress={copyLinkToClipboard}>
+                <Button className="w-full " onPress={copyLinkToClipboard}>
                   <div className="flex items-center justify-center w-8 h-8">
                     <BsLink45Deg size={22} />
                   </div>
                   <div>Copy Link</div>
                 </Button>
-                <Button className="w-full bg-[rgba(0,112,243,0.1)]" onPress={reportOnTelegram}>
+                <Button className="w-full bg-red-600 text-white" onPress={reportOnTelegram}>
                   <div className="flex items-center justify-center w-8 h-8">
                     <GoReport size={22} />
                   </div>
