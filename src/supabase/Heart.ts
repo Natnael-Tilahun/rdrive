@@ -60,3 +60,10 @@ export async function createOrUpdateItem(item) {
   }
 }
 
+export async function fetchHeartCounts(visibleFolderChildren) {
+  const counts = {};
+  for (const c of visibleFolderChildren) {
+    counts[c.id] = await getHeartCount(c.id);
+  }
+  return counts;
+}
