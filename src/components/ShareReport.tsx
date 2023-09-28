@@ -2,7 +2,7 @@ import React from 'react';
 import { FaWhatsapp, FaTelegram, FaTwitter, FaFacebook } from 'react-icons/fa';
 import { GoReport } from 'react-icons/go';
 
-import Hover from './Tooltip/Tooltip';;
+import Hover from './UI/Tooltip';;
 import siteConfig from '../config/site.config';
 
 const ShareReport: React.FC = () => {

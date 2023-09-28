@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Avatar, Button, Card, CardBody, CardFooter, CardHeader } from "@nextui-org/react";
 import Link from "next/link";
 import { fetchGitHubUser } from '../../utils/githubApi';
-import Hover from "../Tooltip/Tooltip";
+import Hover from "../UI/Tooltip";
 import { UserLink, X } from "../icons";
 
 export const UserCard = ({ username }) => {

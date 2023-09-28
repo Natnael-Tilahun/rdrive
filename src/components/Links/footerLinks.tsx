@@ -1,7 +1,7 @@
 import React from 'react';
 import Legal from './Legal';
 import siteConfig from '../../config/site.config';
-import Hover from '../Tooltip/Tooltip';
+import Hover from '../UI/Tooltip';
 import Link from 'next/link';
 import Storage from '../Storage';
 

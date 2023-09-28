@@ -5,18 +5,22 @@ import { RiTwitterXFill } from 'react-icons/ri';
 import { BsCheck2, BsFacebook, BsLink45Deg, BsTelegram, BsWhatsapp } from 'react-icons/bs';
 import { GoReport } from 'react-icons/go';
 import { useClipboard } from 'use-clipboard-copy';
-import Model from './Tooltip/Model';
 import toast from 'react-hot-toast';
 import { getBaseUrl } from '../utils/getBaseUrl';
 import { useRouter } from 'next/router';
-import { FolderCardAnimation } from '../utils/FramerMotionVariants';
-import { motion } from 'framer-motion';
+import { useState } from 'react';
+import { Modal } from './UI/Model';
 
 export default function Share() {
   const { query, asPath } = useRouter();
   const clipboard = useClipboard();
   const URL = `/api/og/?link=/${asPath}/`;
   const title = (query.path && Array.isArray(query.path) ? query.path[query.path.length - 1] : '').replaceAll('-', ' ').replaceAll('_', ' ');
+  const [showModal, setShowModal] = useState(false);
+
+  const openModal = () => {
+    setShowModal(true);
+  };
 
   const shareOnWhatsApp = () => {
     window.open(`https://api.whatsapp.com/send?text=${getBaseUrl()}${asPath}`);
@@ -65,14 +69,9 @@ export default function Share() {
 
   return (
     <main>
-      <Model
-        open={<div><FiShare size={34} className="bg-gray-200 dark:bg-gray-700 p-2 rounded-full mx-auto text-black/70 dark:text-white/70 hover:text-black dark:hover:text-white cursor-pointer" /></div>}
-        content={
-          <motion.article
-            variants={FolderCardAnimation}
-            viewport={{ once: true }}
-            className="flex flex-col items-center w-full mx-auto gap-3"
-          >
+      <Button isIconOnly className="bg-white bg-opacity-70 dark:bg-opacity-50 backdrop-blur-md border dark:border-gray-700 overflow-hidden dark:bg-black dark:text-white hover:bg-gray-100 dark:hover:bg-gray-850 rounded-full" onClick={openModal}><FiShare size={20}/> </Button>
+       <Modal showModal={showModal} setShowModal={setShowModal}>
+          <div className="flex flex-col items-center w-full mx-auto gap-3">
             <Button isIconOnly className="bg-white bg-opacity-70 dark:bg-opacity-50 backdrop-blur-md border dark:border-gray-700 overflow-hidden dark:bg-black dark:text-white hover:bg-gray-100 dark:hover:bg-gray-850 rounded-full" onClick={shareCurrentUrl}><FiShare size={20}/> </Button>
             <h1 className="text-xl font-semibold pr-3 line-clamp-1">Share {title}</h1>
             <Image
@@ -125,9 +124,8 @@ export default function Share() {
                 </Button>
               </div>
             </div>
-          </motion.article>
-        }
-      />
+          </div>
+          </Modal>
     </main>
   );
 }

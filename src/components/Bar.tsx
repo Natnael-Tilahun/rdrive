@@ -67,7 +67,7 @@ export default function Bar() {
   ];
 
   return (
-    <div className="fixed bottom-3 z-[100]">
+    <div className="fixed bottom-3 z-30">
       <div className="justify-center flex w-full">
         <Tabs
           aria-label="Menu Bar"
