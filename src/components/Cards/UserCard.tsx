@@ -27,7 +27,7 @@ export const UserCard = ({ username }) => {
   }
 
   return (
-    <Card shadow="none" className="w-full md:max-w-[300px] mb-8 md:mb-0 border-none bg-transparent -mx-2">
+    <Card shadow="none" className="w-full md:w-80 p-0 md:p-2 border-none bg-transparent">
       <CardHeader className="justify-between ">
         <div className="flex gap-3">
           <Avatar className="bg-gray-200 dark:bg-gray-700" src={userData.avatar_url} alt={userData.login} />

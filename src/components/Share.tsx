@@ -14,7 +14,8 @@ import { Modal } from './UI/Model';
 export default function Share() {
   const { query, asPath } = useRouter();
   const clipboard = useClipboard();
-  const URL = `/api/og/?link=/${asPath}/`;
+  const hasFileExtension = /\.[^]+$/.test(asPath);
+  const URL = `/api/og/?link=${hasFileExtension ? `${asPath}/` : `${asPath}`}`;
   const title = (query.path && Array.isArray(query.path) ? query.path[query.path.length - 1] : '').replaceAll('-', ' ').replaceAll('_', ' ');
   const [showModal, setShowModal] = useState(false);
 
@@ -75,13 +76,14 @@ export default function Share() {
             <Button isIconOnly className="bg-white bg-opacity-70 dark:bg-opacity-50 backdrop-blur-md border dark:border-gray-700 overflow-hidden dark:bg-black dark:text-white hover:bg-gray-100 dark:hover:bg-gray-850 rounded-full" onClick={shareCurrentUrl}><FiShare size={20}/> </Button>
             <h1 className="text-xl font-semibold pr-3 line-clamp-1">Share {title}</h1>
             <Image
-              src={URL || siteConfig.noimage}
+              src={URL}
+              className="border-t dark:border-gray-700"
               alt={title}
               width={1200}
               height={600}
             />
             <div className="flex flex-col w-full h-full gap-2">
-            <div className="flex items-center justify-between gap-2 xss:flex-wrap xs:flex-nowrap">
+            <div className="flex items-center justify-between gap-2 xss:flex-wrap xsm:flex-nowrap">
                 <Button className="w-full bg-green-500 text-white" onPress={shareOnWhatsApp}>
                   <div className="flex items-center justify-center w-8 h-8">
                     <BsWhatsapp size={22} />
@@ -95,7 +97,7 @@ export default function Share() {
                   <div>Share on Telegram</div>
                 </Button>
               </div>
-              <div className="flex items-center justify-between gap-2 xss:flex-wrap xs:flex-nowrap">
+              <div className="flex items-center justify-between gap-2 xss:flex-wrap xsm:flex-nowrap">
                 <Button className="w-full bg-blue-400 text-white" onPress={shareOnTwitter}>
                   <div className="flex items-center justify-center w-8 h-8">
                     <RiTwitterXFill size={22} />

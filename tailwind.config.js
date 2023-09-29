@@ -44,6 +44,8 @@ module.exports = {
       'xss': '80px',
       // => @media (min-width: 80px) { ... }
       'xs': '285px',
+      // => @media (min-width: 570px) { ... }
+      'xsm': '540px',
       // => @media (min-width: 285px) { ... }
       'sm': '640px',
       // => @media (min-width: 640px) { ... }

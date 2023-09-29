@@ -2,9 +2,10 @@ import React, { useEffect, useState } from "react";
 import { User } from "@nextui-org/react";
 import { fetchGitHubUser } from '../../utils/githubApi';
 import { UserCard } from "../Cards/UserCard";
-import Dropdown from "../UI/Dropdown";
+import Popover from "../UI/Popover";
 
 export const Avatar = ({ username }) => {
+  const [openPopover, setOpenPopover] = useState(false);
   const [userData, setUserData] = useState(null);
 
   useEffect(() => {
@@ -25,9 +26,9 @@ export const Avatar = ({ username }) => {
   }
 
   return (
-    <Dropdown
-      open={
-          <div className="flex">
+    <Popover
+      content={<UserCard username={username} />} openPopover={openPopover} setOpenPopover={setOpenPopover}>
+        <div className="flex cursor-pointer" onClick={() => setOpenPopover(!openPopover)}>
             <User
               name={userData.name || ''}
               description={userData.location || ''}
@@ -39,12 +40,9 @@ export const Avatar = ({ username }) => {
                 className: "bg-gray-200 dark:bg-gray-700",
                 src: userData.avatar_url
               }}
+              on
             />
           </div>
-      }
-      content={
-          <UserCard username={username} />
-      }
-    />
+    </Popover>
   );
 };

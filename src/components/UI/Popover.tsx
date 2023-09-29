@@ -1,6 +1,6 @@
 "use client";
 
-import { Dispatch, SetStateAction, ReactNode, useRef } from "react";
+import { Dispatch, SetStateAction, ReactNode} from "react";
 import * as PopoverPrimitive from "@radix-ui/react-popover";
 import Leaflet from "./leaflet";
 import useWindowSize from "../../utils/use-window-size";
@@ -35,7 +35,7 @@ export default function Popover({
             {children}
           </PopoverPrimitive.Trigger>
           <PopoverPrimitive.Content
-            sideOffset={4}
+            sideOffset={8}
             align={align}
             className="z-20 animate-slide-up-fade items-center rounded-lg border dark:border-gray-700 bg-white dark:bg-gray-850"
           >
