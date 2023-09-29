@@ -2,12 +2,12 @@ import React from 'react';
 import Legal from './Legal';
 import siteConfig from '../../config/site.config';
 import Hover from '../UI/Tooltip';
-import Link from 'next/link';
+import UnstyledLink from '../UI/UnstyledLink';
 import Storage from '../Storage';
+import Link from 'next/link';
 
 const FooterLinks = ({ token }) => {
-const footerLinks: { href: string; text: string; tooltip: React.ReactNode }[] =
-  [
+  const footerLinks: { href: string; text: string; tooltip: React.ReactNode }[] = [
     {
       href: '/frp',
       text: 'FRP',
@@ -29,10 +29,10 @@ const footerLinks: { href: string; text: string; tooltip: React.ReactNode }[] =
       tooltip: 'Say goodbye to iCloud locks: Unlock now.',
     },
     {
-        href: '/service-center-price-list',
-        text: 'Parts Price List',
-        tooltip: 'All Brand Parts Service Center Price List',
-      },
+      href: '/service-center-price-list',
+      text: 'Parts Price List',
+      tooltip: 'All Brand Parts Service Center Price List',
+    },
     {
       href: `https://status.rdrive.org/`,
       text: 'Status',
@@ -44,23 +44,26 @@ const footerLinks: { href: string; text: string; tooltip: React.ReactNode }[] =
       tooltip: 'Sitemap Index URL',
     },
   ];
-  
-    return (
-      <div className="grid grid-cols-2 md:flex flex-wrap gap-3 md:gap-4 lg:gap-12 xl:gap-14 items-center text-sm cursor-default">
-        {footerLinks.map(({ href, text, tooltip }, index) => (
-          <React.Fragment key={href}>
-            {index === footerLinks.length - 1 && (<><Storage token={token} /> <Legal /></>)}
-            <Hover tipChildren={tooltip}>
-              <Link
-                className="animated-underline focus:outline-none focus-visible:ring focus-visible:ring-primary-300"
-                href={href}
-              >
-                {text}
-              </Link>
-            </Hover>
-          </React.Fragment>
-        ))}
-      </div>
-    );
-  }
-  export default FooterLinks;
+
+  return (
+    <div className="grid grid-cols-2 md:flex flex-wrap gap-3 md:gap-4 lg:gap-12 xl:gap-14 items-center text-sm cursor-default">
+      {footerLinks.map(({ href, text, tooltip }, index) => (
+        <React.Fragment key={href}>
+          {index === footerLinks.length - 1 && <><Storage token={token} /> <Legal /></>}
+          <Hover tipChildren={tooltip}>
+          <Link href={href} passHref>
+            <UnstyledLink
+              href={href}
+              className="animated-underline focus:outline-none focus-visible:ring focus-visible:ring-primary-300"
+            >
+              {text}
+            </UnstyledLink>
+          </Link>
+          </Hover>
+        </React.Fragment>
+      ))}
+    </div>
+  );
+};
+
+export default FooterLinks;
