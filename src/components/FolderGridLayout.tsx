@@ -3,7 +3,7 @@ import Link from "next/link";
 import siteConfig from "../config/site.config";
 import isHiddenFolder from '../utils/isHiddenFolder';
 import { OdFolderChildren } from "../types";
-import { ChildIcon, ChildName } from "./FileListing";
+import {ChildName } from "./FileListing";
 import { Button, Card, CardBody, Chip, Divider, Image, Skeleton } from '@nextui-org/react';
 import { fetchHeartCounts, incrementHeartCount } from '../supabase/Heart';
 import { HeartFilledIcon } from './icons';
