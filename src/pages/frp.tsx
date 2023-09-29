@@ -24,7 +24,7 @@ export default function FRP({ connectedAccounts, token }) {
     {
       title: "Open Setting",
       img: "https://icons.iconarchive.com/icons/dtafalonso/android-lollipop/512/Settings-icon.png",
-      link: "https://cutt.ly/xP6PdRP",
+      link: "intent://com.android.settings/#Intent;scheme=android-app;end",
     },
     {
         title: "Google Search",
@@ -59,7 +59,7 @@ export default function FRP({ connectedAccounts, token }) {
       {
         title: "ADB",
         img: "https://play-lh.googleusercontent.com/0PjZiGvdvLugufsxB4XH9gJkH_zG7gDsNH3sm6jO28QzV0jw_ROfhOk-3xGE-i1GV1M",
-        link: "https://com.sec.android.app.modemui.activities.usb.settings/#Intent;scheme=android-app;end",
+        link: "intent://com.sec.android.app.modemui.activities.usb.settings/#Intent;scheme=android-app;end",
       },
       {
         title: "USB Setting",
@@ -69,47 +69,47 @@ export default function FRP({ connectedAccounts, token }) {
       {
         title: "*#0*#",
         img: "https://cdn3d.iconscout.com/3d/premium/thumb/telephone-3260419-2725112.png",
-        link: "tel:*#0*#/#Intent;scheme=android-app;end",
+        link: "tel:*#0*#",
       },
       {
         title: "Samsung Touch ID",
         img: "https://cdn.iconscout.com/icon/free/png-256/free-fingerprint-4-71235.png",
-        link: "https://com.android.settings/com.samsung.android.settings.biometrics.fingerprint.FingerprintEntry/#Intent;scheme=android-app;end",
+        link: "intent://com.android.settings/com.samsung.android.settings.biometrics.fingerprint.FingerprintEntry/#Intent;scheme=android-app;end",
       },
       {
         title: "Samsung Secure Folder",
         img: "https://play-lh.googleusercontent.com/1EjZ4I1xWdQNN44skn8tJLcsynQotyIbmVi9ZX53fMgGNP95G2PQ3EgqeQXzUOXNmTk",
-        link: "https://com.samsung.knox.securefolder/#Intent;scheme=android-app;end",
+        link: "intent://com.samsung.knox.securefolder/#Intent;scheme=android-app;end",
       },
       {
         title: "Smart Switch App",
         img: "https://play-lh.googleusercontent.com/KlHY0O3groJhp-QsW4CBfxZuabFkfGOhjIjrlQw-b28Z6KXmYn3QSFbrtgZsJz4HYw=w240-h480-rw",
-        link: "https://com.sec.android.easymover/#Intent;scheme=android-app;end",
+        link: "intent://com.sec.android.easymover/#Intent;scheme=android-app;end",
       },
       {
         title: "Mi File Manager",
         img: "https://play-lh.googleusercontent.com/CsKUzyo8C47ZO10jX6tTvDRoGlqVTxWU8pwnBMbs6DMkjuDbDO78a_OYPj77tVxbI5Q",
-        link: "https://com.mi.android.globalfileexplorer/#Intent;scheme=android-app;end",
+        link: "intent://com.mi.android.globalfileexplorer/#Intent;scheme=android-app;end",
       },
       {
         title: "Xiaomi ShareMe",
         img: "https://play-lh.googleusercontent.com/ZhFicdr0SwamztwjDzIi6Sf6Zey19yRpx1VGvPiCZpNM9G_zsLAbpvRuexz2EiDKdms",
-        link: "https://com.xiaomi.midrop/#Intent;scheme=android-app;end",
+        link: "intent://com.xiaomi.midrop/#Intent;scheme=android-app;end",
       },
       {
         title: "Vivo EasyShare",
         img: "https://play-lh.googleusercontent.com/S5x2zCnIUx7AzFU5WRIvr8uaMhHXyONGQeuN37hvIcTDt8oyzlT1srs-N_wK980e9SU=w240-h480-rw",
-        link: "https://com.vivo.easyshare/#Intent;scheme=android-app;end",
+        link: "intent://com.vivo.easyshare/#Intent;scheme=android-app;end",
       },
       {
         title: "Xshare Mini",
         img: "https://play-lh.googleusercontent.com/Mb1MK3P3mnUqCpa8OzJRfG79xt5CTboDaWzr82gnmRVNw7uFZcpoW49_46EJ_WZUm20",
-        link: "https://com.infinix.xshare/#Intent;scheme=android-app;end",
+        link: "intent://com.infinix.xshare/#Intent;scheme=android-app;end",
       },
       {
         title: "OPPO Phone Clone",
         img: "https://play-lh.googleusercontent.com/32XpkqAKmqbxEnBXc2pOQ9oCEMg2ahR6d-7JyOM-cJ4cPYyNeKXOfclLZzR9CAMYw-HO",
-        link: "https://com.coloros.backuprestore/#Intent;scheme=android-app;end",
+        link: "intent://com.coloros.backuprestore/#Intent;scheme=android-app;end",
       },
       {
         title: "Samsung My Files",
@@ -159,7 +159,7 @@ export default function FRP({ connectedAccounts, token }) {
       {
         title: "Open Maps",
         img: "https://img.icons8.com/color/512/FFFFFF/google-maps-new.png",
-        link: "https://cutt.ly/kNP2Etq",
+        link: "intent://com.google.android.apps.maps/#Intent;scheme=android-app;end",
       },
 ]
 
