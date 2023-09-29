@@ -70,7 +70,7 @@ export default function Share() {
 
   return (
     <main>
-      <Button isIconOnly className="bg-white bg-opacity-70 dark:bg-opacity-50 backdrop-blur-md border dark:border-gray-700 overflow-hidden dark:bg-black dark:text-white hover:bg-gray-100 dark:hover:bg-gray-850 rounded-full" onClick={openModal}><FiShare size={20}/> </Button>
+      <Button isIconOnly className="bg-white bg-opacity-70 dark:bg-opacity-50 backdrop-blur-md border dark:border-gray-700 overflow-hidden dark:bg-black dark:text-white hover:bg-gray-100 dark:hover:bg-gray-850 rounded-full" onClick={openModal}><FiShare size={18}/> </Button>
        <Modal showModal={showModal} setShowModal={setShowModal}>
           <div className="flex flex-col items-center w-full mx-auto gap-3">
             <Button isIconOnly className="bg-white bg-opacity-70 dark:bg-opacity-50 backdrop-blur-md border dark:border-gray-700 overflow-hidden dark:bg-black dark:text-white hover:bg-gray-100 dark:hover:bg-gray-850 rounded-full" onClick={shareCurrentUrl}><FiShare size={20}/> </Button>

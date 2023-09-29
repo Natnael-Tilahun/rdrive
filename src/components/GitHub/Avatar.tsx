@@ -28,11 +28,11 @@ export const Avatar = ({ username }) => {
   return (
     <Popover
       content={<UserCard username={username} />} openPopover={openPopover} setOpenPopover={setOpenPopover}>
-        <div className="flex cursor-pointer" onClick={() => setOpenPopover(!openPopover)}>
             <User
               name={userData.name || ''}
               description={userData.location || ''}
               classNames={{
+                base: "cursor-pointer",
                 name: "text-base font-semibold",
                 description: "uppercase"
               }}
@@ -40,9 +40,8 @@ export const Avatar = ({ username }) => {
                 className: "bg-gray-200 dark:bg-gray-700",
                 src: userData.avatar_url
               }}
-              on
+              onClick={() => setOpenPopover(!openPopover)}
             />
-          </div>
     </Popover>
   );
 };
