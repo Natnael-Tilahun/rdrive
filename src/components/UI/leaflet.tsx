@@ -1,6 +1,5 @@
 import { useEffect, useRef, ReactNode, Dispatch, SetStateAction } from "react";
 import { AnimatePresence, motion, useAnimation } from "framer-motion";
-import { CgLoadbar } from 'react-icons/cg'
 
 export default function Leaflet({
   setShow,
