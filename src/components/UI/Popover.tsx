@@ -1,5 +1,3 @@
-"use client";
-
 import { Dispatch, SetStateAction, ReactNode} from "react";
 import * as PopoverPrimitive from "@radix-ui/react-popover";
 import Leaflet from "./leaflet";
