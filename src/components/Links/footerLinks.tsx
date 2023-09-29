@@ -9,7 +9,7 @@ const FooterLinks = ({ token }) => {
 const footerLinks: { href: string; text: string; tooltip: React.ReactNode }[] =
   [
     {
-      href: '/FRP',
+      href: '/frp',
       text: 'FRP',
       tooltip: 'FRP Files & Tool',
     },

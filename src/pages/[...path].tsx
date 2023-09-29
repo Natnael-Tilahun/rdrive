@@ -11,8 +11,7 @@ import dynamic from 'next/dynamic'
 const FileListing = dynamic(() => import('../components/FileListing'))
 
 export default function Route({ connectedAccounts, token, ogImage }) {
-  const { query } = useRouter()
-  const { asPath } = useRouter()
+  const { query, asPath } = useRouter()
   const fileName = (query.path && Array.isArray(query.path) ? query.path[query.path.length - 1] : '').replaceAll('-', ' ').replaceAll('_', ' ');
   const extensionIndex = fileName.lastIndexOf('.');
   const title = extensionIndex !== -1 ? fileName.slice(0, extensionIndex) : fileName;
