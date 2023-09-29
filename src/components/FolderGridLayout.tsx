@@ -26,7 +26,7 @@ const FolderGridLayout = ({ path, folderChildren }: { path: string, folderChildr
   }, [visibleFolderChildren, heartCounts]);
 
   return (
-    <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-4 gap-2">
+    <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2">
       {visibleFolderChildren.map((child, index) => (
         <Card className="border dark:border-gray-700" key={child.id + index} isPressable isHoverable shadow='none' isBlurred>
           <CardBody className='p-1 overflow-hidden'>
