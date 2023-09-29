@@ -150,6 +150,7 @@ const generateLinkUrl = () => {
 function SearchResultItemLoadRemote({ result, setShowResults }: { result: OdSearchResult[number], setShowResults : any }) {
   const { data, error }: SWRResponse<OdDriveItem, { status: number; message: any }> = useSWR(
     [`/api/item/?id=${result.id}&tokenId=${result.tokenId}`],
+    fetcher
   );
 
   const { t } = useTranslation();
