@@ -1,6 +1,7 @@
 import { PopoverContent, PopoverTrigger, Popover, Modal, ModalContent, useDisclosure } from '@nextui-org/react';
 import { GoChevronDown } from 'react-icons/go';
 import useWindowSize from '../../utils/use-window-size';
+import { motion } from 'framer-motion';
 
 export function LinkPopover({ open, content }): JSX.Element {
 
@@ -24,7 +25,12 @@ export function LinkPopover({ open, content }): JSX.Element {
           </button>
           <Modal isOpen={isOpen} onOpenChange={onClose} hideCloseButton radius='none' scrollBehavior='inside' classNames={{ wrapper: "h-full w-full bottom-0", base: "fixed my-0 bottom-0 md:bottom-auto w-full max-w-full md:max-w-md sm:my-0 rounded-t-xl md:rounded-xl  overflow-y-scroll",}}>
             <ModalContent className='p-2 md:p-4'>
+            <motion.div
+              drag="y" 
+              dragConstraints={{ top: 0, bottom: 0 }}
+            > 
               {content}
+              </motion.div>
             </ModalContent>
           </Modal>
         </>

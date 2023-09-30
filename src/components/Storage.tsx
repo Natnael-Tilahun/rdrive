@@ -50,7 +50,8 @@ const Storage = ({ token }) => {
             <Progress
               size="md"
               value={(folderSize1)}
-              maxValue={10000000000000} />
+              // HAHA
+              maxValue={1000000000000000000} />
           </div>
         </ListboxItem>
         <ListboxItem
