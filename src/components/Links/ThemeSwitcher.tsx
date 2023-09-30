@@ -31,16 +31,15 @@ const ThemeSwitcher: React.FC = () => {
   ];
 
   return (
-    <div className="">
       <Tabs
         aria-label="DarkMode Bar"
         size="lg"
-        radius="md"
+        radius='full'
         items={tabs}
         selectedKey={activeTheme}
         classNames={{
           tabList: 'bg-transparent',
-          cursor: 'rounded-full bg-gradient-to-t dark:from-[#0D1117] dark:to-gray-850',
+          cursor: 'bg-gradient-to-t dark:from-[#0D1117] dark:to-gray-850 shadow-none border dark:border-gray-700',
           tabContent: 'dark:group-data-[selected=true]:text-white text-black dark:text-white',
         }}
       >
@@ -48,7 +47,6 @@ const ThemeSwitcher: React.FC = () => {
           <Tab key={item.theme} title={item.icon} />
         )}
       </Tabs>
-    </div>
   );
 };
 
