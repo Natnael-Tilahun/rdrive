@@ -15,6 +15,7 @@ import useFileContent from '../../utils/fetchOnMount'
 import FourOhFour from '../FourOhFour'
 import { LoadingIcon } from '../Loading'
 import ShareReport from '../ShareReport'
+import Share from '../Share'
 
 
 const MarkdownPreview: FC<{
@@ -111,8 +112,11 @@ const MarkdownPreview: FC<{
 
   return (
     <main>
-      <div className="border dark:border-gray-700 rounded-lg bg-white p-3 dark:bg-black dark:text-white">
+      <div className="border dark:border-gray-700 rounded-lg bg-white p-3 dark:bg-black dark:text-white relative">
         <div className="markdown-body">
+        {standalone && (
+        <div className="absolute top-4 right-4"><Share /></div>
+        )}
           {/* Using rehypeRaw to render HTML inside Markdown is potentially dangerous, use under safe environments. (#18) */}
           <ReactMarkdown
             // @ts-ignore
@@ -128,9 +132,6 @@ const MarkdownPreview: FC<{
           </ReactMarkdown>
         </div>
       </div>
-      {standalone && (
-        <div className="flex flex-col items-center w-full my-2"><ShareReport /></div>
-        )}
     </main>
   )
 }

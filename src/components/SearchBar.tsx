@@ -277,7 +277,7 @@ export function SearchBar() {
             animate={{ opacity: 1, scale: 1 }}
             exit={{ opacity: 0, scale: 0.9 }}
             transition={{ duration: 0.3, ease: "easeInOut" }}
-        className="mx-auto fixed max-h-[40vh] w-auto md:w-full max-w-3xl overflow-x-hidden overflow-y-scroll search-scrollbar transform text-left shadow-xl transition-all dark:text-white bg-white dark:bg-black border border-gray-400/30 rounded-lg mt-2 inset-x-2 lg:inset-auto"
+        className="mx-auto fixed max-h-[40vh] w-auto md:w-full max-w-3xl overflow-x-hidden overflow-y-scroll search-scrollbar transform text-left shadow-xl transition-all dark:text-white bg-white dark:bg-black border border-gray-400/30 rounded-lg mt-3 inset-x-2 lg:inset-auto"
         ref={resultRef}
         onAnimationStart={() => setIsAnimating(true)}
         onAnimationComplete={handleAnimationComplete}

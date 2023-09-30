@@ -1,6 +1,6 @@
 import siteConfig from '../config/site.config';
 import { FiShare } from 'react-icons/fi';
-import { Button, Image } from '@nextui-org/react';
+import { Button, Image, Modal, ModalContent, useDisclosure } from '@nextui-org/react';
 import { RiTwitterXFill } from 'react-icons/ri';
 import { BsCheck2, BsFacebook, BsLink45Deg, BsTelegram, BsWhatsapp } from 'react-icons/bs';
 import { GoReport } from 'react-icons/go';
@@ -8,8 +8,6 @@ import { useClipboard } from 'use-clipboard-copy';
 import toast from 'react-hot-toast';
 import { getBaseUrl } from '../utils/getBaseUrl';
 import { useRouter } from 'next/router';
-import { useState } from 'react';
-import { Modal } from './UI/Model';
 
 export default function Share() {
   const { query, asPath } = useRouter();
@@ -17,11 +15,8 @@ export default function Share() {
   const hasFileExtension = /\.[^]+$/.test(asPath);
   const URL = `/api/og/?link=${hasFileExtension ? `${asPath}/` : `${asPath}`}`;
   const title = (query.path && Array.isArray(query.path) ? query.path[query.path.length - 1] : '').replaceAll('-', ' ').replaceAll('_', ' ');
-  const [showModal, setShowModal] = useState(false);
+  const { isOpen, onOpen, onOpenChange } = useDisclosure();
 
-  const openModal = () => {
-    setShowModal(true);
-  };
 
   const shareOnWhatsApp = () => {
     window.open(`https://api.whatsapp.com/send?text=${getBaseUrl()}${asPath}`);
@@ -70,8 +65,9 @@ export default function Share() {
 
   return (
     <main>
-      <Button isIconOnly className="bg-white bg-opacity-70 dark:bg-opacity-50 backdrop-blur-md border dark:border-gray-700 overflow-hidden dark:bg-black dark:text-white hover:bg-gray-100 dark:hover:bg-gray-850 rounded-full" onClick={openModal}><FiShare size={18}/> </Button>
-       <Modal showModal={showModal} setShowModal={setShowModal}>
+      <Button isIconOnly className="bg-white bg-opacity-70 dark:bg-opacity-50 backdrop-blur-md border dark:border-gray-700 overflow-hidden dark:bg-black dark:text-white hover:bg-gray-100 dark:hover:bg-gray-850 rounded-full" onPress={onOpen}><FiShare size={18}/> </Button>
+      <Modal isOpen={isOpen} onOpenChange={onOpenChange} hideCloseButton radius='none' scrollBehavior='inside' classNames={{ base: "fixed w-full my-0 rounded-t-xl md:rounded-xl"}}>
+      <ModalContent className='p-2 md:p-4'>
           <div className="flex flex-col items-center w-full mx-auto gap-3">
             <Button isIconOnly className="bg-white bg-opacity-70 dark:bg-opacity-50 backdrop-blur-md border dark:border-gray-700 overflow-hidden dark:bg-black dark:text-white hover:bg-gray-100 dark:hover:bg-gray-850 rounded-full" onClick={shareCurrentUrl}><FiShare size={20}/> </Button>
             <h1 className="text-xl font-semibold pr-3 line-clamp-1">Share {title}</h1>
@@ -127,6 +123,7 @@ export default function Share() {
               </div>
             </div>
           </div>
+          </ModalContent>
           </Modal>
     </main>
   );
