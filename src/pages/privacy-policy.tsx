@@ -6,6 +6,7 @@ import Footer from '../components/Footer'
 import { getAccessToken, getOdConcealedAccessTokens } from '../utils/odAuthTokenStore'
 
 import Seo from '../components/Meta/Seo'
+import Link from 'next/link'
 
 export default function Home({ connectedAccounts, token }) {
   const seo = {
@@ -108,11 +109,11 @@ export default function Home({ connectedAccounts, token }) {
           <p className="font-bold text-xl">
             {siteConfig.title}
           </p>
-          <a href="tel:919927241144" target="_blank" rel="noopener noreferrer" className="underline underline-offset-8 decoration-green-600 decoration-wavy">Tel:- +919927241144</a>
+          <Link href="tel:919927241144" target="_blank" rel="noopener noreferrer" className="underline underline-offset-8 decoration-green-600 decoration-wavy">Tel:- +919927241144</Link>
           <p className='py-1'></p>
-          <a href="sms:919927241144" target="_blank" rel="noopener noreferrer" className="underline underline-offset-8 decoration-blue-600 decoration-wavy">SMS:- +919927241144</a>
+          <Link href="sms:919927241144" target="_blank" rel="noopener noreferrer" className="underline underline-offset-8 decoration-blue-600 decoration-wavy">SMS:- +919927241144</Link>
           <p className='py-1'></p>
-          <a href="mailto:therockstarind@gmail.com" target="_blank" rel="noopener noreferrer" className="underline underline-offset-8 decoration-pink-600 decoration-wavy">Mail:- therockstarind@gmail.com</a>
+          <Link href="mailto:therockstarind@gmail.com" target="_blank" rel="noopener noreferrer" className="underline underline-offset-8 decoration-pink-600 decoration-wavy">Mail:- therockstarind@gmail.com</Link>
           <p className="py-4">
            This document was last updated on Mar 03, 2022
           </p>

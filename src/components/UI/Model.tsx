@@ -1,5 +1,5 @@
 import React, { ReactNode, Dispatch, SetStateAction, useEffect } from 'react';
-import { Modal, ModalContent, useDisclosure } from '@nextui-org/react';
+import { Modal, ModalContent, ScrollShadow, useDisclosure } from '@nextui-org/react';
 
 interface ModelProps {
   content: ReactNode | string;
@@ -28,8 +28,12 @@ export default function Model({
 
   return (
     <main>
-      <Modal isOpen={isOpen} onOpenChange={handleModalClose} hideCloseButton radius='none' scrollBehavior='inside' classNames={{ wrapper: "h-full w-full bottom-0", base: "fixed my-0 bottom-0 md:bottom-auto w-full max-w-full md:max-w-md sm:my-0 rounded-t-xl md:rounded-xl", body: "bottom-0"}} >
-        <ModalContent className='p-2 md:p-4 overflow-scroll'>{content}</ModalContent>
+      <Modal isOpen={isOpen} onOpenChange={handleModalClose} hideCloseButton radius='none' scrollBehavior='inside' classNames={{ wrapper: "h-full w-full bottom-0", base: "fixed my-0 bottom-0 md:bottom-auto w-full max-w-full md:max-w-md sm:my-0 rounded-t-xl md:rounded-xl  overflow-y-scroll",}} >
+        <ModalContent className='p-2 md:p-4'>
+        <ScrollShadow>
+          {content}
+        </ScrollShadow>
+        </ModalContent>
       </Modal>
       {children}
     </main>

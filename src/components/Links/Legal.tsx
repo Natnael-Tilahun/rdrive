@@ -1,52 +1,49 @@
-import Link from 'next/link';
 import React, { useState } from 'react';
-import { Listbox, ListboxItem } from '@nextui-org/react';
+import { Listbox, ListboxItem, cn } from '@nextui-org/react';
 import { BsChatSquareDots, BsFillJournalBookmarkFill } from 'react-icons/bs';
 import { MdPrivacyTip } from 'react-icons/md';
 import { BiUserPin } from 'react-icons/bi';
 import siteConfig from '../../config/site.config';
-import Popover from '../UI/Popover';
-import { GoChevronDown } from "react-icons/go";
+import Link from 'next/link';
+import LinkPopover from '../UI/LinkPopover';
 
 const Legal = () => {
-  const [openPopover, setOpenPopover] = useState(false);
   const Icon = "text-xl text-default-500 dark:text-white pointer-events-none flex-shrink-0";
-  const legalLinks = [
-    { text: 'About US', url: '/about', icon: <BiUserPin  className={Icon} /> },
-    { text: 'Privacy Policy', url: '/privacy-policy', icon: <MdPrivacyTip className={Icon} /> },
-    { text: 'Terms of Service', url: '/terms', icon: <BsFillJournalBookmarkFill className={Icon} /> },
-  ];
-
   return (
-    <Popover
-    content={
-      <><Listbox variant="bordered" aria-label="Legal Links">
-          {legalLinks.map(({ text, url, icon }) => (
-            <ListboxItem
-              key={text}
-              startContent={icon}
-            >
-              <Link href={url} className="dark:text-white">{text}</Link>
-            </ListboxItem>
-          ))}
-        </Listbox><Listbox variant="bordered" aria-label="Report & Feedback">
-            <ListboxItem
-              key="Report & Feedback"
-              className="text-danger"
-              startContent={<BsChatSquareDots className="text-xl text-danger" />}
-            >
-              <Link
-                href={`https://t.me/${siteConfig.telegram}`}
-                target="_blank">
-                Report & Feedback
-              </Link>
-            </ListboxItem>
-          </Listbox></>}
-    openPopover={openPopover}
-    setOpenPopover={setOpenPopover}
-  >
-    <button className="flex items-center gap-1" onClick={() => setOpenPopover(!openPopover)}>Legal <GoChevronDown className={`h-4 w-4 transition-all ${openPopover ? "rotate-180" : ""}`} /></button>
-  </Popover>
+    <LinkPopover
+     open="Legal"
+      content={ 
+      <Listbox variant="faded" aria-label="Legal Links" key="legal-links">
+        <ListboxItem
+          key="About US"
+          startContent={<BiUserPin className={Icon} />}
+        >
+          <Link href='/about' className="dark:text-white">About US</Link>
+        </ListboxItem>
+        <ListboxItem
+          key="Privacy Policy"
+          startContent={<MdPrivacyTip className={Icon} />}
+        >
+          <Link href='/privacy-policy' className="dark:text-white">Privacy Policy</Link>
+        </ListboxItem>
+        <ListboxItem
+          key="Terms of Service"
+          showDivider
+          startContent={<BsFillJournalBookmarkFill className={Icon} />}
+        >
+          <Link href='/terms' className="dark:text-white">Terms of Service</Link>
+        </ListboxItem>
+        <ListboxItem
+          key="Report & Feedback"
+          className="text-danger"
+          color="danger"
+          startContent={<BsChatSquareDots className="text-xl text-danger" />}
+        >
+          <Link href={`${siteConfig.telegram}`} target="_blank">Report & Feedback</Link>
+        </ListboxItem>
+        </Listbox>
+      }
+    />
   );
 };
 

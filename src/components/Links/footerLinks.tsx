@@ -9,9 +9,9 @@ import Link from 'next/link';
 const FooterLinks = ({ token }) => {
   const footerLinks: { href: string; text: string; tooltip: React.ReactNode }[] = [
     {
-      href: '/frp',
+      href: '/FRP',
       text: 'FRP',
-      tooltip: 'FRP Files & Tool',
+      tooltip: 'FRP Bypass Files & Tool',
     },
     {
       href: '/Drivers',
