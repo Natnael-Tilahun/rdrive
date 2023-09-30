@@ -23,7 +23,7 @@ const Storage = ({ token }) => {
            <div>
             <div className="flex items-center my-2 justify-between">
               <p className="flex items-center gap-2 tracking-wider">
-                <TbApps size={24} /> Apps (E:)
+                <TbApps size={24} /> Apps (F:)
               </p>
               <h1>
                 {humanFileSize(folderSize1)}{" "}
@@ -36,11 +36,30 @@ const Storage = ({ token }) => {
               maxValue={10000000000000} />
           </div>
         </ListboxItem>
-        <ListboxItem key="Games (E:)" >
+        <ListboxItem
+          key="Apple (E:)"
+        >
+         <div>
+            <div className="flex items-center my-2 justify-between ">
+              <p className="flex items-center gap-2 tracking-wider">
+                <BsApple size={24} /> Apple (E:)
+              </p>
+              <h1>
+                {humanFileSize(folderSize2)}{" "}
+                <span className="text-sm">used</span>
+              </h1>
+            </div>
+            <Progress
+              size="md"
+              value={(folderSize2)}
+              maxValue={10000000000000} />
+          </div>
+        </ListboxItem>
+        <ListboxItem key="Games (D:)" >
            <div>
             <div className="flex items-center my-2 justify-between">
               <p className="flex items-center gap-2 tracking-wider">
-                <TbDeviceGamepad2 size={24} /> Games (F:)
+                <TbDeviceGamepad2 size={24} /> Games (D:)
               </p>
               <h1>
                 {humanFileSize(folderSize3)}{" "}
@@ -52,25 +71,6 @@ const Storage = ({ token }) => {
               value={(folderSize1)}
               // HAHA
               maxValue={1000000000000000000} />
-          </div>
-        </ListboxItem>
-        <ListboxItem
-          key="Apple (D:)"
-        >
-         <div>
-            <div className="flex items-center my-2 justify-between ">
-              <p className="flex items-center gap-2 tracking-wider">
-                <BsApple size={24} /> Apple (D:)
-              </p>
-              <h1>
-                {humanFileSize(folderSize2)}{" "}
-                <span className="text-sm">used</span>
-              </h1>
-            </div>
-            <Progress
-              size="md"
-              value={(folderSize2)}
-              maxValue={10000000000000} />
           </div>
         </ListboxItem>
         <ListboxItem
