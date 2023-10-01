@@ -2,15 +2,18 @@ import axios from 'axios';
 import React from 'react';
 import { getOrigin } from '../utils/getBaseUrl';
 import { DriveItemResult } from './api/driveItems';
+import siteConfig from '../config/site.config';
 
 class Sitemap extends React.Component {
   static async getInitialProps({ req, res }) {
     const origin = getOrigin(req);
     const urls = [
+      ... (await getSiteMapUrls(origin)),
+      "/FRP/",
+      "/service-center-price-list/",
       "/about/",
       "/terms/", 
-      "/privacy-policy/",
-      ... (await getSiteMapUrls(origin))
+      "/privacy-policy/"
     ];
     res.setHeader('Content-Type', 'text/xml');
     res.write(createSitemap(urls, origin));
@@ -18,7 +21,7 @@ class Sitemap extends React.Component {
   }
 }
 
-function createSitemap(urls: string[], origin){
+function createSitemap(urls: string[], origin) {
   return `<?xml version="1.0" encoding="UTF-8"?>
           <urlset
                 xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
@@ -33,12 +36,13 @@ function createSitemap(urls: string[], origin){
 
             ${urls.map(url => (
               `<url>
-                <loc>${origin}${url}</loc>
+                <loc>${origin}${url.replace(`/${siteConfig.baseDirectory}`, '')}</loc>
                 <priority>0.90</priority>
               </url>`)).join('')}
 
           </urlset>`;
 }
+
 
 async function getSiteMapUrls(origin: string){
   const response = await axios.get(`${origin}/api/driveItems`);

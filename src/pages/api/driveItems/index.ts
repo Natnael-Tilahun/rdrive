@@ -5,6 +5,7 @@ import { DriveItemType } from "../../../types/DriveItemType";
 import { getOrigin } from "../../../utils/getBaseUrl";
 import { PathUtils } from "../../../utils/getReadablePath";
 import { readOdConcealedAccessTokens } from "../../../utils/odAuthTokenStore";
+import siteConfig from "../../../config/site.config";
 
 export default function handler(req: NextApiRequest, res: NextApiResponse) {
   return authenticate(req, res)
@@ -65,9 +66,9 @@ async function authenticate(req: NextApiRequest, res: NextApiResponse) {
 
 function readQueryParams(req: NextApiRequest, res: NextApiResponse) {
   return (memo: Memo) => {
-    const { path = 'root', account = -1 } = req.query;
+    const { path = `${siteConfig.baseDirectory}`, account = -1 } = req.query;
 
-    if(path != 'root' && memo.accessTokens.length > 0 && account == -1){
+    if(path != `${siteConfig.baseDirectory}` && memo.accessTokens.length > 0 && account == -1){
       const message = "please specify account";
       res.status(400).json({ message });
       throw message;
