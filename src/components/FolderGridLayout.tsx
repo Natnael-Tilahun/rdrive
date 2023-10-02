@@ -8,12 +8,14 @@ import { Button, Card, CardBody, Chip, Divider, Image, Skeleton } from '@nextui-
 import { fetchHeartCounts, incrementHeartCount } from '../supabase/Heart';
 import { HeartFilledIcon } from './icons';
 import { formatNumber, humanFileSize } from '../utils/fileDetails';
+import { useTranslation } from 'react-i18next';
 
 const FolderGridLayout = ({ path, folderChildren }: { path: string, folderChildren: OdFolderChildren[] }) => {
   const getItemPath = (name: string) => `${path === '/' ? '' : path}/${encodeURIComponent(name)}`;
   const visibleFolderChildren = folderChildren.filter((child) => !isHiddenFolder(child) && !isHiddenFolder(child.folder));
   const [heartCounts, setHeartCounts] = useState({});
   const [isLoaded, setIsLoaded] = React.useState(false);
+  const { t } = useTranslation()
 
   useEffect(() => {
     if (Object.keys(heartCounts).length === 0) {
@@ -68,8 +70,8 @@ const FolderGridLayout = ({ path, folderChildren }: { path: string, folderChildr
             </Link>
             <Divider className='dark:bg-gray-700' />
             <div className="flex items-center justify-evenly mt-1.5 mb-0.5 cursor-default">
-              {/*bug on child count*/}
-              <Chip className="bg-white dark:bg-black bg-opacity-70 dark:bg-opacity-50 border dark:border-gray-700">{child.folder?.childCount ? child.folder.childCount - 1 : 0} items</Chip>  
+              {/*still bug on folder child count*/}
+              <Chip className="bg-white dark:bg-black bg-opacity-70 dark:bg-opacity-50 border dark:border-gray-700">{t('{{count}} item(s)', { count: child.folder?.childCount ? child.folder.childCount - 1 : 0 })}</Chip>  
               <Divider orientation="vertical" className='dark:bg-gray-700' />
               <Chip className="bg-white dark:bg-black bg-opacity-70 dark:bg-opacity-50 border dark:border-gray-700">{humanFileSize(child.size)}</Chip>
             </div>

@@ -18,11 +18,32 @@ export const formatDate = (lastModifiedDateTime: string) => {
   const now = dayjs();
   const lastModified = dayjs(lastModifiedDateTime);
   const diffInDays = now.diff(lastModified, 'day');
-  
-  // Use the relativeTime plugin to get the relative time string
-  const relativeTimeStr = lastModified.fromNow();
 
-  return relativeTimeStr;
+  if (diffInDays === 0) {
+    // Just now
+    return lastModified.fromNow();
+  } else if (diffInDays === 1) {
+    // An hour ago
+    return lastModified.fromNow();
+  } else if (diffInDays <= 7) {
+    // Last week
+    return lastModified.fromNow();
+  } else if (diffInDays <= 14) {
+    // 2 weeks ago
+    return '2 weeks ago';
+  } else if (diffInDays <= 21) {
+    // 3 weeks ago
+    return '3 weeks ago';
+  } else if (diffInDays <= 30) {
+    // Last month
+    return lastModified.fromNow();
+  } else if (diffInDays <= 365) {
+    // Month name and date (short format)
+    return lastModified.format('MMM D');
+  } else {
+    // Month name and date, and year (short format)
+    return lastModified.format('MMM D, YYYY');
+  }
 };
 
 export const formatNumber = (number: number) => {
