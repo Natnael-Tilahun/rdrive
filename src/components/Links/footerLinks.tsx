@@ -51,14 +51,14 @@ const FooterLinks = ({ token }) => {
         <React.Fragment key={href}>
           {index === footerLinks.length - 1 && <><Storage token={token} /> <Legal /></>}
           <Hover tipChildren={tooltip}>
-          <Link href={href} passHref>
+          <div>
             <UnstyledLink
               href={href}
               className="animated-underline focus:outline-none focus-visible:ring focus-visible:ring-primary-300"
             >
               {text}
             </UnstyledLink>
-          </Link>
+          </div>
           </Hover>
         </React.Fragment>
       ))}

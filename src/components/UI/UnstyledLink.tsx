@@ -5,38 +5,33 @@ import { ReactNode } from 'react';
 export type UnstyledLinkProps = {
   href: string;
   children: ReactNode;
-  targetBlank?: boolean; 
+  openNewTab?: boolean;
   className?: string;
 };
-
 
 export const shouldOpenNewTab = (href: string, openNewTab?: boolean) => {
   if (openNewTab !== undefined) {
     return openNewTab;
   }
 
-  if (href.startsWith('http://') || href.startsWith('https://')) {
-    return true;
-  }
-
   return !href.startsWith('/') && !href.startsWith('#');
 };
-
 
 export default function UnstyledLink({
   children,
   href,
-  targetBlank,
+  openNewTab,
   className,
 }: UnstyledLinkProps) {
+  const isNewTab = shouldOpenNewTab(href, openNewTab);
+
   return (
-    <Link
-      href={href}
-      className={clsx(className, targetBlank && 'cursor-newtab')}
-      target={targetBlank ? '_blank' : undefined}
-      rel={targetBlank ? 'noopener noreferrer' : undefined}
-    >
-      {children}
+    <Link href={href} 
+        className={clsx(className, isNewTab && 'cursor-newtab')}
+        target={isNewTab ? '_blank' : undefined}
+        rel={isNewTab ? 'noopener noreferrer' : undefined}
+      >
+        {children}
     </Link>
   );
 }
