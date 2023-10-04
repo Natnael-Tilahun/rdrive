@@ -106,6 +106,7 @@ const extensions = {
 
   ipsw: icons.apple,
   dmg: icons.apple,
+  pkg: icons.apple,
 
   iso: icons.windows,
   img: icons.recovery,
