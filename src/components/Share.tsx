@@ -122,7 +122,7 @@ export default function Share() {
       </div>
     </div>
   </div>}>
-    <Button isIconOnly className="bg-white bg-opacity-70 dark:bg-opacity-50 backdrop-blur-md border dark:border-gray-700 overflow-hidden  dark:bg-black dark:text-white hover:bg-gray-100 dark:hover:bg-gray-850 rounded-full" onPress={() => setIsOpen(!isOpen)}><FiShare size={18}/> </Button>
+    <Button isIconOnly className="bg-white bg-opacity-70 dark:bg-opacity-50 backdrop-blur-md border dark:border-gray-700 overflow-hidden  dark:bg-black dark:text-white hover:bg-gray-100 dark:hover:bg-gray-850" radius='full' onPress={() => setIsOpen(!isOpen)}><FiShare size={18}/> </Button>
     </Model>
   );
 }
