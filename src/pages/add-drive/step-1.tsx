@@ -2,12 +2,14 @@ import Head from 'next/head'
 import { useRouter } from 'next/router'
 import { useTranslation, Trans } from 'next-i18next'
 import siteConfig from '../../config/site.config'
-import apiConfig from '../../config/api.config'
+import apiConfig, { clientId, clientSecret } from '../../config/api.config'
 import Navbar from '../../components/Navbar'
 import Footer from '../../components/Footer'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { Hello } from '../../utils/LottieUrl'
 import { Player } from '@lottiefiles/react-lottie-player'
+import { getAccessToken } from '../../utils/odAuthTokenStore'
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 
 export default function OAuthStep1({ token }) {
   const router = useRouter()
@@ -148,35 +150,21 @@ export default function OAuthStep1({ token }) {
   )
 }
 
-
-
-// import React from 'react'
-// import { useDispatch, useSelector } from 'react-redux'
-// import { setConfigValue } from './configSlice'
-
-// const MyComponent = () => {
-//   // Access your configuration values from the Redux store
-//   const config = useSelector(state => state.config)
-
-//   // Get a reference to the dispatch function
-//   const dispatch = useDispatch()
-
-//   // Update a configuration value in the Redux store
-//   const handleInputChange = (event) => {
-//     const { name, value } = event.target
-//     dispatch(setConfigValue({ key: name, value }))
-//   }
-
-//   return (
-//     <div>
-//       {/* Render your component here */}
-//       <input
-//         type="text"
-//         name="clientId"
-//         value={config.clientId}
-//         onChange={handleInputChange}
-//       />
-//       {/* ... */}
-//     </div>
-//   )
-// }
+export async function getServerSideProps({ locale }) {
+  const accessToken = await getAccessToken(0);
+  if (accessToken) {
+    return {
+      redirect: {
+        destination: '/',
+        permanent: false,
+      },
+    }
+  }
+  return {
+    props: {
+      ...(await serverSideTranslations(locale, ['common'])),
+      clientId,
+      clientSecret,
+    },
+  }
+}

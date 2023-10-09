@@ -25,7 +25,10 @@ module.exports = withBundleAnalyzer(
       NO_IMAGE: process.env.NO_IMAGE,
       SUPABASE_URL: process.env.SUPABASE_URL,
       SUPABASE_ANON_KEY: process.env.SUPABASE_ANON_KEY,
-      PERSONAL_ACCESS_TOKEN:process.env.PERSONAL_ACCESS_TOKEN
+      PERSONAL_ACCESS_TOKEN:process.env.PERSONAL_ACCESS_TOKEN,
+      CLIENT_ID: process.env.CLIENT_ID,
+      CLIENT_SECRET: process.env.CLIENT_SECRET
+
     },
     images: {
       domains: [ 
