@@ -48,7 +48,7 @@ export default function Route({ connectedAccounts, token, ogImage }) {
 export async function getServerSideProps({ resolvedUrl, locale }) {
   const connectedAccounts = await getOdConcealedAccessTokens()
   const token = await getAccessToken(0)
-  const ogImageUrl = `${siteConfig.domain}/api/og/?link=${resolvedUrl.split('?')[0]}`;
+  const ogImageUrl = `${siteConfig.domain}/api/og/?path=${resolvedUrl.split('?')[0]}`;
 
   return {
     props: {

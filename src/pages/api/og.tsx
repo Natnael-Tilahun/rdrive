@@ -1,49 +1,11 @@
 /* eslint-disable @next/next/no-img-element */
 import { ImageResponse } from 'next/server';
-import { extensions } from '../../utils/getPreviewType';
 import siteConfig from '../../config/site.config';
 
 export const config = {
   runtime: 'edge',
 };
 
-const checkTypeAndTitle = (url: string) => {
-  const cleanURL = url.split(/[?#]/)[0];
-  const segments = cleanURL.split('/');
-  const lastSegment = segments[segments.length - 2];
-  if (lastSegment.includes('.') && !lastSegment.endsWith('.')) {
-    const lastPeriodIndex = lastSegment.lastIndexOf(".");
-    const fileTitle = lastSegment.slice(0, lastPeriodIndex);
-    const fileExtension = lastSegment.slice(lastPeriodIndex + 1);
-    if (fileExtension in extensions) {
-      return { 
-        type: "file",
-        title: fileTitle,
-        url
-      }
-    } else {
-      return {
-        type: "folder",
-        title: fileTitle,
-        url: cleanURL.slice(0, cleanURL.indexOf(segments[segments.length - 2]))
-      }
-    }
-    
-  }
-
-  if (cleanURL.endsWith('/')) {
-    return {
-      type: "folder",
-      title: segments[segments.length - 2] ,
-      url
-    }
-  }
-
-  return {
-    type: "folder",
-    title: segments[segments.length - 1]
-  }
-}
 
 const font = fetch(new URL('../../../public/font/Inter.ttf', import.meta.url)).then((res) =>
   res.arrayBuffer(),
@@ -52,15 +14,11 @@ const font = fetch(new URL('../../../public/font/Inter.ttf', import.meta.url)).t
 export default async function handler(req) {
   const fontData = await font;
   const { searchParams } = new URL(req.url);
-  let url = searchParams.get('link') ?? '';
-  const result = checkTypeAndTitle(url);
-  
-  let structuredUrl = `${siteConfig.domain}/api/thumbnail/?path=${result.url}`;
-  if (result.type === "folder") {
-    structuredUrl += "/icon.png";
-  }
+  let url = searchParams.get('path') ?? '';
+  const hasFileExtension = /\.[^]+$/.test(url);
+  const OG = `${siteConfig.domain}/api/thumbnail/?path=${hasFileExtension ? `${url}` : `${url}icon.png`}`;
   const Description = (): string => { 
-    let url = searchParams.get('link') ?? '';
+    let url = searchParams.get('path') ?? '';
     const path = url.toLowerCase();
     if (path.includes('apple')) {
       return `Explore ${title} Firmware and solutions for your Apple device, including guides for common issues.`;
@@ -91,24 +49,25 @@ export default async function handler(req) {
 
 
   const pathParts = url.split('/');
-  const lastPathPart = pathParts[pathParts.length - 2].replaceAll('-',' ').replaceAll('_', ' ');
-  const title = result.title.replaceAll('-',' ').replaceAll('_', ' ');
+  const title = pathParts[pathParts.length - 2].replaceAll('-',' ').replaceAll('_', ' ');
   const description = Description();
 
   return new ImageResponse(
     (
-      <main tw="h-full w-full pb-6 flex flex-col" style={{ background: 'linear-gradient(to right, rgba(137, 43, 226, 0.3) 10%, rgba(30, 144, 255, 0.3) 30%, rgba(0, 255, 128, 0.9) 90%)' }}>
-      <div tw="w-full h-full flex flex-col items-start justify-start text-zinc-100 p-8" style={{ background: 'linear-gradient(360deg, #000000, #222222)' }}>
+      <main tw="h-full w-full flex flex-col p-14" style={{ background: 'linear-gradient(360deg, #000000, #222222)' }}>
+      <div tw="w-full h-full flex flex-col items-start justify-start text-zinc-100">
         <div tw="w-full mt-auto flex items-start">
         <div tw="flex flex-col mt-auto max-w-2xl">
-          <h1 tw="text-5xl">{lastPathPart}</h1>
+          <h1 tw="text-5xl">{title}</h1>
           {description && <h2 tw="text-2xl text-zinc-200">{description}</h2>}
         </div>
+        <div tw="h-56 w-56 flex items-center ml-auto">
           <img
-            tw="rounded-lg h-48 ml-auto"
-            src={structuredUrl}
+            tw="rounded-lg mx-auto"
+            src={OG || siteConfig.noimage}
             alt={title}
           />
+        </div>
         </div>
         <div tw="w-full mt-auto flex items-start justify-start">
         <div tw="flex flex-col mt-auto max-w-2xl">
@@ -124,8 +83,8 @@ export default async function handler(req) {
     </main>
     ),
     {
-      width: 1200,
-      height: 600,
+      width: 1280,
+      height: 640,
       fonts: [
         {
           name: 'Inter',
@@ -134,7 +93,7 @@ export default async function handler(req) {
         },
       ],
       headers: {
-        'Content-Disposition': `filename=${title}.webp`,
+        'Content-Disposition': `filename=${title}`,
       },
     }
   );

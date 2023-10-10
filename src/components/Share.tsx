@@ -15,7 +15,7 @@ export default function Share() {
   const { query, asPath } = useRouter();
   const clipboard = useClipboard();
   const hasFileExtension = /\.[^]+$/.test(asPath);
-  const URL = `/api/og/?link=${hasFileExtension ? `${asPath}/` : `${asPath}`}`;
+  const URL = `/api/og/?path=${hasFileExtension ? `${asPath}/` : `${asPath}`}`;
   const title = (query.path && Array.isArray(query.path) ? query.path[query.path.length - 1] : '').replaceAll('-', ' ').replaceAll('_', ' ');
   const [isOpen, setIsOpen] = useState(false);
 
@@ -72,10 +72,9 @@ export default function Share() {
     <h1 className="text-xl font-semibold pr-3 line-clamp-1">Share {title}</h1>
     <Image
       src={URL}
-      className="border-t dark:border-gray-700"
       alt={title}
-      width={1200}
-      height={600}
+      width={1280}
+      height={640}
     />
     <div className="flex flex-col w-full h-full gap-2">
     <div className="flex items-center justify-between gap-2 xss:flex-wrap xsm:flex-nowrap">
