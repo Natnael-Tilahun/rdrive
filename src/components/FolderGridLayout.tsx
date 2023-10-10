@@ -71,9 +71,9 @@ const FolderGridLayout = ({ path, folderChildren }: { path: string, folderChildr
             <Divider className='dark:bg-gray-700' />
             <div className="flex items-center justify-evenly mt-1.5 mb-0.5 cursor-default">
               {/*still bug on folder child count*/}
-              <Chip className="bg-white dark:bg-black bg-opacity-70 dark:bg-opacity-50 border dark:border-gray-700">{t('{{count}} item(s)', { count: child.folder?.childCount ? child.folder.childCount - 1 : 0 })}</Chip>  
+              <Chip className="bg-white dark:bg-black bg-opacity-70 dark:bg-opacity-50 border dark:border-gray-700 -p-2">{t('{{count}} item(s)', { count: child.folder?.childCount ? child.folder.childCount - 1 : 0 })}</Chip>  
               <Divider orientation="vertical" className='dark:bg-gray-700' />
-              <Chip className="bg-white dark:bg-black bg-opacity-70 dark:bg-opacity-50 border dark:border-gray-700">{humanFileSize(child.size)}</Chip>
+              <Chip className="bg-white dark:bg-black bg-opacity-70 dark:bg-opacity-50 border dark:border-gray-700 -p-2">{humanFileSize(child.size)}</Chip>
             </div>
           </CardBody> 
         </Card>
