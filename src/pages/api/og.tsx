@@ -1,6 +1,7 @@
 /* eslint-disable @next/next/no-img-element */
-import { ImageResponse } from 'next/server';
+import { ImageResponse, NextRequest } from 'next/server';
 import siteConfig from '../../config/site.config';
+
 
 export const config = {
   runtime: 'edge',
@@ -11,9 +12,9 @@ const font = fetch(new URL('../../../public/font/Inter.ttf', import.meta.url)).t
   res.arrayBuffer(),
 );
 
-export default async function handler(req) {
+export default async function handler(request: NextRequest) {
   const fontData = await font;
-  const { searchParams } = new URL(req.url);
+  const { searchParams } = new URL(request.url);
   let url = searchParams.get('path') ?? '';
   const hasFileExtension = /\.[^]+$/.test(url);
   const OG = `${siteConfig.domain}/api/thumbnail/?path=${hasFileExtension ? `${url}` : `${url}icon.png`}`;
@@ -54,33 +55,35 @@ export default async function handler(req) {
 
   return new ImageResponse(
     (
-      <main tw="h-full w-full flex flex-col p-6 rounded-lg" style={{ background: 'linear-gradient(180deg, rgba(137, 43, 226, 0.3) 10%, rgba(30, 144, 255, 0.3) 30%, rgba(0, 255, 128, 0.9) 90%)' }}>
-      <div tw="w-full h-full flex flex-col items-start justify-start text-zinc-100 p-16 rounded-lg" style={{ background: 'linear-gradient(360deg, #000000, #222222)' }}>
-        <div tw="w-full mt-auto flex items-start">
-        <div tw="flex flex-col mt-auto max-w-2xl">
-          <h1 tw="text-5xl">{title}</h1>
-          {description && <h2 tw="text-2xl text-zinc-200">{description}</h2>}
-        </div>
-        <div tw="h-56 w-56 flex items-center ml-auto">
-          <img
-            tw="rounded-lg mx-auto"
-            src={OG || siteConfig.noimage}
-            alt={title}
-          />
-        </div>
-        </div>
-        <div tw="w-full mt-auto flex items-start justify-start">
-        <div tw="flex flex-col mt-auto max-w-2xl">
+      <main tw="h-full w-full flex flex-col p-6 rounded-lg" style={{ background: 'linear-gradient(360deg, #000000, #222222)' }}>
+        <div tw="w-full h-full flex flex-col p-16 rounded-lg">
+          <div tw="w-full mt-auto flex justify-between item-center">
+            <div tw="flex flex-col mt-auto max-w-2xl">
+              <h1 tw="text-5xl text-zinc-100">{title}</h1>
+              {description && <h2 tw="text-2xl text-zinc-200">{description}</h2>}
+            </div>
+            <div tw="h-56 w-56 flex">
+              <img
+                tw="rounded-lg"
+                src={OG || siteConfig.noimage}
+                alt={title}
+              />
+            </div>
+          </div>
+          <div tw="w-full mt-auto flex justify-between item-center">
+            <div tw="flex flex-col mt-auto">
               <h1 tw="text-5xl text-zinc-200">{siteConfig.footer}</h1>
             </div>
-          <img
-            tw="rounded-lg w-22 h-22 self-end ml-auto"
-            src="https://github.com/rdriveorg.png"
-            alt="RDRIVE"
-          />
+            <div tw="h-22 w-22 flex">
+            <img
+              tw="rounded-lg"
+              src="https://github.com/rdriveorg.png"
+              alt="RDRIVE"
+            />
+            </div>
+          </div>
         </div>
-      </div>
-    </main>
+      </main>
     ),
     {
       width: 1280,
