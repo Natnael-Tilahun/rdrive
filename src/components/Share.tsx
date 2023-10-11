@@ -75,6 +75,7 @@ export default function Share() {
       alt={title}
       width={1280}
       height={640}
+      className='rounded-md'
     />
     <div className="flex flex-col w-full h-full gap-2">
     <div className="flex items-center justify-between gap-2 xss:flex-wrap xsm:flex-nowrap">

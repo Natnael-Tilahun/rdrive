@@ -54,8 +54,8 @@ export default async function handler(req) {
 
   return new ImageResponse(
     (
-      <main tw="h-full w-full flex flex-col p-14" style={{ background: 'linear-gradient(360deg, #000000, #222222)' }}>
-      <div tw="w-full h-full flex flex-col items-start justify-start text-zinc-100">
+      <main tw="h-full w-full flex flex-col p-6 rounded-lg" style={{ background: 'linear-gradient(180deg, rgba(137, 43, 226, 0.3) 10%, rgba(30, 144, 255, 0.3) 30%, rgba(0, 255, 128, 0.9) 90%)' }}>
+      <div tw="w-full h-full flex flex-col items-start justify-start text-zinc-100 p-16 rounded-lg" style={{ background: 'linear-gradient(360deg, #000000, #222222)' }}>
         <div tw="w-full mt-auto flex items-start">
         <div tw="flex flex-col mt-auto max-w-2xl">
           <h1 tw="text-5xl">{title}</h1>
@@ -71,7 +71,7 @@ export default async function handler(req) {
         </div>
         <div tw="w-full mt-auto flex items-start justify-start">
         <div tw="flex flex-col mt-auto max-w-2xl">
-              <h1 tw="text-5xl text-zinc-500">{siteConfig.footer}</h1>
+              <h1 tw="text-5xl text-zinc-200">{siteConfig.footer}</h1>
             </div>
           <img
             tw="rounded-lg w-22 h-22 self-end ml-auto"
@@ -93,7 +93,7 @@ export default async function handler(req) {
         },
       ],
       headers: {
-        'Content-Disposition': `filename=${title}`,
+        'Content-Disposition': `filename=${title}.webp`,
       },
     }
   );
