@@ -25,8 +25,6 @@ export default async function handler(request: NextRequest) {
     return `Explore ${title} firmware and solutions for your Apple device, including guides for common issues.`;
       } else if (path.includes('pixelexperience-rom')) {
       return `Enhance your Android device with Pixel Experience custom ROMs, featuring advanced features and a sleek interface.`;
-      } else if (path.includes('Apps')) {
-      return `Discover and download Apps for your Android, Mac OS, Linux & Windows complete with a step-by-step installation guide for increased productivity.`;
       } else if (path.includes('apps/windows')) {
       return `Upgrade your Windows device with ${title}, complete with a step-by-step installation guide for increased productivity.`;
       } else if (path.includes('apps/mac-os')) {
@@ -35,8 +33,6 @@ export default async function handler(request: NextRequest) {
       return `Download ${title} for Linux, complete with step-by-step installation guides.`;
       } else if (path.includes('apps/android')) {
       return `Download ${title} for Android devices, completely free, with step-by-step installation guides.`;
-      } else if (path.includes('games')) {
-      return `Discover and download games for your Android, Mac OS, Linux & Windows complete with installation instructions and gameplay tips.`;
       } else if (path.includes('games/windows')) {
       return `Download ${title} game for your Windows PC, including guides for installation and gameplay.`;
       } else if (path.includes('games/mac-os')) {
