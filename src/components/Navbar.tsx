@@ -4,6 +4,7 @@ import { SearchBar } from './SearchBar';
 import Hover from './UI/Tooltip';
 import { FiUpload } from 'react-icons/fi';
 import { Image } from '@nextui-org/react';
+import { SiGithubsponsors } from 'react-icons/si';
 
 const Navbar = () => {
   return (
@@ -15,7 +16,7 @@ const Navbar = () => {
         <div className="flex-grow flex justify-center ml-1">
           <SearchBar />
         </div>
-        <div className="ml-2">
+        <div className="flex ml-2 gap-1 md:gap-2">
         <div className='border dark:border-gray-700 rounded-md py-2 px-2'>
           <Hover tipChildren="Upload">
             <Link
@@ -24,6 +25,16 @@ const Navbar = () => {
               aria-label="Upload Files Here"
               className='text-black/70 dark:text-white/70 hover:text-black dark:hover:text-white'>
               <FiUpload className="h-4 w-4" />
+            </Link>
+          </Hover>
+        </div>
+        <div className='border dark:border-gray-700 rounded-md py-2 px-2'>
+          <Hover tipChildren="Sponsor">
+            <Link
+              href='/sponsor'
+              aria-label="Show Your Love"
+              className='text-danger'>
+              <SiGithubsponsors className="h-4 w-4" />
             </Link>
           </Hover>
         </div>

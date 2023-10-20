@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Tabs, Tab } from "@nextui-org/react";
-import { BsAndroid2, BsApple, BsGooglePlay, BsMicrosoft } from "react-icons/bs";
+import { BsAndroid2, BsApple, BsGooglePlay, BsWindows } from "react-icons/bs";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { TbApps, TbDeviceGamepad2 } from "react-icons/tb";
@@ -52,7 +52,7 @@ export default function Bar() {
     } else if (segments[1] === "linux") {
       appsTab.icon = <FaLinux size={22} />;
     } else if (segments[1] === "windows") {
-      appsTab.icon = <BsMicrosoft size={22} />;
+      appsTab.icon = <BsWindows size={22} />;
     } else if (segments[1] === "android") {
       appsTab.icon = <BsGooglePlay size={22} />;
     }
@@ -62,7 +62,7 @@ export default function Bar() {
     } else if (segments[1] === "linux") {
       gamesTab.icon = <FaLinux size={22} />;
     } else if (segments[1] === "windows") {
-      gamesTab.icon = <BsMicrosoft size={22} />;
+      gamesTab.icon = <BsWindows size={22} />;
     } else if (segments[1] === "android") {
       gamesTab.icon = <BsGooglePlay size={22} />;
     }
