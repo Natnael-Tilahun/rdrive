@@ -38,7 +38,6 @@ export const UserCard = ({ username }) => {
             </Link>
           </div>
         </div>
-        {/* <Hover tipChildren="In Development">
           <Button
             className={isFollowed ? "bg-transparent text-foreground dark:text-white border-default-200" : ""}
             color="primary"
@@ -47,9 +46,12 @@ export const UserCard = ({ username }) => {
             variant={isFollowed ? "bordered" : "solid"}
             onPress={() => setIsFollowed(!isFollowed)}
           >
+            <Link            
+            href={`https://github.com/${userData.login}`}
+            target="_blank">
             {isFollowed ? "Unfollow" : "Follow"}
+            </Link>
           </Button>
-        </Hover> */}
       </CardHeader>
       <CardBody className="px-3 py-0">
         <p className="text-base text-default-500 dark:text-gray-200">
