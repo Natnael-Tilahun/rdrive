@@ -112,6 +112,7 @@ const extensions = {
   img: icons.recovery,
 
   exe: MdInstallDesktop,
+  msi: MdInstallDesktop,
 
   apk: icons.android,
 };
