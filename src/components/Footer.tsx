@@ -28,7 +28,7 @@ const Footer = ({token}) => {
         </div>
       </div> 
     </footer>
-    <footer className="w-full border-t dark:border-gray-700 text-black dark:text-white mb-16 block md:hidden">
+    <footer className="w-full border-t dark:border-gray-700 text-black dark:text-white mb-20 block md:hidden">
       <div className="mx-auto w-full max-w-6xl my-4">
           <Link  className="flex items-center text-sm px-5 my-4" href="/" passHref>
                 <Image src={siteConfig.icon} alt={siteConfig.title} width={40} height={40} />
