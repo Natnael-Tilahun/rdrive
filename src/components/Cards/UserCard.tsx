@@ -30,15 +30,15 @@ export const UserCard = ({ username }) => {
     <Card shadow="none" className="w-full md:w-80 border-none bg-transparent">
       <CardHeader className="justify-between ">
         <div className="flex gap-3">
-          <Avatar className="bg-gray-200 dark:bg-gray-700" src={userData.avatar_url} alt={userData.login} />
+          <Avatar className="bg-gray-200 dark:bg-gray-700" src={userData.avatar_url} alt={userData.login} size="lg"/>
           <div className="flex flex-col items-start justify-center">
-            <h4 className="text-small font-semibold leading-none text-black dark:text-white">{userData.name || ''}</h4>
+            <h4 className="text-lg font-semibold leading-none text-black dark:text-white">{userData.name || ''}</h4>
             <Link href={`https://github.com/${userData.login}`} target="_blank" aria-label={userData.login}>
-              <h5 className="text-small tracking-tight text-default-500 dark:text-gray-400">@{userData.login}</h5>
+              <h5 className="text-base tracking-tight text-default-500 dark:text-gray-400">@{userData.login}</h5>
             </Link>
           </div>
         </div>
-        <Hover tipChildren="In Development">
+        {/* <Hover tipChildren="In Development">
           <Button
             className={isFollowed ? "bg-transparent text-foreground dark:text-white border-default-200" : ""}
             color="primary"
@@ -49,23 +49,23 @@ export const UserCard = ({ username }) => {
           >
             {isFollowed ? "Unfollow" : "Follow"}
           </Button>
-        </Hover>
+        </Hover> */}
       </CardHeader>
       <CardBody className="px-3 py-0">
-        <p className="text-small pl-px text-default-500 dark:text-gray-200">
+        <p className="text-base text-default-500 dark:text-gray-200">
           {userData.bio || 'Sorry, it appears that my GitHub bio is on a coffee break! ☕️'}
         </p>
       </CardBody>
       <CardFooter className="gap-3 text-default-foreground justify-between">
         <div className="flex space-x-2">
         <div className="flex gap-1">
-          <p className="font-semibold text-small">{userData.following}</p>
-          <p className="text-small">Following</p>
+          <p className="font-semibold text-base">{userData.following}</p>
+          <p className="text-base">Following</p>
         </div>
-        <span className="mx-1">|</span>
+        <span className="mx-1 text-base">|</span>
         <div className="flex gap-1">
-          <p className="font-semibold text-small">{userData.followers}</p>
-          <p className="text-small">Followers</p>
+          <p className="font-semibold text-base">{userData.followers}</p>
+          <p className="text-base">Followers</p>
         </div> 
         </div>
         <div className="flex space-x-3">
