@@ -4,7 +4,7 @@ import Footer from '../components/Footer';
 import { getAccessToken, getOdConcealedAccessTokens } from '../utils/odAuthTokenStore';
 import Seo from '../components/Meta/Seo';
 import siteConfig from '../config/site.config';
-import { Card, CardBody, Image } from '@nextui-org/react';
+import { Card, CardBody, Image, Snippet } from '@nextui-org/react';
 
 export default function Sponsor({ connectedAccounts, token }) {
   const seo = {
@@ -18,11 +18,11 @@ export default function Sponsor({ connectedAccounts, token }) {
 
   const links = [
     {
-      title: "PhonePe",
+      title: "rdriveorg@ybl",
       img: "/icons/pay/PhonePe.png",
     },
     {
-        title: "PayTM",
+        title: "therockstarind@paytm",
         img: "/icons/pay/PayTM.png",
     }
 ]
@@ -33,7 +33,7 @@ export default function Sponsor({ connectedAccounts, token }) {
         <Navbar />
         <div className="mx-auto w-full max-w-6xl p-2">
           <h1 className="my-4 text-center text-4xl font-bold">Show Your Love ❤️</h1>
-          <div className="grid grid-cols-2 items-center justify-center gap-2">
+          <div className="grid grid-cols-1 md:grid-cols-2 items-center justify-center gap-2">
             {links.map((link, index) => (
               <Card
                 shadow="none"
@@ -52,8 +52,8 @@ export default function Sponsor({ connectedAccounts, token }) {
                         isBlurred
                       />
                     </div>
-                    <div className="flex items-start justify-center space-x-2">
-                      <h1 className="text-center font-bold">{link.title}</h1>
+                    <div className="flex items-start justify-center mt-4 -mb-2">
+                    <Snippet hideSymbol>{link.title}</Snippet>
                     </div>
                 </CardBody>
               </Card>

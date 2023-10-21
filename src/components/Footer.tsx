@@ -11,7 +11,7 @@ const Footer = ({token}) => {
     
   return (
     <>
-    <footer className="w-full border-t dark:border-gray-700 text-black dark:text-white hidden md:block px-2">
+    <footer className="w-full border-t dark:border-gray-700 text-black dark:text-white hidden md:block px-2 mb-2">
       <div className="mx-auto w-full max-w-6xl my-4">
       <div className="flex justify-between items-center my-6 px-2">
           <SocialFooter />

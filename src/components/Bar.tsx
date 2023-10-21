@@ -90,6 +90,7 @@ export default function Bar() {
       <div className="justify-center flex w-full">
         <Tabs
           aria-label="Menu Bar"
+          size="lg"
           radius="md"
           items={tabs}
           selectedKey={selected}
