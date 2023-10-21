@@ -105,7 +105,7 @@ const FileListing: FC<{ query?: ParsedUrlQuery, token?: string }> = ({ query }) 
   }
   if (!data) {
     return (
-      <Loading loadingText={t('Loading ...')} />
+      <Loading  />
   )
   } 
 
@@ -193,7 +193,7 @@ const FileListing: FC<{ query?: ParsedUrlQuery, token?: string }> = ({ query }) 
             >
               {isLoadingMore ? (
                 <>
-                  <LoadingIcon className="inline-block h-4 w-4 animate-spin" />
+                  <LoadingIcon />
                   <span>{t('Loading ...')}</span>{' '}
                 </>
               ) : isReachingEnd ? (

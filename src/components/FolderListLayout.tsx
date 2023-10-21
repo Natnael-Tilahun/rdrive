@@ -72,7 +72,7 @@ useEffect(() => {
     <div className="overflow-hidden rounded-lg border dark:border-gray-700">
     <Credit path={path} item={t('{{count}} item(s)', { count: visibleFolderChildren.length })}/>
       {visibleFolderChildren.map((c: OdFolderChildren) => (
-        <div key={c.id} className='border-t dark:border-gray-700 hover:bg-gray-200 dark:hover:bg-gray-700'>
+        <div key={c.id} className='border-t dark:border-gray-700 hover:bg-gray-100 dark:hover:bg-gray-850'>
 
           {getPreviewType(getExtension(c.name), { video: Boolean(c.video) }) ? (
             <Link

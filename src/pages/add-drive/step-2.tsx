@@ -126,7 +126,7 @@ export default function OAuthStep2({ token }) {
               >
                 {buttonLoading ? (
                   <>
-                    <span>{t('Requesting tokens')}</span> <LoadingIcon className="ml-1 inline h-4 w-4 animate-spin" />
+                    <span>{t('Requesting tokens')}</span> <LoadingIcon />
                   </>
                 ) : (
                   <>

@@ -64,7 +64,7 @@
 //                   : 'bg-transparent opacity-0'
 //               }`}
 //             >
-//               <LoadingIcon className="z-10 inline-block h-5 w-5 animate-spin" />
+//               <LoadingIcon />
 //             </div>
 
 //             {!brokenThumbnail ? (
@@ -183,7 +183,7 @@ const AudioPreview: FC<{ file: OdFileObject }> = ({ file }) => {
                   : 'bg-transparent opacity-0'
               }`}
             >
-              <LoadingIcon className="z-10 inline-block h-5 w-5 animate-spin" />
+              <LoadingIcon />
             </div>
             {!brokenThumbnail ? (
               <div className="absolute m-4 rounded-lg-full shadow-lg">
