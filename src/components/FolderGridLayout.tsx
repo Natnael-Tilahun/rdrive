@@ -32,7 +32,7 @@ const FolderGridLayout = ({ path, folderChildren }: { path: string, folderChildr
       {visibleFolderChildren.map((child, index) => (
         <Card className="border dark:border-gray-700" key={child.id + index} isPressable isHoverable shadow='none' isBlurred>
           <CardBody className='p-1 overflow-hidden'>
-          <div className='absolute top-0 right-0 z-20 m-1 opacity-0 transition-all duration-100 hover:opacity-100'>
+          <div className='absolute top-0 right-0 z-20 m-1'>
             <Skeleton isLoaded={isLoaded} className="rounded-full">
             <Button
                   onClick={async () => {
