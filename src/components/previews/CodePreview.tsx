@@ -29,7 +29,7 @@ const CodePreview: FC<{ file: any }> = ({ file }) => {
   if (validating) {
     return (
         <PreviewContainer>
-          <Loading loadingText={t('Loading file content...')} />
+          <Loading />
         </PreviewContainer>
     )
   }
