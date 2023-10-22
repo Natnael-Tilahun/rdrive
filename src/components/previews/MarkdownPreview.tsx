@@ -99,7 +99,7 @@ const MarkdownPreview: FC<{
       <main>
         <div className="border dark:border-gray-700 rounded-lg bg-white p-3 dark:bg-black dark:text-white">
         <div className="items-center justify-center flex space-x-2">
-          <LoadingIcon className="h-4 w-4 animate-spin" />
+          <LoadingIcon />
           <span>{t('Loading ...')}</span>{' '}
           </div>
         </div>
