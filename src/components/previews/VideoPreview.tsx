@@ -100,7 +100,7 @@ const VideoPreview: FC<{ file: OdFileObject }> = ({ file }) => {
         {error ? (
           <FourOhFour errorMsg={error.message} />
         ) : loading && isFlv ? (
-          <Loading loadingText={t('Loading FLV extension...')} />
+          <Loading />
         ) : (
           <VideoPlayer
             videoName={file.name}
