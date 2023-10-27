@@ -61,7 +61,8 @@
     "tailwind-merge": "^1.14.0",
     "tailwindcss-animate": "^1.0.7",
     "use-clipboard-copy": "^0.2.0",
-    "use-constant": "^1.1.1"
+    "use-constant": "^1.1.1",
+    "vaul": "^0.7.7"
   },
   "devDependencies": {
     "@next/bundle-analyzer": "^13.5.6",

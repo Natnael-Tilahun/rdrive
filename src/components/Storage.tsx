@@ -3,9 +3,12 @@ import { useDriveStorage, useFolderSize } from "../utils/useDriveStorage";
 import { humanFileSize } from "../utils/fileDetails";
 import { BsApple, BsHddFill } from "react-icons/bs";
 import { TbApps, TbDeviceGamepad2 } from "react-icons/tb";
-import { LinkPopover } from "./UI/LinkPopover";
+import { useState } from "react";
+import Popover from "./UI/Popover";
+import { GoChevronDown } from "react-icons/go";
 
 const Storage = ({ token }) => {
+  const [openPopover, setOpenPopover] = useState(false);
   const { quota } = useDriveStorage(token);
   const Apps = "RDRIVE/Apps";
   const Apple = "RDRIVE/Apple";
@@ -15,10 +18,9 @@ const Storage = ({ token }) => {
   const { folderSize: folderSize3, } = useFolderSize(token, Games);
 
   return (
-    <LinkPopover
-     open="Storage"
-      content={ 
-        <Listbox variant="faded" aria-label="Storage Details" key="Storage Details" className="w-full md:w-80 gap-2 my-1">
+    <Popover
+        content={
+          <Listbox variant="faded" aria-label="Storage Details" key="Storage Details" className="w-full md:w-80 gap-2 my-1">
         <ListboxItem key="Apps (F:)" >
            <div>
             <div className="flex items-center my-2 justify-between">
@@ -99,8 +101,14 @@ const Storage = ({ token }) => {
           </div>
         </ListboxItem>
         </Listbox>
-      }
-    />
+        }
+        openPopover={openPopover}
+        setOpenPopover={setOpenPopover}
+      >
+        <button className="flex items-center gap-1" onClick={() => setOpenPopover(!openPopover)}>
+            Storage <GoChevronDown className={`h-4 w-4 transition-transform transform ${openPopover ? "rotate-180" :''}`} />
+          </button>
+    </Popover>
   );
 };
 
