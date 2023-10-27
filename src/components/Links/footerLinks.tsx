@@ -4,7 +4,6 @@ import siteConfig from '../../config/site.config';
 import Hover from '../UI/Tooltip';
 import UnstyledLink from '../UI/UnstyledLink';
 import Storage from '../Storage';
-import Link from 'next/link';
 
 const FooterLinks = ({ token }) => {
   const footerLinks: { href: string; text: string; tooltip: React.ReactNode }[] = [
@@ -34,10 +33,16 @@ const FooterLinks = ({ token }) => {
       tooltip: 'All Brand Parts Service Center Price List',
     },
     {
-      href: `https://status.rdrive.org/`,
-      text: 'Status',
-      tooltip: 'APIs Status Check',
+      href: `/sponsor`,
+      text: 'Sponsor',
+      tooltip: 'Show Your Love',
     },
+    // {
+    //   href: `https://status.rdrive.org/`,
+    //   text: 'Status',
+    //   tooltip: 'APIs Status Check',
+    // },
+
     {
       href: `${siteConfig.domain}/sitemap.xml`,
       text: 'Sitemap',

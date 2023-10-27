@@ -18,7 +18,7 @@ function MyApp({ Component, pageProps }: AppProps) {
       <NextUIProvider>
       <ThemeProvider attribute="class">
         <main className={font.className}>
-          <NextNProgress color="#A020F0" startPosition={0.1} stopDelayMs={200} height={3} showOnShallow={true} options={{ showSpinner: false }} />
+          <NextNProgress color="#228B22" height={4} />
           <Component {...pageProps} />
           <Analytics />
         </main>

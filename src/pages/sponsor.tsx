@@ -4,7 +4,7 @@ import Footer from '../components/Footer';
 import { getAccessToken, getOdConcealedAccessTokens } from '../utils/odAuthTokenStore';
 import Seo from '../components/Meta/Seo';
 import siteConfig from '../config/site.config';
-import { Card, CardBody, Image, Snippet } from '@nextui-org/react';
+import { Card, CardBody, Image } from '@nextui-org/react';
 
 export default function Sponsor({ connectedAccounts, token }) {
   const seo = {
@@ -18,11 +18,11 @@ export default function Sponsor({ connectedAccounts, token }) {
 
   const links = [
     {
-      title: "rdriveorg@ybl",
+      title: "PhonePe",
       img: "/icons/pay/PhonePe.png",
     },
     {
-        title: "therockstarind@paytm",
+        title: "PayTm",
         img: "/icons/pay/PayTM.png",
     }
 ]
@@ -52,8 +52,10 @@ export default function Sponsor({ connectedAccounts, token }) {
                         isBlurred
                       />
                     </div>
-                    <div className="flex items-start justify-center mt-4 -mb-2">
-                    <Snippet hideSymbol>{link.title}</Snippet>
+                    <div className="flex items-start justify-center mt-4 -mb-2 font-bold text-xl">
+                    {/* Snippet making css error so for now disable it. */}
+                    {/* <Snippet hideSymbol>{link.title}</Snippet> */}
+                    {link.title}
                     </div>
                 </CardBody>
               </Card>

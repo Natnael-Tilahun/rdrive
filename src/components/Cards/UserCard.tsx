@@ -4,10 +4,11 @@ import Link from "next/link";
 import { fetchGitHubUser } from '../../utils/githubApi';
 import Hover from "../UI/Tooltip";
 import { UserLink, X } from "../icons";
+import { BsGithub } from "react-icons/bs";
+import { FiUsers } from "react-icons/fi";
 
 export const UserCard = ({ username }) => {
   const [userData, setUserData] = useState(null);
-  const [isFollowed, setIsFollowed] = useState(false);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -38,20 +39,11 @@ export const UserCard = ({ username }) => {
             </Link>
           </div>
         </div>
-          <Button
-            className={isFollowed ? "bg-transparent text-foreground dark:text-white border-default-200" : ""}
-            color="primary"
-            radius="full"
-            size="sm"
-            variant={isFollowed ? "bordered" : "solid"}
-            onPress={() => setIsFollowed(!isFollowed)}
-          >
             <Link            
-            href={`https://github.com/${userData.login}`}
-            target="_blank">
-            {isFollowed ? "Unfollow" : "Follow"}
+              href={`https://github.com/${userData.login}`}
+              target="_blank">
+                      <BsGithub size={30} />
             </Link>
-          </Button>
       </CardHeader>
       <CardBody className="px-3 py-0">
         <p className="text-base text-default-500 dark:text-gray-200">
@@ -59,12 +51,8 @@ export const UserCard = ({ username }) => {
         </p>
       </CardBody>
       <CardFooter className="gap-3 text-default-foreground justify-between">
-        <div className="flex space-x-2">
-        <div className="flex gap-1">
-          <p className="font-semibold text-base">{userData.following}</p>
-          <p className="text-base">Following</p>
-        </div>
-        <span className="mx-1 text-base">|</span>
+        <div className="flex items-center space-x-2">
+        <FiUsers size={20}/>
         <div className="flex gap-1">
           <p className="font-semibold text-base">{userData.followers}</p>
           <p className="text-base">Followers</p>
