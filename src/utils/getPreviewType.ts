@@ -58,8 +58,6 @@ export function getPreviewType(extension: string, flags?: { video?: boolean }): 
 }
 
 export function getLanguageByFileName(filename: string): string {
-  const extension = getExtension(filename)
-    default:
-      return extension
-  }
+  const extension = getExtension(filename);
+  return extension;
 }
