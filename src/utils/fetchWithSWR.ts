@@ -6,7 +6,7 @@ import { getConnectedAccounts } from './getConnectedAccounts'
 
 import { getStoredToken } from './protectedRouteHandler'
 
-export async function fetcher<T>(url: string, token?: string): Promise<T> {
+export async function fetcher(url: string, token?: string) {
   const xConnectedAccounts = getConnectedAccounts();
 
   try {
