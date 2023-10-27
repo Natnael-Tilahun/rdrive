@@ -5,31 +5,22 @@ import type { OdAPIResponse } from '../types'
 import { getConnectedAccounts } from './getConnectedAccounts'
 
 import { getStoredToken } from './protectedRouteHandler'
-import { useMemo } from 'react'
 
-// Memoize getConnectedAccounts function
-// export const useConnectedAccounts = () => {
-//   const xConnectedAccounts = useMemo(() => {
-//     return getConnectedAccounts()
-//   }, [])
-//   return xConnectedAccounts
-// }
-
-// Common axios fetch function for use with useSWR
-export async function fetcher(url: string, token?: string): Promise<any> {
-  const xConnectedAccounts = getConnectedAccounts()
+export async function fetcher<T>(url: string, token?: string): Promise<T> {
+  const xConnectedAccounts = getConnectedAccounts();
 
   try {
-    const headers = {}
-    if (token) headers['od-protected-token'] = token
-    if (xConnectedAccounts) headers['x-connected-accounts'] = xConnectedAccounts
-    const response = await axios.get(url[0], { headers })
-    return response.data
+    const headers = {};
+    if (token) headers['od-protected-token'] = token;
+    if (xConnectedAccounts) headers['x-connected-accounts'] = xConnectedAccounts;
+    const response = await axios.get(url[0], { headers });
+    return response.data;
   } catch (err: any) {
     console.log(err, "Error from fetchWithSWR");
-    throw { status: err.response.status, message: err.response.data }
+    throw { status: err.response.status, message: err.response.data };
   }
 }
+
 
 /**
  * Paging with useSWRInfinite + protected token support

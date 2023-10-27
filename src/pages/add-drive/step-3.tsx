@@ -34,22 +34,23 @@ export default function OAuthStep3({
   
   useEffect(() => {
     getAuthPersonInfo(accessToken)
-      .then(({data, status}) => {
-        dispatch(setAuthPersonInfo({data, status}));
-        if(Object.values(principals).includes(data.userPrincipalName)){
+      .then(({ data, status }) => {
+        dispatch(setAuthPersonInfo({ data, status }));
+        if (Object.values(principals).includes(data.userPrincipalName)) {
           dispatch(setAccountAlreadyConnected(true));
           dispatch(setExpiryTimeLeft(0));
         }
       });
-    
-    if (!expiryTimeLeft) return
-
+  
+    if (!expiryTimeLeft) return;
+  
     const intervalId = setInterval(() => {
       dispatch(setExpiryTimeLeft(expiryTimeLeft - 1));
-    }, 1000)
-
-    return () => clearInterval(intervalId)
-  }, [expiryTimeLeft])
+    }, 1000);
+  
+    return () => clearInterval(intervalId);
+  }, [accessToken, dispatch, expiryTimeLeft, principals]);
+  
 
   const buttonContent = useAppSelector((state:RootState) => state.oAuthStep3.buttonContent);
   const buttonError = useAppSelector((state:RootState) => state.oAuthStep3.buttonError);

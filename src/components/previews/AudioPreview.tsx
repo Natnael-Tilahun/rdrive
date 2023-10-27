@@ -50,7 +50,7 @@ const AudioPreview: FC<{ file: OdFileObject }> = ({ file }) => {
       rap.onerror = () => dispatch(setPlayerStatus(PlayerState.Paused));
       rap.onvolumechange = () => dispatch(setPlayerVolume(rap.volume));
     }
-  }, [])
+  }, [dispatch])
   return (
     <>
       <PreviewContainer>

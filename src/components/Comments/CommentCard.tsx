@@ -1,4 +1,5 @@
 // just demo purpose for now 
+import { Image } from '@nextui-org/react';
 import React from 'react';
 import { FaUserCircle } from 'react-icons/fa';
 
@@ -14,7 +15,7 @@ const CommentCard: React.FC<CommentCardProps> = ({ username, avatarUrl, comment 
       {/* Comment */}
       <div className="flex p-4 border-b border-gray-300">
         <div className="mr-4">
-          <img className="w-10 h-10 rounded-full" src={avatarUrl} alt={`${username}'s Avatar`} />
+          <Image className="w-10 h-10 rounded-full" src={avatarUrl} alt={`${username}'s Avatar`} />
         </div>
         <div className="flex-grow">
           <div className="flex items-center mb-2">
