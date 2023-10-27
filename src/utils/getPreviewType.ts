@@ -3,14 +3,9 @@ import { getExtension } from './getFileIcon'
 export const preview = {
   markdown: 'markdown',
   image: 'image',
-  text: 'text',
   pdf: 'pdf',
-  code: 'code',
   video: 'video',
   audio: 'audio',
-  office: 'ms-office',
-  epub: 'epub',
-  url: 'url',
 }
 
 export const extensions = {
@@ -26,39 +21,6 @@ export const extensions = {
   mdown: preview.markdown,
 
   pdf: preview.pdf,
-
-  doc: preview.office,
-  docx: preview.office,
-  ppt: preview.office,
-  pptx: preview.office,
-  xls: preview.office,
-  xlsx: preview.office,
-
-  c: preview.code,
-  cpp: preview.code,
-  js: preview.code,
-  jsx: preview.code,
-  java: preview.code,
-  sh: preview.code,
-  cs: preview.code,
-  py: preview.code,
-  css: preview.code,
-  html: preview.code,
-  // typescript or video file, determined below
-  ts: preview.code,
-  tsx: preview.code,
-  rs: preview.code,
-  vue: preview.code,
-  json: preview.code,
-  yml: preview.code,
-  yaml: preview.code,
-  toml: preview.code,
-
-  txt: preview.text,
-  vtt: preview.text,
-  srt: preview.text,
-  log: preview.text,
-  diff: preview.text,
 
   mp4: preview.video,
   flv: preview.video,
@@ -76,10 +38,6 @@ export const extensions = {
   oga: preview.audio,
   opus: preview.audio,
   flac: preview.audio,
-
-  epub: preview.epub,
-
-  url: preview.url,
 }
 
 export function getPreviewType(extension: string, flags?: { video?: boolean }): string | undefined {
@@ -101,23 +59,6 @@ export function getPreviewType(extension: string, flags?: { video?: boolean }): 
 
 export function getLanguageByFileName(filename: string): string {
   const extension = getExtension(filename)
-  switch (extension) {
-    case 'ts':
-    case 'tsx':
-      return 'typescript'
-    case 'rs':
-      return 'rust'
-    case 'js':
-    case 'jsx':
-      return 'javascript'
-    case 'sh':
-      return 'shell'
-    case 'cs':
-      return 'csharp'
-    case 'py':
-      return 'python'
-    case 'yml':
-      return 'yaml'
     default:
       return extension
   }
