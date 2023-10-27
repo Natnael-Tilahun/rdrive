@@ -2,7 +2,6 @@
 import Head from 'next/head'
 import {Img} from 'react-image'
 import { useRouter } from 'next/router'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { useTranslation, Trans } from 'next-i18next'
 
 import siteConfig from '../../config/site.config'
@@ -19,6 +18,7 @@ import { useAppDispatch, useAppSelector, RootState } from '../../redux/store'
 import { getAccessToken } from '../../utils/odAuthTokenStore'
 import { clientId, clientSecret } from '../../config/api.config'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
+import { FaExclamationCircle, FaExternalLinkAlt, FaArrowRight } from 'react-icons/fa'
 
 export default function OAuthStep2({ token }) {
   const router = useRouter()
@@ -54,7 +54,7 @@ export default function OAuthStep2({ token }) {
 
             <p className="py-1 text-sm font-medium text-red-400">
               <Trans>
-                <FontAwesomeIcon icon="exclamation-circle" className="mr-1" /> If you are not the owner of this website,
+                <FaExclamationCircle className="mr-1" /> If you are not the owner of this website,
                 stop now, as continuing with this process may expose your personal files in OneDrive.
               </Trans>
             </p>
@@ -66,7 +66,7 @@ export default function OAuthStep2({ token }) {
               }}
             >
               <div className="absolute top-0 right-0 p-1 opacity-60">
-                <FontAwesomeIcon icon="external-link-alt" />
+                <FaExternalLinkAlt />
               </div>
               <pre className="overflow-x-auto whitespace-pre-wrap p-2">
                 <code>{oAuthUrl}</code>
@@ -130,7 +130,7 @@ export default function OAuthStep2({ token }) {
                   </>
                 ) : (
                   <>
-                    <span>{t('Get tokens')}</span> <FontAwesomeIcon icon="arrow-right" />
+                    <span>{t('Get tokens')}</span> <FaArrowRight />
                   </>
                 )}
               </button>

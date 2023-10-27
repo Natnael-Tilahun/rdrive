@@ -5,11 +5,11 @@ import siteConfig from '../../config/site.config'
 import apiConfig, { clientId, clientSecret } from '../../config/api.config'
 import Navbar from '../../components/Navbar'
 import Footer from '../../components/Footer'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { Hello } from '../../utils/LottieUrl'
 import { Player } from '@lottiefiles/react-lottie-player'
 import { getAccessToken } from '../../utils/odAuthTokenStore'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
+import { FaArrowRight, FaExclamationTriangle } from 'react-icons/fa'
 
 export default function OAuthStep1({ token }) {
   const router = useRouter()
@@ -40,7 +40,7 @@ export default function OAuthStep1({ token }) {
 
             <p className="py-1 text-sm font-medium text-yellow-400">
               <Trans>
-                <FontAwesomeIcon icon="exclamation-triangle" className="mr-1" /> If you have not specified a REDIS_URL
+                <FaExclamationTriangle className="mr-1" /> If you have not specified a REDIS_URL
                 inside your Vercel env variable, go initialise one at{' '}
                 <a href="https://upstash.com/" target="_blank" rel="noopener noreferrer" className="underline">
                   Upstash
@@ -125,7 +125,7 @@ export default function OAuthStep1({ token }) {
 
             <p className="py-1 text-sm font-medium">
               <Trans>
-                <FontAwesomeIcon icon="exclamation-triangle" className="mr-1 text-yellow-400" /> If you see anything
+                <FaExclamationTriangle className="mr-1 text-yellow-400" /> If you see anything
                 missing or incorrect, you need to reconfigure{' '}
                 <code className="font-mono text-xs">/config/api.config.js</code> and redeploy this instance.
               </Trans>
@@ -138,7 +138,7 @@ export default function OAuthStep1({ token }) {
                   router.push('/add-drive/step-2')
                 }}
               >
-                <span>{t('Proceed to OAuth')}</span> <FontAwesomeIcon icon="arrow-right" />
+                <span>{t('Proceed to OAuth')}</span> <FaArrowRight />
               </button>
             </div>
           </div>

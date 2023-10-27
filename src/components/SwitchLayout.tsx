@@ -1,14 +1,12 @@
 import { Fragment } from 'react'
-import { IconProp } from '@fortawesome/fontawesome-svg-core'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { Listbox, Transition } from '@headlessui/react'
 import { useTranslation } from 'next-i18next'
 
 import useLocalStorage from '../utils/useLocalStorage'
 
-export const layouts: Array<{ id: number; name: 'Grid' | 'List'; icon: IconProp }> = [
-  { id: 1, name: 'List', icon: 'th-list' },
-  { id: 2, name: 'Grid', icon: 'th' },
+export const layouts: Array<{ id: number; name: 'Grid' | 'List'; }> = [
+  { id: 1, name: 'List' },
+  { id: 2, name: 'Grid' },
 ]
 
 const SwitchLayout = () => {
@@ -21,7 +19,7 @@ const SwitchLayout = () => {
       <Listbox value={preferredLayout} onChange={setPreferredLayout}>
         <Listbox.Button className="relative w-full cursor-pointer rounded-lg pl-2">
           <span className="pointer-events-none flex items-center">
-            <FontAwesomeIcon className="mr-2 h-3 w-3" icon={preferredLayout.icon} />
+            {/* <FontAwesomeIcon className="mr-2 h-3 w-3" icon={preferredLayout.icon} /> */}
             <span>
               {
                 // t('Grid')
@@ -31,7 +29,7 @@ const SwitchLayout = () => {
             </span>
           </span>
           <span className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-2">
-            <FontAwesomeIcon className="h-3 w-3" icon="chevron-down" />
+            {/* <FontAwesomeIcon className="h-3 w-3" icon="chevron-down" /> */}
           </span>
         </Listbox.Button>
 
@@ -54,7 +52,7 @@ const SwitchLayout = () => {
                 } relative flex cursor-pointer select-none items-center py-1.5 pl-3 text-gray-600 hover:opacity-80 dark:text-gray-300`}
                 value={layout}
               >
-                <FontAwesomeIcon className="mr-2 h-3 w-3" icon={layout.icon} />
+                {/* <FontAwesomeIcon className="mr-2 h-3 w-3" icon={layout.icon} /> */}
                 <span className={layout.name === preferredLayout.name ? 'font-medium' : 'font-normal'}>
                   {
                     // t('Grid')
@@ -64,7 +62,7 @@ const SwitchLayout = () => {
                 </span>
                 {layout.name === preferredLayout.name && (
                   <span className="absolute inset-y-0 right-3 flex items-center">
-                    <FontAwesomeIcon className="h-3 w-3" icon="check" />
+                    {/* <FontAwesomeIcon className="h-3 w-3" icon="check" /> */}
                   </span>
                 )}
               </Listbox.Option>
