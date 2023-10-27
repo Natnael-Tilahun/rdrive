@@ -4,7 +4,6 @@ import { FC, useEffect, useRef } from 'react'
 import ReactAudioPlayer from 'react-audio-player'
 import { useTranslation } from 'next-i18next'
 import { useRouter } from 'next/router'
-import {Img} from 'react-image'
 import { FcMusic } from 'react-icons/fc'
 import { PreviewContainer } from './Containers'
 import { LoadingIcon } from '../Loading'
@@ -13,6 +12,7 @@ import { getStoredToken } from '../../utils/protectedRouteHandler'
 import ShareReport from '../ShareReport'
 import { useAppDispatch, useAppSelector, RootState } from '../../redux/store';
 import { setPlayerStatus, setPlayerVolume, setBrokenThumbnail } from '../../redux/features/audioPreviewSlice';
+import { Image } from '@nextui-org/react'
 
 enum PlayerState {
   Loading,
@@ -67,8 +67,7 @@ const AudioPreview: FC<{ file: OdFileObject }> = ({ file }) => {
             </div>
             {!brokenThumbnail ? (
               <div className="absolute m-4 rounded-lg-full shadow-lg">
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <Img
+                <Image
                   className={`h-full w-full rounded-lg-full object-cover object-top ${
                     playerStatus === PlayerState.Playing ? 'animate-spin-slow' : ''
                   }`}

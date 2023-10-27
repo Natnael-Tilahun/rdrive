@@ -1,5 +1,4 @@
 import { FC, CSSProperties, ReactNode } from 'react'
-import {Img} from 'react-image'
 import ReactMarkdown from 'react-markdown'
 import remarkGfm from 'remark-gfm'
 import remarkMath from 'remark-math'
@@ -16,6 +15,7 @@ import FourOhFour from '../FourOhFour'
 import { LoadingIcon } from '../Loading'
 import ShareReport from '../ShareReport'
 import Share from '../Share'
+import { Image } from '@nextui-org/react'
 
 
 const MarkdownPreview: FC<{
@@ -50,9 +50,8 @@ const MarkdownPreview: FC<{
       style?: CSSProperties
     }) => {
       return (
-        // eslint-disable-next-line @next/next/no-img-element
         <div style={{ width, height }} >
-          <Img
+          <Image
             src={`${isUrlAbsolute(src as string) ? src : `/api/?path=${parentPath}/${src}&raw=true`}`}
             title={title}
             style={style} alt={''} />

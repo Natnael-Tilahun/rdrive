@@ -1,6 +1,5 @@
 
 import Head from 'next/head'
-import {Img} from 'react-image'
 import { useRouter } from 'next/router'
 import { useTranslation, Trans } from 'next-i18next'
 
@@ -19,6 +18,7 @@ import { getAccessToken } from '../../utils/odAuthTokenStore'
 import { clientId, clientSecret } from '../../config/api.config'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 import { FaExclamationCircle, FaExternalLinkAlt, FaArrowRight } from 'react-icons/fa'
+import { Image } from '@nextui-org/react'
 
 export default function OAuthStep2({ token }) {
   const router = useRouter()
@@ -85,7 +85,7 @@ export default function OAuthStep2({ token }) {
             </p>
 
             <div className="my-4 mx-auto w-2/3 overflow-hidden rounded-lg">
-              <Img src="/images/step-2-screenshot.png" width={1466} height={607} alt="step 2 screenshot" />
+              <Image src="/images/step-2-screenshot.png" width={1466} height={607} alt="step 2 screenshot" />
             </div>
 
             <input

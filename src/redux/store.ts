@@ -6,8 +6,6 @@ import rotatingContainerReducer from './features/rotatingContainerSlice'
 import titleIconReducer from './features/titleIconSlice'
 import folderCardReducer from './features/folderCardSlice'
 import legalReducer from './features/LegalSlice'
-import epubPreviewReducer from './features/EPUBPreviewSlice'
-import officePreviewReducer from './features/officePreviewSlice'
 import GridItemReducer from './features/GridItemSlice'
 import step2Reducer from './features/step-2Slice'
 import step3Reducer from './features/step3Slice'
@@ -36,10 +34,6 @@ export const store = configureStore({
     titleIcon:titleIconReducer, 
     folderCard:folderCardReducer,
     legal:legalReducer,  
-    epubPreview:epubPreviewReducer,
-    officePreview:officePreviewReducer,
-    // fileContent:fetchOnMountReducer, //not recommended
-    // driveStorage:useDriveStorageReducer,  //not recommended
     gridItem:GridItemReducer,
     oAuthStep2:step2Reducer,
     oAuthStep3:step3Reducer,

@@ -1,12 +1,12 @@
 import { Trans } from 'next-i18next'
 import siteConfig  from '../config/site.config'
-import {Img} from 'react-image'
+import { Image } from '@nextui-org/react'
 
 const FourOhFour: React.FC<{ errorMsg: string }> = ({ errorMsg }) => {
   return (
     <div >
       <div className="mx-auto">
-      <Img
+      <Image
       className="mx-auto animate-pulse"
       src="/hold-on-baby.png"
       alt="Hold on baby . . ."

@@ -2,11 +2,11 @@ import {FC} from 'react'
 import { RootState, useAppDispatch, useAppSelector  } from '../redux/store'
 import { setToken } from '../redux/features/authSlice'
 import useLocalStorage from '../utils/useLocalStorage'
-import {Img} from 'react-image'
 import { useRouter } from 'next/router'
 import { useTranslation } from 'next-i18next'
 import { matchProtectedRoute } from '../utils/protectedRouteHandler'
 import { FaArrowRight } from 'react-icons/fa'
+import { Image } from '@nextui-org/react'
 
 const Auth: FC<{ redirect: string }> = ({ redirect }) => {
   const authTokenPath = matchProtectedRoute(redirect)
@@ -21,7 +21,7 @@ const Auth: FC<{ redirect: string }> = ({ redirect }) => {
   return (
     <div className="mx-auto flex max-w-sm flex-col space-y-4 md:my-10">
       <div className="mx-auto w-3/4 md:w-5/6">
-        <Img 
+        <Image 
         className='mx-auto'
         src={'/images/fabulous-wapmire-weekdays.png'} 
         alt="authenticate" 

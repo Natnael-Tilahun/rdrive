@@ -3,7 +3,6 @@ import { DriveItemType } from "../types/DriveItemType"
 import { ParsedUrlQuery } from 'querystring'
 import { FC } from 'react'
 import toast, { Toaster } from 'react-hot-toast'
-import dynamic from 'next/dynamic'
 import { useRouter } from 'next/router'
 import { useTranslation } from 'next-i18next'
 import useLocalStorage from '../utils/useLocalStorage'
@@ -13,14 +12,10 @@ import { getExtension, getRawExtension, getFileIcon } from '../utils/getFileIcon
 import { layouts } from './SwitchLayout'
 import FourOhFour from './FourOhFour'
 import Auth from './Auth'
-import TextPreview from './previews/TextPreview'
 import MarkdownPreview from './previews/MarkdownPreview'
-import CodePreview from './previews/CodePreview'
-import OfficePreview from './previews/OfficePreview'
 import AudioPreview from './previews/AudioPreview'
 import VideoPreview from './previews/VideoPreview'
 import PDFPreview from './previews/PDFPreview'
-import URLPreview from './previews/URLPreview'
 import ImagePreview from './previews/ImagePreview'
 import { PreviewContainer } from './previews/Containers'
 import FolderListLayout from './FolderListLayout'
@@ -28,11 +23,6 @@ import FolderGridLayout from './FolderGridLayout'
 import Loading, { LoadingIcon } from './Loading'
 import { FaChevronCircleDown, FaFolder } from 'react-icons/fa'
 import { Image } from '@nextui-org/react'
-
-// Disabling SSR for some previews
-const EPUBPreview = dynamic(() => import('./previews/EPUBPreview'), {
-  ssr: false,
-})
 
 /**
  * Convert url query into path string
@@ -227,12 +217,6 @@ const FileListing: FC<{ query?: ParsedUrlQuery, token?: string }> = ({ query }) 
         case preview.image:
           return <ImagePreview file={file} />
 
-        case preview.text:
-          return <TextPreview file={file} />
-
-        case preview.code:
-          return <CodePreview file={file} />
-
         case preview.markdown:
           return <MarkdownPreview file={file} path={path} />
 
@@ -244,15 +228,6 @@ const FileListing: FC<{ query?: ParsedUrlQuery, token?: string }> = ({ query }) 
 
         case preview.pdf:
           return <PDFPreview file={file} />
-
-        case preview.office:
-          return <OfficePreview file={file} />
-
-        case preview.epub:
-          return <EPUBPreview file={file} />
-
-        case preview.url:
-          return <URLPreview file={file} />
 
       }
     } 
