@@ -20,7 +20,7 @@ const Storage = ({ token }) => {
   return (
     <Popover
         content={
-          <Listbox variant="faded" aria-label="Storage Details" key="Storage Details" className="w-full md:w-80 gap-2 my-1">
+          <Listbox variant="faded" shouldFocusWrap aria-label="Storage Details" key="Storage Details" className="w-full md:w-80 gap-2 my-1 cursor-default">
         <ListboxItem key="Apps (F:)" >
            <div>
             <div className="flex items-center my-2 justify-between">
@@ -71,8 +71,7 @@ const Storage = ({ token }) => {
             <Progress
               size="md"
               value={(folderSize1)}
-              // HAHA
-              maxValue={1000000000000000000} />
+              maxValue={100000000000000} />
           </div>
         </ListboxItem>
         <ListboxItem
