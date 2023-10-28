@@ -52,9 +52,9 @@ export default function Share() {
         <FiShare size={18} />
       </Button>
       <Modal showModal={showModal} setShowModal={setShowModal}>
-        <div className="flex flex-col items-center w-full mx-auto gap-3">
-          <h1 className="text-xl font-semibold pr-3 line-clamp-1">Share {title}</h1>
-          <Image src={URL} alt={title} width={1280} height={640} className="rounded-md" />
+        <div className="flex flex-col items-center w-full mx-auto gap-3 my-2">
+          <h1 className="text-xl  text-center font-semibold line-clamp-1">Share {title}</h1>
+          <Image src={URL || siteConfig.noimage } alt={title} width={1280} height={640} className="rounded-md" />
           <div className="flex w-full h-full items-center justify-between gap-2">
             <Button
               className="w-full bg-indigo-500 text-white hover:bg-indigo-600"
