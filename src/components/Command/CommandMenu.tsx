@@ -1,6 +1,6 @@
 import axios from 'axios'
 import useSWR from 'swr'
-import { useState } from 'react'
+import { ReactNode, useState } from 'react'
 import AwesomeDebouncePromise from 'awesome-debounce-promise'
 import { useAsync } from 'react-async-hook'
 import useConstant from 'use-constant'
@@ -173,8 +173,11 @@ function SearchResultItem({ result }: { result: OdSearchResult[number] }) {
     )
   }
 }
+interface CommandMenuProps {
+  children: ReactNode;
+}
 
-export function CommandMenu() {
+export function CommandMenu({ children }: CommandMenuProps): JSX.Element {
   const { query, setQuery, results } = useDriveItemSearch()
   const { t } = useTranslation()
   const [showModal, setShowModal] = useState(false);
@@ -201,11 +204,7 @@ export function CommandMenu() {
       onClick={openCommandMenu}
       onPress={() => setShowModal(true)}
     >
-      Command Menu 
-      <div className="flex gap-1.5">
-      <div className="rounded-lg px-2 py-1 text-xs font-medium bg-gradient-to-t dark:from-[#0D1117] dark:to-gray-850 overflow-hidden border dark:border-gray-700">{os === 'mac' ? '⌘' : 'Ctrl'}</div>
-      <div className="rounded-lg px-2 py-1 text-xs font-medium bg-gradient-to-t dark:from-[#0D1117] dark:to-gray-850 overflow-hidden border dark:border-gray-700">K</div>
-      </div>
+      {children}
     </Button>
     <Modal showModal={showModal} setShowModal={setShowModal}>
       <main>

@@ -7,8 +7,11 @@ import Bar from './Bar';
 import ThemeSwitcher from './Links/ThemeSwitcher';
 import { Image } from '@nextui-org/react';
 import { CommandMenu } from './Command/CommandMenu';
+import useDeviceOS from '../utils/useDeviceOS'
 
 const Footer = ({token}) => {
+
+  const os = useDeviceOS()
     
   return (
     <>
@@ -25,7 +28,15 @@ const Footer = ({token}) => {
                 <span className="ml-1">&copy; {new Date().getFullYear()}</span>
               </div>
           </Link>
-          <div className="items-center"><CommandMenu /> <ThemeSwitcher /></div>
+          <div className="flex items-center">
+            <CommandMenu>
+              Command Menu 
+              <div className="flex gap-1.5">
+              <div className="rounded-lg px-2 py-1 text-xs font-medium bg-gradient-to-t dark:from-[#0D1117] dark:to-gray-850 overflow-hidden border dark:border-gray-700 text-black">{os === 'mac' ? '⌘' : 'Ctrl'}</div>
+              <div className="rounded-lg px-2 py-1 text-xs font-medium bg-gradient-to-t dark:from-[#0D1117] dark:to-gray-850 overflow-hidden border dark:border-gray-700">K</div> </div>
+            </CommandMenu> 
+            <ThemeSwitcher />
+            </div>
         </div>
       </div> 
     </footer>
