@@ -6,6 +6,7 @@ import FooterLinks from './Links/footerLinks';
 import Bar from './Bar';
 import ThemeSwitcher from './Links/ThemeSwitcher';
 import { Image } from '@nextui-org/react';
+import { CommandMenu } from './Command/CommandMenu';
 
 const Footer = ({token}) => {
     
@@ -24,7 +25,7 @@ const Footer = ({token}) => {
                 <span className="ml-1">&copy; {new Date().getFullYear()}</span>
               </div>
           </Link>
-          <ThemeSwitcher />
+          <div className="items-center"><CommandMenu /> <ThemeSwitcher /></div>
         </div>
       </div> 
     </footer>

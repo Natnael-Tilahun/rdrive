@@ -22,28 +22,31 @@ export default function Modal({
   if (isMobile) {
     return (
       <Drawer.Root open={showModal} onOpenChange={setShowModal}>
-      <Drawer.Overlay className="fixed inset-0 z-40 bg-gray-100 bg-opacity-10 dark:bg-black dark:bg-opacity-10" />
-      <Drawer.Portal>
-        <Drawer.Content className="fixed bottom-0 left-0 right-0 z-50 rounded-t-2xl border-t dark:border-gray-700 bg-white dark:bg-black">
-        {children}
-        </Drawer.Content>
-        <Drawer.Overlay />
-      </Drawer.Portal>
-    </Drawer.Root>
+        <Drawer.Overlay
+          className="fixed inset-0 z-40 bg-gray-100 bg-opacity-10 dark:bg-black dark:bg-opacity-10"
+        />
+        <Drawer.Portal>
+          <Drawer.Content className="fixed bottom-0 left-0 right-0 z-50 rounded-t-2xl h-[70vh] border-t dark:border-gray-700 bg-white dark:bg-black">
+           {children} 
+          </Drawer.Content>
+          <Drawer.Overlay />
+        </Drawer.Portal>
+      </Drawer.Root>
     );
   }
+
   return (
     <Dialog.Root open={showModal} onOpenChange={setShowModal}>
       <Dialog.Portal>
         <Dialog.Overlay
           id="modal-backdrop"
-          className="animate-fade-in fixed inset-0 z-40 bg-gray-100 bg-opacity-10 dark:bg-black dark:bg-opacity-10"
+          className="animate-fade-in fixed inset-0 z-40 bg-white opacity-30 dark:bg-black dark:opacity-25"
         />
         <Dialog.Content
           onOpenAutoFocus={(e) => e.preventDefault()}
           onCloseAutoFocus={(e) => e.preventDefault()}
           className={cn(
-            "animate-scale-in fixed top-[15%] left-0 right-0 rounded-xl z-40 m-auto max-w-2xl overflow-hidden border dark:border-gray-700 bg-white dark:bg-black",
+            "animate-scale-in fixed top-[15%] left-0 right-0 rounded-xl z-40 m-auto max-w-2xl h-[40vh] overflow-hidden border dark:border-gray-700 bg-white dark:bg-black",
             className,
           )}
         >

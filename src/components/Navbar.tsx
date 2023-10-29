@@ -5,7 +5,6 @@ import Hover from './UI/Tooltip';
 import { FiUpload } from 'react-icons/fi';
 import { Image } from '@nextui-org/react';
 import { SiGithubsponsors } from 'react-icons/si';
-import { CommandMenu } from './Command/CommandMenu';
 
 const Navbar = () => {
   return (
@@ -18,7 +17,6 @@ const Navbar = () => {
           <SearchBar />
         </div>
         <div className="flex ml-2 gap-1 md:gap-2">
-        <CommandMenu />
         <div className='border dark:border-gray-700 rounded-md py-2 px-2'>
           <Hover tipChildren="Upload">
             <Link

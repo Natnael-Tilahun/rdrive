@@ -17,13 +17,12 @@ import { fetcher } from '../../utils/fetchWithSWR'
 import isHiddenFolder from '../../utils/isHiddenFolder'
 import { SearchSkeleton } from '../Skeleton'
 import { GoSearch } from 'react-icons/go'
-import { Slash } from '../icons'
-import { ChildIcon } from '../FileListing'
 import { formatDate, humanFileSize } from '../../utils/fileDetails'
 import { useHotkeys } from 'react-hotkeys-hook'
 import useDeviceOS from '../../utils/useDeviceOS'
 import { getFileIcon } from '../../utils/getFileIcon'
 import { FaFolder } from 'react-icons/fa'
+import { CommandList } from './CommandList'
 
 function mapAbsolutePath(path: string): string {
   const absolutePath = path.split(siteConfig.baseDirectory === '/' ? 'root:' : siteConfig.baseDirectory)
@@ -75,7 +74,6 @@ function useDriveItemSearch() {
 function SearchResultItemTemplate({
   driveItem,
   driveItemPath,
-  itemDescription,
   disabled,
 }: {
   driveItem: OdSearchResult[number]
@@ -170,6 +168,7 @@ export function CommandMenu() {
   const [showModal, setShowModal] = useState(false);
   const os = useDeviceOS()
   const openCommandMenu = () => setShowModal(true)
+  const closeModal = () => setShowModal(false);
 
   useHotkeys(`${os === 'mac' ? 'cmd' : 'ctrl'}+k`, e => {
     openCommandMenu();
@@ -185,13 +184,16 @@ export function CommandMenu() {
   return (
     <>
     <Button
-      isIconOnly
-      className="bg-white bg-opacity-70 dark:bg-opacity-50 backdrop-blur-md border dark:border-gray-700 overflow-hidden dark:bg-black dark:text-white hover:bg-gray-100 dark:hover:bg-gray-850"
+      className="bg-transparent border-none overflow-hiddendark:text-white"
       radius="full"
       onClick={openCommandMenu}
       onPress={() => setShowModal(true)}
     >
-      <FiShare size={18} />
+      Command Menu 
+      <div className="flex gap-1.5">
+      <div className="rounded-lg px-2 py-1 text-xs font-medium bg-gradient-to-t dark:from-[#0D1117] dark:to-gray-850 overflow-hidden border dark:border-gray-700">{os === 'mac' ? '⌘' : 'Ctrl'}</div>
+      <div className="rounded-lg px-2 py-1 text-xs font-medium bg-gradient-to-t dark:from-[#0D1117] dark:to-gray-850 overflow-hidden border dark:border-gray-700">K</div>
+      </div>
     </Button>
     <Modal showModal={showModal} setShowModal={setShowModal}>
       <main>
@@ -207,7 +209,7 @@ export function CommandMenu() {
           size="lg"
           autoFocus
         />
-      <div className="h-[70vh] md:h-[40vh] overflow-x-hidden overflow-y-scroll search-scrollbar dark:text-white" >
+      <div className="max-h-[70vh] md:max-h-[40vh] overflow-x-hidden overflow-y-scroll search-scrollbar" onClick={closeModal}>
                   {results.loading && (
                     <SearchSkeleton />
                   )}
@@ -220,15 +222,15 @@ export function CommandMenu() {
                     <>
                     {results.result.length === 0 ? (
                     <>
-
+                    <CommandList />
                     </>
                       ) : (
                         results.result.filter(result => !isHiddenFolder(result))
-                          .map(result => <SearchResultItem key={result.id} result={result} />)
+                          .map(result =><SearchResultItem key={result.id} result={result} />)
                       )}
                     </>
                   )}
-                </div>
+      </div>
       </main>
       </Modal>
       </>
