@@ -16,7 +16,7 @@ export function SearchItemSkeleton() {
 }
 
 export function SearchSkeleton() {
-  const randomLength = Math.floor(Math.random() * 6) + 1;
+  const randomLength = Math.floor(Math.random() * 14) + 1;
   return Array.from(Array(randomLength).keys()).map((index) => (
     <SearchItemSkeleton key={index} />
   ));

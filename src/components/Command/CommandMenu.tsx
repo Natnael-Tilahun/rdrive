@@ -22,6 +22,8 @@ import { ChildIcon } from '../FileListing'
 import { formatDate, humanFileSize } from '../../utils/fileDetails'
 import { useHotkeys } from 'react-hotkeys-hook'
 import useDeviceOS from '../../utils/useDeviceOS'
+import { getFileIcon } from '../../utils/getFileIcon'
+import { FaFolder } from 'react-icons/fa'
 
 function mapAbsolutePath(path: string): string {
   const absolutePath = path.split(siteConfig.baseDirectory === '/' ? 'root:' : siteConfig.baseDirectory)
@@ -81,12 +83,15 @@ function SearchResultItemTemplate({
   itemDescription: string
   disabled: boolean
 }) {
+  const isFile = !!driveItem.file;
+  const FileIcon = isFile ? getFileIcon(driveItem.name) : FaFolder;
+
   return (
     <Link href={driveItemPath} passHref
         className={`flex items-center space-x-4 border-b border-gray-400/30 px-4 py-1.5 hover:bg-gray-50 dark:hover:bg-gray-850 ${
           disabled ? 'pointer-events-none cursor-not-allowed' : 'cursor-pointer'
         }`}>
-          <ChildIcon child={driveItem} />
+          <FileIcon className='w-5 h-5'/>
         <div>
           <div className="text-sm font-medium leading-8 line-clamp-1">{driveItem.name}</div>
           <div className="font-mono text-xs opacity-60 space-x-2" >
