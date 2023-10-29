@@ -172,9 +172,14 @@ export function CommandMenu() {
   const openCommandMenu = () => setShowModal(true)
 
   useHotkeys(`${os === 'mac' ? 'cmd' : 'ctrl'}+k`, e => {
-    openCommandMenu()
-    e.preventDefault()
-  })
+    openCommandMenu();
+    e.preventDefault();
+  });
+  
+  useHotkeys('/', e => {
+    openCommandMenu();
+    e.preventDefault();
+  });
 
 
   return (
@@ -199,8 +204,10 @@ export function CommandMenu() {
           onChange={e => setQuery(e.target.value)}
           startContent={<GoSearch  />}
           radius="none"
+          size="lg"
+          autoFocus
         />
-      <div className="h-[80vh] md:h-[40vh] overflow-x-hidden overflow-y-scroll search-scrollbar dark:text-white" >
+      <div className="h-[70vh] md:h-[40vh] overflow-x-hidden overflow-y-scroll search-scrollbar dark:text-white" >
                   {results.loading && (
                     <SearchSkeleton />
                   )}

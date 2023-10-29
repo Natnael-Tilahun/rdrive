@@ -24,7 +24,7 @@ export default function Modal({
       <Drawer.Root open={showModal} onOpenChange={setShowModal}>
       <Drawer.Overlay className="fixed inset-0 z-40 bg-gray-100 bg-opacity-10 dark:bg-black dark:bg-opacity-10" />
       <Drawer.Portal>
-        <Drawer.Content className="fixed h-[80vh] bottom-0 left-0 right-0 z-50 rounded-t-2xl border-t dark:border-gray-700 bg-white dark:bg-black">
+        <Drawer.Content className="fixed bottom-0 left-0 right-0 z-50 rounded-t-2xl border-t dark:border-gray-700 bg-white dark:bg-black">
         {children}
         </Drawer.Content>
         <Drawer.Overlay />
@@ -43,7 +43,7 @@ export default function Modal({
           onOpenAutoFocus={(e) => e.preventDefault()}
           onCloseAutoFocus={(e) => e.preventDefault()}
           className={cn(
-            "animate-scale-in fixed top-[15%] left-0 right-0 rounded-xl z-40 m-auto max-w-2xl max-h-fit overflow-hidden border dark:border-gray-700 bg-white dark:bg-black",
+            "animate-scale-in fixed top-[15%] left-0 right-0 rounded-xl z-40 m-auto max-w-2xl overflow-hidden border dark:border-gray-700 bg-white dark:bg-black",
             className,
           )}
         >
