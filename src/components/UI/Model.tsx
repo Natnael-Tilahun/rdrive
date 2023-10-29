@@ -5,6 +5,7 @@ import { Drawer } from "vaul";
 import * as Dialog from "@radix-ui/react-dialog";
 import useMediaQuery from "../../utils/hooks/use-media-query";
 import { cn } from "../../utils/utils";
+import { ScrollShadow } from "@nextui-org/react";
 
 export default function Modal({
   children,
@@ -52,8 +53,10 @@ export default function Modal({
             className,
           )}
         >
-          <div className="flex min-h-[150px] w-full items-center justify-center overflow-hidden my-2 px-1.5">
+          <div className="flex min-h-[150px] w-full items-center justify-center overflow-y-scroll my-2 px-1.5">
+          <ScrollShadow>
            {children}
+           </ScrollShadow>
           </div>
         </Dialog.Content>
       </Dialog.Portal>

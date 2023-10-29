@@ -210,7 +210,7 @@ export function CommandMenu() {
     <Modal showModal={showModal} setShowModal={setShowModal}>
       <main>
       <Input
-          classNames={{base: "bg-transparent", innerWrapper: "px-2", inputWrapper: "border-default-300 hover:border-default-300 border-b after:bg-default-300 after:h-[1px]"}}
+          classNames={{base: "bg-transparent", innerWrapper: "px-2", inputWrapper: "border-default-300 hover:border-default-300 border-b after:bg-transparent"}}
           variant='underlined'
           type="search"
           placeholder={t('Search ...')}
@@ -242,7 +242,7 @@ export function CommandMenu() {
                       )}
                     </>
                   )}
-                  <div className="hidden md:block h-12 bg-transparent"></div>
+                  <div className="h-12 bg-transparent"></div>
       </div>
       </main>
       </Modal>
