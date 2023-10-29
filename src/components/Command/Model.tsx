@@ -27,7 +27,7 @@ export default function Modal({
         />
         <Drawer.Portal>
           <Drawer.Content className="fixed bottom-0 left-0 right-0 z-50 rounded-t-2xl h-[70vh] border-t dark:border-gray-700 bg-white dark:bg-black">
-           {children} 
+          {children} 
           </Drawer.Content>
           <Drawer.Overlay />
         </Drawer.Portal>
