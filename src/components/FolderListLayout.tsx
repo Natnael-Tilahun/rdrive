@@ -12,14 +12,7 @@ import { RiDownloadLine } from 'react-icons/ri'
 import Credit from './Cards/Credit'
 import FolderCard from './Cards/FolderCard'
 
-const FileListItem: FC<{ fileContent: OdFolderChildren; downloadCount: number }> = ({ fileContent: c, downloadCount }) => {
-  const CountDisplay = ({ count, icon }) => (
-    <div className="flex justify-center items-center space-x-1 cursor-pointer">
-      <span>{count}</span>
-      {icon}
-    </div>
-  );
-  
+const FileListItem: FC<{ fileContent: OdFolderChildren; downloadCount: number }> = ({ fileContent: c, downloadCount }) => {  
   return (  
 
       <div className="md:grid grid-cols-11 flex md:flex-row items-center space-x-2 justify-between py-2.5 mx-2">
@@ -27,7 +20,7 @@ const FileListItem: FC<{ fileContent: OdFolderChildren; downloadCount: number }>
               <div className="w-5 flex-shrink-0 text-center">
                 <ChildIcon child={c} />
               </div>
-               <ChildName name={c.name.replaceAll('-', ' ').replaceAll('_', ' ')} folder={Boolean(c.folder)} />
+              <ChildName name={c.name.replaceAll('-', ' ').replaceAll('_', ' ')} folder={Boolean(c.folder)} />
           </div>
           <div className="col-span-3 text-center text-sm tracking-widest text-black dark:text-white md:block hidden">
               {formatDate(c.lastModifiedDateTime)}
@@ -38,9 +31,11 @@ const FileListItem: FC<{ fileContent: OdFolderChildren; downloadCount: number }>
           <div className="text-center tracking-widest text-black dark:text-white md:block">
           {c.folder ? (
             ''
-              //   <CountDisplay count={downloadCount} icon={<RiEyeLine />} />
-            ) : (        
-                <CountDisplay count={downloadCount} icon={<RiDownloadLine />} />    
+            ) : ( 
+              <div className="flex justify-center items-center space-x-1 cursor-pointer">
+                <span>{downloadCount}</span>
+                <RiDownloadLine />
+              </div>       
             )}
           </div>
       </div>
@@ -66,14 +61,12 @@ useEffect(() => {
   }, [visibleFolderChildren, downloadCounts]);
 
   return (
-    <main>
-      
+    <main>     
     <FolderCard date={formatDate(latestModifiedDate)} />
     <div className="overflow-hidden rounded-lg border dark:border-gray-700">
     <Credit path={path} item={t('{{count}} item(s)', { count: visibleFolderChildren.length })}/>
       {visibleFolderChildren.map((c: OdFolderChildren) => (
         <div key={c.id} className='border-t dark:border-gray-700 hover:bg-gray-100 dark:hover:bg-gray-850'>
-
           {getPreviewType(getExtension(c.name), { video: Boolean(c.video) }) ? (
             <Link
               href={`${path === '/' ? '' : path}/${encodeURIComponent(c.name)}`}
@@ -106,8 +99,6 @@ useEffect(() => {
         </div>
       ))}
     </div>
-      {/* <CommentPreview />
-      <Login /> */}
     </main>
   );
 };

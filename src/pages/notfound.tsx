@@ -9,6 +9,9 @@ import { Player } from '@lottiefiles/react-lottie-player'
 import Seo from '../components/Meta/Seo'
 import { BsSlashSquare } from 'react-icons/bs'
 import siteConfig from '../config/site.config'
+import { Button } from '@nextui-org/react'
+import { GoSearch } from 'react-icons/go'
+import { Slash } from '../components/icons'
 
 export default function Custom404({ connectedAccounts, token }) {
   const seo = {
@@ -29,10 +32,17 @@ export default function Custom404({ connectedAccounts, token }) {
               <Player autoplay loop src={NotFound} style={{ height: '300px'}} ></Player>
               <p className="text-2xl md:text-5xl lg:text-5xl text-gray-800 dark:text-white">Oops! That page can’t be found.</p>
               <p className="md:text-lg lg:text-xl text-gray-600 dark:text-white mt-4">It looks like nothing was found at this location. Maybe try a search?</p>
-              <div className="flex items-center space-x-2 px-4 py-2 mt-4 mb-12 rounded-lg border dark:text-white">
-              <span>Type</span> 
-              <BsSlashSquare className="h-5 w-5"/> 
-              <span>to search</span>
+              <div className="mt-4 mb-12">
+              <Button
+                disabled
+                className="bg-transparent border dark:border-gray-700 overflow-hidden font-sans dark:text-white hover:bg-gray-100 dark:hover:bg-gray-850"
+                radius="md"
+              >
+              <GoSearch  size={20}/>
+              Type
+              <Slash />
+              to search
+              </Button>
               </div>
               </div>
             </div>

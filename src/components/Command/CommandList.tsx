@@ -11,13 +11,13 @@ export function CommandList() {
   const links = [
     {
       href: '/Apps',
-      title: 'App Downloads',
+      title: 'Apps',
       description: 'Download apps for Android, MacOS, Windows, and Linux',
       icon: <TbApps className={size} />,
     },
     {
       href: '/Games',
-      title: 'Game Downloads',
+      title: 'Games',
       description: 'Download games for Android, MacOS, Windows, and Linux',
       icon: <TbDeviceGamepad2 className={size}/>,
     },
@@ -35,7 +35,7 @@ export function CommandList() {
     },
     {
       href: '/Flash-Tool',
-      title: 'Mobile Flashing Tools',
+      title: 'Flashing Tools',
       description: 'Tools for flashing mobile devices',
       icon: <MdPhonelinkSetup className={size}/>,
     },
@@ -66,7 +66,7 @@ export function CommandList() {
             {link.icon}
             <div>
               <div className="text-sm font-medium leading-8 line-clamp-1">{link.title}</div>
-              <div className="font-mono text-xs opacity-60">{link.description}</div>
+              <div className="font-mono text-xs opacity-60 line-clamp-1">{link.description}</div>
             </div>
         </Link>
       ))}
