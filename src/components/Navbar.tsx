@@ -21,10 +21,10 @@ const Navbar = () => {
             isIconOnly
             className="bg-transparent border dark:border-gray-700 overflow-hidden font-sans dark:text-white hover:bg-gray-100 dark:hover:bg-gray-850"
             radius="sm"
-            href={siteConfig.upload}
-            target="_blank"
         >
-          <FiUpload className="h-4 w-4" />
+            <Link href={siteConfig.upload} target="_blank">
+            <FiUpload className="h-4 w-4" />
+            </Link>
         </Button>
         </Hover>
         <Hover tipChildren="Sponsor">
@@ -32,10 +32,11 @@ const Navbar = () => {
             isIconOnly
             className="bg-transparent border dark:border-gray-700 overflow-hidden font-sans dark:text-white hover:bg-gray-100 dark:hover:bg-gray-850"
             radius="sm"
-            href='/sponsor'
-              aria-label="Show Your Love"
-              >
-          <SiGithubsponsors className="h-4 w-4 text-danger" />
+            aria-label="Show Your Love"
+        >
+              <Link href="/sponsor">
+              <SiGithubsponsors className="h-4 w-4 text-danger" />
+              </Link>
         </Button>
         </Hover>
       </div>
