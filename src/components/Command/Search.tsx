@@ -22,6 +22,7 @@ import useDeviceOS from '../../utils/useDeviceOS'
 import { getFileIcon } from '../../utils/getFileIcon'
 import { FaFolder } from 'react-icons/fa'
 import { CommandList } from './CommandList'
+import { Slash } from '../icons'
 
 function mapAbsolutePath(path: string): string {
   const absolutePath = path.split(siteConfig.baseDirectory === '/' ? 'root:' : siteConfig.baseDirectory)
@@ -174,7 +175,7 @@ function SearchResultItem({ result }: { result: OdSearchResult[number] }) {
   }
 }
 
-export function CommandMenu() {
+export function Search() {
   const { query, setQuery, results } = useDriveItemSearch()
   const { t } = useTranslation()
   const [showModal, setShowModal] = useState(false);
@@ -182,7 +183,7 @@ export function CommandMenu() {
   const openCommandMenu = () => setShowModal(true)
   const closeModal = () => setShowModal(false);
 
-  useHotkeys(`${os === 'mac' ? 'cmd' : 'ctrl'}+k`, e => {
+  useHotkeys('/', e => {
     openCommandMenu();
     e.preventDefault();
   });
@@ -191,16 +192,24 @@ export function CommandMenu() {
   return (
     <>
     <Button
-      className="bg-transparent border-none overflow-hidden dark:text-white"
-      radius="full"
+      isIconOnly
+      className="bg-transparent border-none overflow-hidden dark:text-white md:hidden flex hover:bg-gray-100 dark:hover:bg-gray-850"
+      radius="lg"
       onClick={openCommandMenu}
       onPress={() => setShowModal(true)}
     >
-      Command Menu 
-      <div className="flex gap-1.5">
-      <div className="rounded-lg px-2 py-1 text-xs font-medium bg-gradient-to-t dark:from-[#0D1117] dark:to-gray-850 overflow-hidden border dark:border-gray-700">{os === 'mac' ? '⌘' : 'Ctrl'}</div>
-      <div className="rounded-lg px-2 py-1 text-xs font-medium bg-gradient-to-t dark:from-[#0D1117] dark:to-gray-850 overflow-hidden border dark:border-gray-700">K</div>
-      </div>
+      <GoSearch  size={20}/>       
+    </Button>
+    <Button
+      className="bg-transparent border dark:border-gray-700 overflow-hidden font-sans dark:text-white hidden md:flex hover:bg-gray-100 dark:hover:bg-gray-850"
+      radius="md"
+      onClick={openCommandMenu}
+      onPress={() => setShowModal(true)}
+    >
+              <GoSearch  size={20}/>
+              Type
+              <Slash />
+              to search
     </Button>
     <Modal showModal={showModal} setShowModal={setShowModal}>
       <main>
@@ -216,7 +225,7 @@ export function CommandMenu() {
           size="lg"
           autoFocus
         />
-      <div className="max-h-[70vh] md:max-h-[40vh] overflow-x-hidden overflow-y-scroll search-scrollbar" onClick={closeModal}>
+      <div className="h-[436px] overflow-y-auto overflow-x-hidden search-scrollbar" onClick={closeModal}>
                   {results.loading && (
                     <SearchSkeleton />
                   )}
@@ -237,7 +246,6 @@ export function CommandMenu() {
                       )}
                     </>
                   )}
-                  <div className="h-12 bg-transparent"></div>
       </div>
       </main>
       </Modal>

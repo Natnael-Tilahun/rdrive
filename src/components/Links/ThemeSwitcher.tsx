@@ -37,6 +37,7 @@ const ThemeSwitcher: React.FC = () => {
         radius='full'
         items={tabs}
         selectedKey={activeTheme}
+        onSelectionChange={setTheme}
         classNames={{
           tabList: 'bg-transparent',
           cursor: 'bg-gradient-to-t dark:from-[#0D1117] dark:to-gray-850 shadow-none border dark:border-gray-700',

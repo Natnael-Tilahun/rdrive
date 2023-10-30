@@ -26,8 +26,8 @@ export default function Modal({
           className="fixed inset-0 z-40 bg-gray-100 bg-opacity-10 dark:bg-black dark:bg-opacity-10"
         />
         <Drawer.Portal>
-          <Drawer.Content className="fixed bottom-0 left-0 right-0 z-50 rounded-t-2xl h-[70vh] border-t dark:border-gray-700 bg-white dark:bg-black">
-          {children} 
+          <Drawer.Content className="z-30 bottom-0 top-auto w-[100%] max-w-[100%] fixed overscroll-none max-h-[80vh] min-h-[5dvh] border-t-1.5 border-gray-400/30 rounded-t-lg bg-white dark:bg-black">
+          <div className="h-full overflow-hidden">{children}</div>
           </Drawer.Content>
           <Drawer.Overlay />
         </Drawer.Portal>
@@ -46,11 +46,11 @@ export default function Modal({
           onOpenAutoFocus={(e) => e.preventDefault()}
           onCloseAutoFocus={(e) => e.preventDefault()}
           className={cn(
-            "animate-scale-in fixed top-[15%] left-0 right-0 rounded-xl z-40 m-auto max-w-2xl h-[40vh] overflow-hidden border dark:border-gray-700 bg-white dark:bg-black",
+            "fixed left-[50%] top-[25%] z-50 grid w-full max-w-2xl translate-x-[-50%] translate-y-[-25%] gap-4 border-1.5 border-gray-400/30 bg-background duration-200 data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-95 data-[state=closed]:slide-out-to-left-1/2 data-[state=closed]:slide-out-to-top-[48%] data-[state=open]:slide-in-from-left-1/2 data-[state=open]:slide-in-from-top-[48%] sm:rounded-lg md:w-full overflow-hidden p-0 shadow-lg",
             className,
           )}
         >
-          {children}
+          <div className="h-full overflow-hidden">{children}</div>
         </Dialog.Content>
       </Dialog.Portal>
     </Dialog.Root>
