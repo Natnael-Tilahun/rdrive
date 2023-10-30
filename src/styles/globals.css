@@ -90,15 +90,11 @@ ol {
   }
   /* #endregion  /**======== Fade In =========== */
 }
-  /* Tippy */
-  .tippy-tooltip [x-circle] {
-    background-color: transparent !important;
-  }
-  
-  .tippy-tooltip {
-    padding: 0 0.8rem;
-  }
-
+.code-pre > code {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
 /* Custom scrollbar */
 .search-scrollbar::-webkit-scrollbar {
   width: 5px;

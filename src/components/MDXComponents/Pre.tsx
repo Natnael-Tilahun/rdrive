@@ -59,7 +59,7 @@ const Pre = ({ children }: { children?: ReactNode }) => {
         </svg>
       </button>
 
-      <pre className="blog-pre !my-0 !rounded-md  !w-full !p-0 !py-3 !pt-6 border border-black dark:border-gray-200/60">
+      <pre className="code-pre !my-0 !rounded-md  !w-full !p-0 !py-3 !pt-6 border border-black dark:border-gray-200/60">
         {children}
       </pre>
     </div>
