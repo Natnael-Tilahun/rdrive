@@ -28,7 +28,7 @@ export function CommandList() {
       icon: <BsFillUnlockFill className={size}/>,
     },
     {
-      href: '/usb-drivers',
+      href: '/Drivers',
       title: 'USB Drivers',
       description: 'Download Android USB flashing drivers',
       icon: <BsUsbSymbol className={size}/>,

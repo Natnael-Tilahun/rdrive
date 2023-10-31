@@ -29,6 +29,9 @@ ol {
 
 
 @layer utilities {
+  .markdown-container {
+    @apply !w-full dark:text-neutral-400 my-5 font-medium;
+  }
   .animated-underline {
     background-image: linear-gradient(#33333300, #33333300),
       linear-gradient(to right, var(--clr-primary-300), var(--clr-primary-400));
@@ -95,6 +98,7 @@ ol {
   display: flex;
   flex-direction: column;
 }
+
 /* Custom scrollbar */
 .search-scrollbar::-webkit-scrollbar {
   width: 5px;

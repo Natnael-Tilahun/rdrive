@@ -34,7 +34,7 @@ const Pre = ({ children }: { children?: ReactNode }) => {
           className={
             copied
               ? "text-green-400"
-              : "text-darkSecondary dark:text-gray-200/60"
+              : "text-white dark:text-gray-200/60"
           }
         >
           {copied ? (
@@ -58,8 +58,7 @@ const Pre = ({ children }: { children?: ReactNode }) => {
           )}
         </svg>
       </button>
-
-      <pre className="code-pre !my-0 !rounded-md  !w-full !p-0 !py-3 !pt-6 border border-black dark:border-gray-200/60">
+      <pre className="code-pre !my-0 !rounded-md  !w-full !p-0 !py-3 !pt-6 border border-gray-400/30">
         {children}
       </pre>
     </div>
