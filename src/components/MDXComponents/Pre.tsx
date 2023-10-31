@@ -6,9 +6,10 @@ const Pre = ({ children }: { children?: ReactNode }) => {
   const [copied, setCopied] = useState(false);
 
   // Extract the code block type and content from children
-  const codeBlockMatches = /```(\w+)\n([\s\S]+?)```/g.exec(children as string);
-  const codeBlockType = codeBlockMatches ? codeBlockMatches[1] : "";
-  const codeBlockContent = codeBlockMatches ? codeBlockMatches[2] : "";
+  const codeBlockTypeMatches = /```(\w+)\n([\s\S]+?)```/g.exec(
+    typeof children === "string" ? children : ""
+  );
+  const codeBlockType = codeBlockTypeMatches ? codeBlockTypeMatches[1] : "";
 
   const onCopy = () => {
     if (textInput.current !== null) {
@@ -22,55 +23,55 @@ const Pre = ({ children }: { children?: ReactNode }) => {
 
   return (
     <>
-    <CodeTitle lang={codeBlockType} title={codeBlockType} />
-    <div className="relative mb-3 -mt-[14px]" ref={textInput}>
-      <div className="relative !z-10">
-        <div className="bg-white text-black dark:bg-black dark:text-white rounded-tl-md rounded-tr-md p-3 flex items-center justify-between font-mono !mt-4 overflow-x-scroll xs:overflow-auto border border-gray-400/30">
-          <div className="flex items-center gap-2">
-            <p className="!my-0 font-[500] text-sm">{codeBlockType}</p>
-          </div>
-        </div>
-      </div>
-      <button
-        aria-label="Copy code"
-        type="button"
-        className={`!z-40 absolute right-2 top-5 h-8 w-8 rounded border-2 bg-transparent p-1  ${copied
-            ? "border-green-400 focus:border-green-400 focus:outline-none"
-            : "border border-gray-400/30"}`}
-        onClick={onCopy}
-      >
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          viewBox="0 0 24 24"
-          stroke="currentColor"
-          fill="none"
-          className={copied
-            ? "text-green-400"
-            : "text-white dark:text-gray-200/60"}
+      <CodeTitle lang={codeBlockType} title={codeBlockType} />
+      <div className="relative mb-3 -mt-[14px]" ref={textInput}>
+        <button
+          aria-label="Copy code"
+          type="button"
+          className={`!z-40 absolute right-2 top-5 h-8 w-8 rounded border-2 bg-transparent p-1  ${
+            copied
+              ? "border-green-400 focus:border-green-400 focus:outline-none"
+              : "border border-gray-400/30"
+          }`}
+          onClick={onCopy}
         >
-          {copied ? (
-            <>
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4" />
-            </>
-          ) : (
-            <>
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
-            </>
-          )}
-        </svg>
-      </button>
-      <pre className="!my-0 !rounded-md !w-full !py-3 !pt-6 border border-gray-400/30">
-        {codeBlockContent}
-      </pre>
-    </div></>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+            fill="none"
+            className={
+              copied
+                ? "text-green-400"
+                : "text-white dark:text-gray-200/60"
+            }
+          >
+            {copied ? (
+              <>
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"
+                />
+              </>
+            ) : (
+              <>
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"
+                />
+              </>
+            )}
+          </svg>
+        </button>
+        <pre className="!my-0 !rounded-md !w-full !py-3 !pt-6 border border-gray-400/30">
+          {children}
+        </pre>
+      </div>
+    </>
   );
 };
 
