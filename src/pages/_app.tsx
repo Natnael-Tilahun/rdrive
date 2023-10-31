@@ -1,7 +1,7 @@
 import { Provider } from 'react-redux'
 import {store} from '../redux/store'
 import '../styles/globals.css'
-import '../styles/markdown-github.css'
+import 'github-markdown-css';
 import { Analytics } from '@vercel/analytics/react';
 import { Inter } from 'next/font/google'
 const font = Inter({subsets: ['latin']})

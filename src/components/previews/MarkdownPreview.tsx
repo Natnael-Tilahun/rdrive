@@ -57,7 +57,7 @@ const MarkdownPreview: FC<MarkdownPreviewProps> = ({ file, path, standalone = tr
   }
 
   return (
-    <div className="max-w-full prose-sm markdown-container sm:prose-base prose-pre:bg-white prose-img:mx-auto prose-img:rounded-md dark:prose-pre:bg-black prose-pre:saturate-150 dark:prose-pre:saturate-100 marker:text-black dark:marker:text-white prose-h4:mb-6 prose-no-margin:!m-0">
+    <div className="markdown-body">
       <MDXRemote {...mdxSource} components={MDXComponents} />
     </div>
   );
