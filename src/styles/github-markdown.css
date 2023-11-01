@@ -884,7 +884,7 @@
     font-size: 85%;
     line-height: 1.45;
     color: var(--color-fg-default);
-    background-color: var(--color-canvas-subtle);
+    background-color: transparent;
     border-radius: 6px;
   }
   

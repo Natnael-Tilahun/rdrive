@@ -21,27 +21,27 @@ const MarkdownPreview: FC<MarkdownPreviewProps> = ({ file, path, standalone = tr
 
    {/* This is for testing purposes only on development builds */}
 
-  // const getMarkDownSource = async (content: string | null) => {
-  //   if (content) {
-  //     const mdxSource = await serialize(content, {
-  //       mdxOptions: {
-  //        development: process.env.NODE_ENV === "development"
-  //       },
-  //     });
-  //     setMdxSource(mdxSource);
-  //   }
-  // };
-
-  // useEffect(() => {
-  //   getMarkDownSource(content);
-  // }, [content]);
-
   const getMarkDownSource = async (content: string | null) => {
     if (content) {
-      const mdxSource = await serialize(content);
+      const mdxSource = await serialize(content, {
+        mdxOptions: {
+         development: process.env.NODE_ENV === "development"
+        },
+      });
       setMdxSource(mdxSource);
     }
   };
+
+  useEffect(() => {
+    getMarkDownSource(content);
+  }, [content]);
+
+  // const getMarkDownSource = async (content: string | null) => {
+  //   if (content) {
+  //     const mdxSource = await serialize(content);
+  //     setMdxSource(mdxSource);
+  //   }
+  // };
   
   useEffect(() => {
     getMarkDownSource(content);
