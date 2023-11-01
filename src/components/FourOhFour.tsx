@@ -5,9 +5,9 @@ import { Image } from '@nextui-org/react'
 const FourOhFour: React.FC<{ errorMsg: string }> = ({ errorMsg }) => {
   return (
     <div >
-      <div className="mx-auto">
+      <div className="flex mx-auto justify-center">
       <Image
-      className="mx-auto animate-pulse"
+      className="animate-pulse"
       src="/hold-on-baby.png"
       alt="Hold on baby . . ."
       width={300}
