@@ -19,7 +19,6 @@ import VideoPreview from './previews/VideoPreview'
 import PDFPreview from './previews/PDFPreview'
 import ImagePreview from './previews/ImagePreview'
 
-
 const FileListItem: FC<{ fileContent: OdFolderChildren; downloadCount: number }> = ({ fileContent: c, downloadCount }) => {  
   return (  
 
@@ -69,47 +68,43 @@ const FilePreviewItem: FC<{file: OdFolderChildren}> = ({file}) => {
   } 
 }
 
-const FolderListLayout = ({ path, folderChildren}) => {
+
+const FolderListLayout = ({ path, folderChildren, setModalVal}) => {
   const { t } = useTranslation()
   const { asPath } = useRouter()
-  
   const getItemPath = (name: string) => `${path === '/' ? '' : path}/${encodeURIComponent(name)}`
   const filesRef = useRef([]);
   
-  const [modalVal, setModalVal] = useState({showModal: false, file: null})
-  const setModalDisp = () => { setModalVal({...modalVal, showModal: !modalVal.showModal}) }
+  // const [modalVal, setModalVal] = useState({showModal: false, file: null})
+  // const setModalDisp = () => { setModalVal({...modalVal, showModal: !modalVal.showModal}) }
   const openModal = (c: OdFolderChildren) => { setModalVal({showModal: true, file: c }) }
-  
+
   const visibleFolderChildren = folderChildren.filter((c: OdFolderChildren) => !isHiddenFolder(c));
   const [downloadCounts, setDownloadCounts] = useState({});
-  
-  
   const latestModifiedDate = visibleFolderChildren.reduce((latestDate, c) => {
-    const modifiedDate = new Date(c.lastModifiedDateTime);
-    return modifiedDate > latestDate ? modifiedDate : latestDate;
-  }, new Date(0));
+  const modifiedDate = new Date(c.lastModifiedDateTime);
+  return modifiedDate > latestDate ? modifiedDate : latestDate;
+}, new Date(0));
 
-
-  useEffect(() => {
-    const uFileName = asPath.split("#")[1]
-    for(let i in visibleFolderChildren) {
-      let cItem = visibleFolderChildren[i]
-      if(cItem.name === uFileName) {
-        if(filesRef.current[i]) {
-          filesRef.current[i].style.backgroundColor = 'salmon';
-          filesRef.current[i].scrollIntoView()
-        }
+useEffect(() => {
+  const uFileName = asPath.split("#")[1]
+  for(let i in visibleFolderChildren) {
+    let cItem = visibleFolderChildren[i]
+    if(cItem.name === uFileName) {
+      if(filesRef.current[i]) {
+        filesRef.current[i].style.backgroundColor = 'salmon';
+        filesRef.current[i].scrollIntoView()
       }
     }
-  }, [])
+  }
+}, [])
 
-  useEffect(() => {
-    if (Object.keys(downloadCounts).length === 0) {
-      fetchDownloadCounts(visibleFolderChildren, setDownloadCounts);
-    }
+useEffect(() => {
+  if (Object.keys(downloadCounts).length === 0) {
+  fetchDownloadCounts(visibleFolderChildren, setDownloadCounts);
+  }
   }, [visibleFolderChildren, downloadCounts]);
 
-  
   return (
     <main>     
     <FolderCard date={formatDate(latestModifiedDate)} />
@@ -118,7 +113,7 @@ const FolderListLayout = ({ path, folderChildren}) => {
       {visibleFolderChildren.map((c: OdFolderChildren, i) => (
         <div ref={el => filesRef.current[i] = el} key={c.id} className='border-t dark:border-gray-700 hover:bg-gray-100 dark:hover:bg-gray-850'>
           {getPreviewType(getExtension(c.name), { video: Boolean(c.video) }) ? (
-            // <Link
+              // <Link
             //   href={`${path === '/' ? '' : path}/${encodeURIComponent(c.name)}`}
             //   passHref
             // >
@@ -151,11 +146,7 @@ const FolderListLayout = ({ path, folderChildren}) => {
         </div>
       ))}
     </div>
-    <Modal showModal={modalVal.showModal} setShowModal={setModalDisp}>
-      <div className="flex flex-col items-center w-full mx-auto gap-3 my-2">
-        <FilePreviewItem file={modalVal.file as OdFileObject}/>
-      </div>
-    </Modal>
+   
     </main>
   );
 };

@@ -1,7 +1,7 @@
 import { OdFileObject, OdFolderChildren, OdFolderObject } from '../types'
 import { DriveItemType } from "../types/DriveItemType"
 import { ParsedUrlQuery } from 'querystring'
-import { FC } from 'react'
+import { FC, Fragment, useState } from 'react'
 import toast, { Toaster } from 'react-hot-toast'
 import { useRouter } from 'next/router'
 import { useTranslation } from 'next-i18next'
@@ -23,6 +23,7 @@ import FolderGridLayout from './FolderGridLayout'
 import Loading, { LoadingIcon } from './Loading'
 import { FaChevronCircleDown, FaFolder } from 'react-icons/fa'
 import { Image } from '@nextui-org/react'
+import Modal from './UI/Model';
 
 /**
  * Convert url query into path string
@@ -67,11 +68,34 @@ export const ChildIcon: FC<{ child: OdFolderChildren }> = ({ child }) => {
   
 };
 
+const FilePreviewItem: FC<{file: OdFolderChildren}> = ({file}) => {
+  const previewType = getPreviewType(getExtension(file.name), { video: Boolean(file.video) })
+  let c = file as OdFileObject
+  if (previewType) {
+    switch (previewType) {
+      case preview.image:
+        return <ImagePreview file={c} />
+      case preview.markdown:
+        return <MarkdownPreview file={c} path={""} />
+      case preview.video:
+        return <VideoPreview file={c} />
+      case preview.audio:
+        return <AudioPreview file={c} />
+      case preview.pdf:
+        return <PDFPreview file={c} />
+    }
+  } 
+}
+
 
 
 const FileListing: FC<{ query?: ParsedUrlQuery, token?: string }> = ({ query }) => {
   const router = useRouter()
   const [layout, _] = useLocalStorage('preferredLayout', layouts[1])
+  
+  const [modalVal, setModalVal] = useState({showModal: false, file: null})
+  const setModalDisp = () => { setModalVal({...modalVal, showModal: !modalVal.showModal}) }
+
   const { t } = useTranslation()
   const path = queryToPath(query)
   const { data, error, size, setSize } = useProtectedSWRInfinite(path)
@@ -151,6 +175,7 @@ const FileListing: FC<{ query?: ParsedUrlQuery, token?: string }> = ({ query }) 
       toast,
       path,
       folderChildren,
+      setModalVal
     }
     // console.log(folderProps)
     console.log(folderChildren)
@@ -162,7 +187,14 @@ const FileListing: FC<{ query?: ParsedUrlQuery, token?: string }> = ({ query }) 
             {layout.name === 'Grid' && entries.hasFoldersOnly ? (
               <FolderGridLayout {...folderProps} />
             ) : (
-              <FolderListLayout {...folderProps} />
+              <Fragment>
+                <FolderListLayout {...folderProps} />
+                <Modal showModal={modalVal.showModal} setShowModal={setModalDisp}>
+                <div className="flex flex-col items-center w-full mx-auto gap-3 my-2">
+                  <FilePreviewItem file={modalVal.file as OdFileObject}/>
+                </div>
+              </Modal>
+            </Fragment>
             )}
           </>
         ) : (
@@ -204,6 +236,7 @@ const FileListing: FC<{ query?: ParsedUrlQuery, token?: string }> = ({ query }) 
           </div>
         )}
       </>
+      
     )
   }
 
