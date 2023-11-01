@@ -1,5 +1,5 @@
 import { Snippet } from "@nextui-org/react";
-import { ReactNode, useRef } from "react";
+import { ReactNode } from "react";
 import { MdOutlineContentCopy } from "react-icons/md";
 
 const Pre = ({ children }: { children?: ReactNode }) => {

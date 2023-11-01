@@ -12,7 +12,6 @@
     "extract": "i18next"
   },
   "dependencies": {
-    "@ctrl/react-adsense": "^1.7.0",
     "@headlessui/react": "^1.7.17",
     "@lottiefiles/react-lottie-player": "^3.5.3",
     "@nextui-org/react": "^2.1.13",
