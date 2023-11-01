@@ -5,15 +5,16 @@ import { serialize } from 'next-mdx-remote/serialize';
 import MDXComponents from '../MDXComponents';
 import { Avatar } from '../GitHub/Avatar';
 import { Skeleton } from '@nextui-org/react';
+import { useRouter } from 'next/router';
 
 interface CreditPreviewProps {
   path: string;
   standalone?: boolean;
 }
 
-const CreditPreview: FC<CreditPreviewProps> = ({ path, standalone = true }) => {
-  const parentPath = standalone ? path.substring(0, path.lastIndexOf('/')) : path;
-  const { response: content, error, validating } = useFileContent(`/api/raw/?path=${parentPath}/credit.md`, path);
+const CreditPreview: FC<CreditPreviewProps> = ({ path }) => {
+  const { asPath } = useRouter()
+  const { response: content, error, validating } = useFileContent(`/api/raw/?path=${asPath}/credit.md`, path);
   const [mdxSource, setMdxSource] = useState<any>(null);
 
    {/* This is for testing purposes only on development builds */}
