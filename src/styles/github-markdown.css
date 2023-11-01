@@ -48,7 +48,7 @@
     }
   }
   
-  @media (prefers-color-scheme: light) {
+  :is(.light .light\:bg-white, .light) {
     .markdown-body,
     [data-theme="light"] {
       /*light*/
@@ -879,7 +879,7 @@
   
   .markdown-body .highlight pre,
   .markdown-body pre {
-    padding: 16px;
+    padding: 20px;
     overflow: auto;
     font-size: 85%;
     line-height: 1.45;

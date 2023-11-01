@@ -21,16 +21,11 @@ const MarkdownPreview: FC<MarkdownPreviewProps> = ({ file, path, standalone = tr
 
   const getMarkDownSource = async (content: string | null) => {
     if (content) {
-      const mdxSource = await serialize(content, {
-        mdxOptions: {
-          remarkPlugins: [],
-          rehypePlugins: [],
-        },
-      });
+      const mdxSource = await serialize(content);
       setMdxSource(mdxSource);
     }
   };
-
+  
   useEffect(() => {
     getMarkDownSource(content);
   }, [content]);

@@ -15,15 +15,15 @@ import { ThemeProvider } from 'next-themes';
 function MyApp({ Component, pageProps }: AppProps) {
   return (
     <Provider store={store}>
-      <NextUIProvider>
       <ThemeProvider attribute="class">
+      <NextUIProvider>
         <main className={font.className}>
           <NextNProgress color="#228B22" height={4} options={{ showSpinner: false }}/>
           <Component {...pageProps} />
           <Analytics />
         </main>
-      </ThemeProvider>
       </NextUIProvider>
+      </ThemeProvider>
     </Provider>
   );
 }
