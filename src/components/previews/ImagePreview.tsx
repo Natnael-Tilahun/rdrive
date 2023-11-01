@@ -11,7 +11,7 @@ const ImagePreview: FC<{ file: OdFileObject }> = ({ file }) => {
       <PreviewContainer>
         <Image
           className="mx-auto rounded-lg"
-          src={`/api/raw/?path=${asPath}`}
+          src={`/api/raw/?path=${asPath}${file.name}`}
           alt={file.name}
           width={file.image?.width}
           height={file.image?.height}
@@ -19,5 +19,6 @@ const ImagePreview: FC<{ file: OdFileObject }> = ({ file }) => {
       </PreviewContainer>
   )
 }
+
 
 export default ImagePreview

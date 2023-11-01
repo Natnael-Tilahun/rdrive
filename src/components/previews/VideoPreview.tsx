@@ -75,14 +75,14 @@ const VideoPreview: FC<{ file: OdFileObject }> = ({ file }) => {
   const { t } = useTranslation()
 
   // OneDrive generates thumbnails for its video files, we pick the thumbnail with the highest resolution
-  const thumbnail = `/api/thumbnail/?path=${asPath}&size=large${hashedToken ? `&odpt=${hashedToken}` : ''}`
+  const thumbnail = `/api/thumbnail/?path=${asPath}${file.name}&size=large${hashedToken ? `&odpt=${hashedToken}` : ''}`
 
   // We assume subtitle files are beside the video with the same name, only webvtt '.vtt' files are supported
   const vtt = `${asPath.substring(0, asPath.lastIndexOf('.'))}.vtt`
   const subtitle = `/api/raw/?path=${vtt}${hashedToken ? `&odpt=${hashedToken}` : ''}`
 
   // We also format the raw video file for the in-browser player as well as all other players
-  const videoUrl = `/api/raw/?path=${asPath}${hashedToken ? `&odpt=${hashedToken}` : ''}`
+  const videoUrl = `/api/raw/?path=${asPath}${file.name}${hashedToken ? `&odpt=${hashedToken}` : ''}`
 
   const isFlv = getExtension(file.name) === 'flv'
   const {

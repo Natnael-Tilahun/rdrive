@@ -31,7 +31,7 @@ const AudioPreview: FC<{ file: OdFileObject }> = ({ file }) => {
   const hashedToken = getStoredToken(asPath)
   const rapRef = useRef<ReactAudioPlayer>(null)
   // Render audio thumbnail, and also check for broken thumbnails
-  const thumbnail = `/api/thumbnail/?path=${asPath}&size=medium${hashedToken ? `&odpt=${hashedToken}` : ''}`
+  const thumbnail = `/api/thumbnail/?path=${asPath}${file.name}&size=medium${hashedToken ? `&odpt=${hashedToken}` : ''}`
  
 
   useEffect(() => {
@@ -93,7 +93,7 @@ const AudioPreview: FC<{ file: OdFileObject }> = ({ file }) => {
             </div>
             <ReactAudioPlayer
               className="h-11 w-full"
-              src={`/api/raw/?path=${asPath}${hashedToken ? `&odpt=${hashedToken}` : ''}`}
+              src={`/api/raw/?path=${asPath}${file.name}${hashedToken ? `&odpt=${hashedToken}` : ''}`}
               ref={rapRef}
               controls
               preload="auto"
