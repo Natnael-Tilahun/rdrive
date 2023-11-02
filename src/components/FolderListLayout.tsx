@@ -1,6 +1,6 @@
 import type { OdFolderChildren } from '../types'
 import Link from 'next/link'
-import { FC, useState, useEffect } from 'react'
+import { FC, useState, useEffect, useRef } from 'react'
 import { useTranslation } from 'next-i18next'
 import { humanFileSize, formatDate } from '../utils/fileDetails'
 import { ChildIcon, ChildName } from './FileListing'
@@ -11,6 +11,7 @@ import {incrementDownloadCount,  getDownloadCount} from '../supabase/Downloads'
 import { RiDownloadLine } from 'react-icons/ri'
 import Credit from './Cards/Credit'
 import FolderCard from './Cards/FolderCard'
+import { useRouter } from 'next/router'
 
 const FileListItem: FC<{ fileContent: OdFolderChildren; downloadCount: number }> = ({ fileContent: c, downloadCount }) => {  
   return (  
@@ -45,6 +46,8 @@ const FileListItem: FC<{ fileContent: OdFolderChildren; downloadCount: number }>
 
 const FolderListLayout = ({ path, folderChildren}) => {
   const { t } = useTranslation()
+  const { asPath } = useRouter()
+  const Ref = useRef([]);
   const getItemPath = (name: string) => `${path === '/' ? '' : path}/${encodeURIComponent(name)}`
   const visibleFolderChildren = folderChildren.filter((c: OdFolderChildren) => !isHiddenFolder(c));
   const [downloadCounts, setDownloadCounts] = useState({});
@@ -60,13 +63,24 @@ useEffect(() => {
   }
   }, [visibleFolderChildren, downloadCounts]);
 
+  useEffect(() => {
+    const ChildFile = asPath.split("#")[1];
+    Ref.current.forEach((el, i) => {
+      if (visibleFolderChildren[i].name === ChildFile) {
+        el.style.backgroundColor = 'rgba(255, 255, 0, 0.2)';
+        el.scrollIntoView();
+      }
+    });
+  }, [asPath, visibleFolderChildren]);
+  
+
   return (
     <main>     
     <FolderCard date={formatDate(latestModifiedDate)} />
     <div className="overflow-hidden rounded-lg border dark:border-gray-700">
     <Credit path={path} item={t('{{count}} item(s)', { count: visibleFolderChildren.length })}/>
-      {visibleFolderChildren.map((c: OdFolderChildren) => (
-        <div key={c.id} className='border-t dark:border-gray-700 hover:bg-gray-100 dark:hover:bg-gray-850'>
+      {visibleFolderChildren.map((c: OdFolderChildren, i) => (
+        <div key={c.id} ref={el => Ref.current[i] = el} className='border-t dark:border-gray-700 hover:bg-gray-100 dark:hover:bg-gray-850'>
           {getPreviewType(getExtension(c.name), { video: Boolean(c.video) }) ? (
             <Link
               href={`${path === '/' ? '' : path}/${encodeURIComponent(c.name)}`}
