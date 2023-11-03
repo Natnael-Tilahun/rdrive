@@ -225,7 +225,7 @@ export function Search() {
           size="lg"
           autoFocus
         />
-      <div className="h-[436px] overflow-y-auto overflow-x-hidden search-scrollbar" onClick={closeModal}>
+      <div className="h-[436px] overflow-y-auto overflow-x-hidden md:search-scrollbar" onClick={closeModal}>
                   {results.loading && (
                     <SearchSkeleton />
                   )}
