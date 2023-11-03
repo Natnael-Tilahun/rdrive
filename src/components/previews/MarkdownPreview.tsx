@@ -69,7 +69,7 @@ const MarkdownPreview: FC<MarkdownPreviewProps> = ({ file, path, standalone = tr
   }
 
   return (
-    <main className="mx-2">
+    <main className="mx-4">
     <div className="markdown-body">
       <MDXRemote {...mdxSource} components={MDXComponents} />
     </div>
