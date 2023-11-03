@@ -9,7 +9,7 @@ export const Permalink = (fileName: string) => {
 
   useEffect(() => {
     if (isSelected && itemRef.current) {
-      itemRef.current.scrollIntoView({ behavior: 'smooth' });
+      itemRef.current.scrollIntoView({ behavior: 'smooth', block: 'center', inline: 'nearest' });
     }
   }, [isSelected]);
 
