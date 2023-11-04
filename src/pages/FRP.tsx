@@ -168,7 +168,7 @@ export default function FRP({ connectedAccounts, token }) {
       <Seo {...seo} />
       <main className="flex w-full flex-1 flex-col bg-white dark:bg-black">
         <Navbar />
-        <div className="mx-auto w-full max-w-6xl p-2">
+        <div className="mx-auto w-full max-w-6xl p-1">
           <h1 className="my-4 text-center text-4xl font-bold">FRP Bypass</h1>
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2">
             {links.map((link, index) => (

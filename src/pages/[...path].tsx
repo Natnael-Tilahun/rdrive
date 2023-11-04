@@ -30,7 +30,7 @@ export default function Route({ connectedAccounts, token, ogImage }) {
       <Seo {...seo} />
       <main className="flex w-full flex-1 flex-col bg-white dark:bg-black">
         <Navbar />
-        <div className="mx-auto w-full max-w-6xl p-2">
+        <div className="mx-auto w-full max-w-6xl p-1">
         <nav className="border dark:border-gray-700 rounded-lg flex items-center justify-between p-2 my-2">
             <Breadcrumb query={query} />
           </nav>

@@ -5,11 +5,11 @@ const Hover = ({ tipChildren, children }) => {
     <Tooltip 
       content={tipChildren} 
       showArrow
-      offset={20} 
+      offset={10} 
       shadow='lg'
       classNames={{
-      base: "py-2 px-4 bg-gradient-to-b from-black to-gray-800 dark:from-white dark:to-gray-100 text-white dark:text-black overflow-hidden",
-      arrow: "bg-gradient-to-b from-black to-gray-800 dark:from-white dark:to-gray-100",
+        content: ["py-2 px-4 overflow-hidden", "bg-gradient-to-b from-black to-gray-800 dark:from-white dark:to-gray-100 text-white dark:text-black"],
+        base: [ "before:bg-gradient-to-b from-black to-gray-800 dark:from-white dark:to-gray-100" ],
     }}
     >
       {children}

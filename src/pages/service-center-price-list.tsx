@@ -14,7 +14,7 @@ export default function Home({ connectedAccounts, token }) {
     description: `All Brand Service Center Price List`,
     keywords: `RDRIVE.ORG, Service Center Price List, rdrive, RDRIVE, therockstarind, Terms and rules, flash file, flash tool, firmware, emmc isp pinouts, test point, dump file, windows, qcn file`,
     url: `${siteConfig.domain}/service-center-price-list`,
-    ogImage: `${siteConfig.domain}/icons/price-list.png`,
+    ogImage: `${siteConfig.domain}/api/raw/?path=/assets/price-list/icon.png`,
     color: '#000000',
   };
 
@@ -24,7 +24,7 @@ export default function Home({ connectedAccounts, token }) {
       <main className="flex w-full flex-1 flex-col bg-white dark:bg-black">
         <Navbar />
         <div className="mx-auto w-full max-w-6xl p-4 text-black dark:text-white">
-        <MarkdownPreview file={{ name: 'readme.mdx' }} path={'RockStar/Price-List'} standalone={false} />
+        <MarkdownPreview file={{ name: 'readme.md' }} path={'Assets/Price-List'} standalone={false} />
         </div>
       </main>
 

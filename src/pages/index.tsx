@@ -23,7 +23,7 @@ export default function Home({ connectedAccounts, token }) {
       <Seo {...seo} />
       <main className="flex w-full flex-1 flex-col bg-white dark:bg-black">
         <Navbar />
-        <div className="mx-auto w-full max-w-6xl p-2">
+        <div className="mx-auto w-full max-w-6xl p-1">
           <div className="my-4">
             <FileListing token={token} />
           </div>

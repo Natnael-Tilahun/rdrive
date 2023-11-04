@@ -4,7 +4,6 @@ import { BsChatSquareDots, BsFillJournalBookmarkFill } from 'react-icons/bs';
 import { MdPrivacyTip } from 'react-icons/md';
 import { BiUserPin } from 'react-icons/bi';
 import siteConfig from '../../config/site.config';
-import Link from 'next/link';
 import Popover from '../UI/Popover';
 import { GoChevronDown } from 'react-icons/go';
 
@@ -17,30 +16,35 @@ const Legal = () => {
           <Listbox variant="faded" aria-label="Legal Links" key="legal-links" className="w-full">
           <ListboxItem
             key="About US"
+            href='/about'
             startContent={<BiUserPin className={Icon} />}
           >
-            <Link href='/about' className="dark:text-white">About US</Link>
+            <p className="dark:text-white">About US</p>
           </ListboxItem>
           <ListboxItem
             key="Privacy Policy"
+            href='/privacy-policy'
             startContent={<MdPrivacyTip className={Icon} />}
           >
-            <Link href='/privacy-policy' className="dark:text-white">Privacy Policy</Link>
+            <p className="dark:text-white">Privacy Policy</p>
           </ListboxItem>
           <ListboxItem
             key="Terms of Service"
+            href='/terms' 
             showDivider
             startContent={<BsFillJournalBookmarkFill className={Icon} />}
           >
-            <Link href='/terms' className="dark:text-white">Terms of Service</Link>
+            <p className="dark:text-white">Terms of Service</p>
           </ListboxItem>
           <ListboxItem
             key="Report & Feedback"
+            href={`${siteConfig.telegram}`}
+            target='_blank'
             className="text-danger"
             color="danger"
             startContent={<BsChatSquareDots className="text-danger h-6 w-6" />}
           >
-            <Link href={`${siteConfig.telegram}`} target="_blank">Report & Feedback</Link>
+            Report & Feedback
           </ListboxItem>
           </Listbox>
         }

@@ -31,7 +31,7 @@ export default function Sponsor({ connectedAccounts, token }) {
       <Seo {...seo} />
       <main className="flex w-full flex-1 flex-col bg-white dark:bg-black">
         <Navbar />
-        <div className="mx-auto w-full max-w-6xl p-2">
+        <div className="mx-auto w-full max-w-6xl p-1">
           <h1 className="my-4 text-center text-4xl font-bold">Show Your Love ❤️</h1>
           <div className="grid grid-cols-1 md:grid-cols-2 items-center justify-center gap-2">
             {links.map((link, index) => (
