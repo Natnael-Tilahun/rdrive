@@ -8,7 +8,7 @@ import VideoPreview from './Video'
 import PDFPreview from './PDF'
 import ImagePreview from './Image'
 
-const Preview: FC<{file: OdFolderChildren, path}> = ({file, path}) => {
+const FilePreview: FC<{file: OdFolderChildren, path}> = ({file, path}) => {
     const previewType = getPreviewType(getExtension(file.name), { video: Boolean(file.video) })
     let c = file as OdFileObject
     if (previewType) {
@@ -27,4 +27,4 @@ const Preview: FC<{file: OdFolderChildren, path}> = ({file, path}) => {
     } 
   }
 
-  export default Preview;
+  export default FilePreview;

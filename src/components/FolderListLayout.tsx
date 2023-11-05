@@ -11,7 +11,7 @@ import Credit from './Cards/Credit'
 import FolderCard from './Cards/FolderCard'
 import { Permalink } from '../utils/hooks/Permalink'
 import FileListItem from './UI/FileListItem'
-import Preview from './Previews/Preview'
+import FilePreview from './Previews/FilePreview'
 import Modal from './Previews/Modal'
 
 const FolderListLayout = ({ path, folderChildren }) => {
@@ -69,7 +69,7 @@ const FolderListLayout = ({ path, folderChildren }) => {
         })}
         {showModal && selectedItem && (
           <Modal showModal={showModal} setShowModal={setShowModal}>
-            <Preview file={selectedItem} path={getItemPath(selectedItem.name)} />
+            <FilePreview file={selectedItem} path={getItemPath(selectedItem.name)} />
           </Modal>
         )}
       </div>
