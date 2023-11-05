@@ -11,7 +11,7 @@ import Credit from './Cards/Credit'
 import FolderCard from './Cards/FolderCard'
 import { Permalink } from '../utils/hooks/Permalink'
 import FileListItem from './UI/FileListItem'
-import FilePreview from './Previews/FilePreview'
+import FilePreview from './UI/FilePreview'
 import Modal from './Previews/Modal'
 
 const FolderListLayout = ({ path, folderChildren }) => {
