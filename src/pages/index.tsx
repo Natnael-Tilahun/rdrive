@@ -25,7 +25,7 @@ export default function Home({ connectedAccounts, token }) {
         <Navbar />
         <div className="mx-auto w-full max-w-6xl p-1">
           <div className="my-4">
-            <FileListing token={token} />
+            <FileListing />
           </div>
         </div>
       </main>

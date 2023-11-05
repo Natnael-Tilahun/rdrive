@@ -35,7 +35,7 @@ export default function Route({ connectedAccounts, token, ogImage }) {
             <Breadcrumb query={query} />
           </nav>
           <div className="my-4">
-            <FileListing query={query} token={token} />
+            <FileListing query={query} />
           </div>
         </div>
       </main>

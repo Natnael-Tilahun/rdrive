@@ -6,7 +6,7 @@ import Footer from '../components/Footer'
 import { getAccessToken, getOdConcealedAccessTokens } from '../utils/odAuthTokenStore'
 
 import Seo from '../components/Meta/Seo'
-import MarkdownPreview from '../components/previews/MarkdownPreview'
+import MarkdownPreview from '../components/Previews/Markdown'
 
 export default function Home({ connectedAccounts, token }) {
   const seo = {

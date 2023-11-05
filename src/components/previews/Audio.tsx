@@ -3,13 +3,9 @@ import { FC, useEffect, useRef } from 'react'
 
 import ReactAudioPlayer from 'react-audio-player'
 import { useTranslation } from 'next-i18next'
-import { useRouter } from 'next/router'
 import { FcMusic } from 'react-icons/fc'
-import { PreviewContainer } from './Containers'
 import { LoadingIcon } from '../Loading'
 import { formatDate } from '../../utils/fileDetails'
-import { getStoredToken } from '../../utils/protectedRouteHandler'
-import ShareReport from '../ShareReport'
 import { useAppDispatch, useAppSelector, RootState } from '../../redux/store';
 import { setPlayerStatus, setPlayerVolume, setBrokenThumbnail } from '../../redux/features/audioPreviewSlice';
 import { Image } from '@nextui-org/react'
@@ -21,17 +17,15 @@ enum PlayerState {
   Paused,
 }
 
-const AudioPreview: FC<{ file: OdFileObject }> = ({ file }) => {
+const AudioPreview: FC<{ file: OdFileObject, path }> = ({ file, path }) => {
   const dispatch = useAppDispatch();
   const playerStatus = useAppSelector((state:RootState) => state.audioPreview.playerStatus);
   const playerVolume = useAppSelector((state:RootState) => state.audioPreview.playerVolume);
   const brokenThumbnail = useAppSelector((state:RootState) => state.audioPreview.brokenThumbnail);
   const { t } = useTranslation()
-  const { asPath } = useRouter()
-  const hashedToken = getStoredToken(asPath)
   const rapRef = useRef<ReactAudioPlayer>(null)
   // Render audio thumbnail, and also check for broken thumbnails
-  const thumbnail = `/api/thumbnail/?path=${asPath}&size=medium${hashedToken ? `&odpt=${hashedToken}` : ''}`
+  const thumbnail = `/api/thumbnail/?path=${path}`
  
 
   useEffect(() => {
@@ -52,12 +46,11 @@ const AudioPreview: FC<{ file: OdFileObject }> = ({ file }) => {
     }
   }, [dispatch])
   return (
-    <>
-      <PreviewContainer>
-        <div className="flex flex-col space-y-4 md:flex-row md:space-x-4">
+      <main>
+        <div className="flex flex-col space-y-4 md:flex-row md:space-x-4 p-8">
           <div className="relative flex aspect-square w-full items-center justify-center rounded-lg bg-gray-100 transition-all duration-75 dark:bg-gray-700 md:w-48">
             <div
-              className={`absolute z-20 flex h-full w-full items-center justify-center transition-all duration-300 ${
+              className={`absolute flex h-full w-full items-center justify-center transition-all duration-300 ${
                 playerStatus === PlayerState.Loading
                   ? 'bg-white opacity-80 dark:bg-black'
                   : 'bg-transparent opacity-0'
@@ -93,7 +86,7 @@ const AudioPreview: FC<{ file: OdFileObject }> = ({ file }) => {
             </div>
             <ReactAudioPlayer
               className="h-11 w-full"
-              src={`/api/raw/?path=${asPath}${hashedToken ? `&odpt=${hashedToken}` : ''}`}
+              src={`/api/raw/?path=${path}`}
               ref={rapRef}
               controls
               preload="auto"
@@ -101,9 +94,7 @@ const AudioPreview: FC<{ file: OdFileObject }> = ({ file }) => {
             />
           </div>
         </div>
-      </PreviewContainer>
-      <div className="flex flex-col items-center w-full my-2"><ShareReport/></div>
-    </>
+      </main>
   );
 };
 

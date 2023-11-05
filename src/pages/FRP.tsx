@@ -199,7 +199,7 @@ export default function FRP({ connectedAccounts, token }) {
             ))}
           </div>
           <div className="my-2">
-            <FileListing query={{ path: ['FRP-Files'] }} token={token} />
+            <FileListing query={{ path: ['FRP-Files'] }} />
           </div>
         </div>
       </main>

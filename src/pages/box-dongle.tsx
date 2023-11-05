@@ -6,7 +6,7 @@ import { getAccessToken, getOdConcealedAccessTokens } from '../utils/odAuthToken
 import Seo from '../components/Meta/Seo'
 import siteConfig from '../config/site.config'
 import { useEffect, useState } from 'react';
-import MarkdownPreview from '../components/previews/MarkdownPreview'
+import MarkdownPreview from '../components/Previews/Markdown'
 import { Card, CardBody, Image } from '@nextui-org/react'
 import Link from 'next/link'
 
@@ -33,12 +33,19 @@ export default function Custom404({ connectedAccounts, token }) {
 ]
 const [status, setStatus] = useState('');
 
-  useEffect(() => {
-    fetch('/api/status')
-      .then((response) => response.json())
-      .then((data) => setStatus(data.status))
-      .catch((error) => console.error(error));
-  }, []);
+useEffect(() => {
+  const fetchStatus = async () => {
+    try {
+      const response = await fetch('/api/status');
+      const data = await response.json();
+      setStatus(data.status);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  fetchStatus();
+}, []);
 
 
   return (    

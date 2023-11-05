@@ -1,5 +1,5 @@
 import React from 'react';
-import CreditPreview from '../previews/CreditPreview';
+import CreditPreview from '../Previews/CreditPreview';
 
 const Credit = ({path, item}) => {
     return (

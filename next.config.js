@@ -1,6 +1,6 @@
 const { i18n } = require('./next-i18next.config');
 const withBundleAnalyzer = require('@next/bundle-analyzer')({
-  enabled: process.env.ANALYZE === 'true',
+    enabled: process.env.ANALYZE === 'true',
   openAnalyzer: false,
 });
 const withPWA = require("next-pwa")({
@@ -42,7 +42,7 @@ module.exports = withBundleAnalyzer(
       ],
     },
     i18n,
-    reactStrictMode: false,
+    reactStrictMode: true,
     // Required by Next i18n with API routes, otherwise API routes 404 when fetching without trailing slash
     trailingSlash: true,
   })

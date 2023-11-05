@@ -1,4 +1,4 @@
-import { OdFileObject, OdFolderChildren, OdFolderObject } from '../types'
+import { OdFolderChildren, OdFolderObject } from '../types'
 import { DriveItemType } from "../types/DriveItemType"
 import { ParsedUrlQuery } from 'querystring'
 import { FC } from 'react'
@@ -6,18 +6,13 @@ import toast, { Toaster } from 'react-hot-toast'
 import { useRouter } from 'next/router'
 import { useTranslation } from 'next-i18next'
 import useLocalStorage from '../utils/useLocalStorage'
-import { getPreviewType, preview } from '../utils/getPreviewType'
 import { useProtectedSWRInfinite } from '../utils/fetchWithSWR'
-import { getExtension, getRawExtension, getFileIcon } from '../utils/getFileIcon'
+import { getRawExtension, getFileIcon } from '../utils/getFileIcon'
 import { layouts } from './SwitchLayout'
 import FourOhFour from './FourOhFour'
 import Auth from './Auth'
-import MarkdownPreview from './previews/MarkdownPreview'
-import AudioPreview from './previews/AudioPreview'
-import VideoPreview from './previews/VideoPreview'
-import PDFPreview from './previews/PDFPreview'
-import ImagePreview from './previews/ImagePreview'
-import { PreviewContainer } from './previews/Containers'
+import MarkdownPreview from './Previews/Markdown'
+import { PreviewContainer } from './Previews/Containers'
 import FolderListLayout from './FolderListLayout'
 import FolderGridLayout from './FolderGridLayout'
 import Loading, { LoadingIcon } from './Loading'
@@ -69,7 +64,7 @@ export const ChildIcon: FC<{ child: OdFolderChildren }> = ({ child }) => {
 
 
 
-const FileListing: FC<{ query?: ParsedUrlQuery, token?: string }> = ({ query }) => {
+const FileListing: FC<{ query?: ParsedUrlQuery }> = ({ query }) => {
   const router = useRouter()
   const [layout, _] = useLocalStorage('preferredLayout', layouts[1])
   const { t } = useTranslation()
@@ -100,7 +95,6 @@ const FileListing: FC<{ query?: ParsedUrlQuery, token?: string }> = ({ query }) 
   } 
 
   const responses: any[] = data ? [].concat(...data) : []
-// console.log(responses)
   const isLoadingInitialData = !data && !error
   const isLoadingMore = isLoadingInitialData || (size > 0 && data && typeof data[size - 1] === 'undefined')
   const isEmpty = data?.[0]?.length === 0
@@ -146,14 +140,11 @@ const FileListing: FC<{ query?: ParsedUrlQuery, token?: string }> = ({ query }) 
 
     // Find README.md file to render
     const readmeFile = folderChildren.find(c => c.name.toLowerCase() === 'readme.md')
-    // Folder layout component props
     const folderProps = {
       toast,
       path,
       folderChildren,
     }
-    // console.log(folderProps)
-    console.log(folderChildren)
     return (
       <>
         <Toaster />
@@ -203,32 +194,6 @@ const FileListing: FC<{ query?: ParsedUrlQuery, token?: string }> = ({ query }) 
         )}
       </>
     )
-  }
-
-  if ('file' in responses[0] && responses.length === 1) {
-    const file = responses[0].file as OdFileObject
-    // console.log(file)
-    const previewType = getPreviewType(getExtension(file.name), { video: Boolean(file.video) })
-
-    if (previewType) {
-      switch (previewType) {
-        case preview.image:
-          return <ImagePreview file={file} />
-
-        case preview.markdown:
-          return <MarkdownPreview file={file} path={path} />
-
-        case preview.video:
-          return <VideoPreview file={file} />
-
-        case preview.audio:
-          return <AudioPreview file={file} />
-
-        case preview.pdf:
-          return <PDFPreview file={file} />
-
-      }
-    } 
   }
 }
 
