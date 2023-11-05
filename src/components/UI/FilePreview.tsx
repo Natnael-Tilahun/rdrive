@@ -2,11 +2,11 @@ import { FC } from 'react'
 import { getPreviewType, preview } from '../../utils/getPreviewType'
 import { getExtension } from '../../utils/getFileIcon'
 import type { OdFolderChildren, OdFileObject } from '../../types'
-import MarkdownPreview from './../Previews/Markdown'
-import AudioPreview from './../Previews/Audio'
-import VideoPreview from './../Previews/Video'
-import PDFPreview from './../Previews/PDF'
-import ImagePreview from './../Previews/Image'
+import MarkdownPreview from './previews/Markdown'
+import AudioPreview from './previews/Audio'
+import VideoPreview from './previews/Video'
+import PDFPreview from './previews/PDF'
+import ImagePreview from './previews/Image'
 
 const FilePreview: FC<{file: OdFolderChildren, path}> = ({file, path}) => {
     const previewType = getPreviewType(getExtension(file.name), { video: Boolean(file.video) })

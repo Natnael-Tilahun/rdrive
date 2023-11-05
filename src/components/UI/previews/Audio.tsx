@@ -1,13 +1,13 @@
-import type { OdFileObject } from '../../types'
+import type { OdFileObject } from '../../../types'
 import { FC, useEffect, useRef } from 'react'
 
 import ReactAudioPlayer from 'react-audio-player'
 import { useTranslation } from 'next-i18next'
 import { FcMusic } from 'react-icons/fc'
-import { LoadingIcon } from '../Loading'
-import { formatDate } from '../../utils/fileDetails'
-import { useAppDispatch, useAppSelector, RootState } from '../../redux/store';
-import { setPlayerStatus, setPlayerVolume, setBrokenThumbnail } from '../../redux/features/audioPreviewSlice';
+import { LoadingIcon } from '../../Loading'
+import { formatDate } from '../../../utils/fileDetails'
+import { useAppDispatch, useAppSelector, RootState } from '../../../redux/store';
+import { setPlayerStatus, setPlayerVolume, setBrokenThumbnail } from '../../../redux/features/audioPreviewSlice';
 import { Image } from '@nextui-org/react'
 
 enum PlayerState {

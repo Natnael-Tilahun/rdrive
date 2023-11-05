@@ -1,4 +1,4 @@
-import { getBaseUrl } from '../../utils/getBaseUrl'
+import { getBaseUrl } from '../../../utils/getBaseUrl'
 
 const PDFEmbedPreview: React.FC<{ file: any, path }> = ({ file, path }) => {
 

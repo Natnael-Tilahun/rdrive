@@ -1,4 +1,4 @@
-import type { OdFileObject } from '../../types'
+import type { OdFileObject } from '../../../types'
 
 import { FC, useEffect } from 'react'
 
@@ -6,9 +6,9 @@ import axios from 'axios'
 import Plyr from 'plyr-react'
 import { useAsync } from 'react-async-hook'
 
-import { getExtension } from '../../utils/getFileIcon'
-import FourOhFour from '../FourOhFour'
-import Loading from '../Loading'
+import { getExtension } from '../../../utils/getFileIcon'
+import FourOhFour from '../../FourOhFour'
+import Loading from '../../Loading'
 
 import 'plyr-react/plyr.css'
 

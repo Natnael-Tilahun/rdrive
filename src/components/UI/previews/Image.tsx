@@ -1,4 +1,4 @@
-import type { OdFileObject } from '../../types'
+import type { OdFileObject } from '../../../types'
 import { FC } from 'react'
 import { Image } from '@nextui-org/react'
 

@@ -6,7 +6,7 @@ import { getAccessToken, getOdConcealedAccessTokens } from '../utils/odAuthToken
 import Seo from '../components/Meta/Seo'
 import siteConfig from '../config/site.config'
 import { useEffect, useState } from 'react';
-import MarkdownPreview from '../components/Previews/Markdown'
+import MarkdownPreview from '../components/UI/Markdown'
 import { Card, CardBody, Image } from '@nextui-org/react'
 import Link from 'next/link'
 

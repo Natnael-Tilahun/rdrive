@@ -1,10 +1,10 @@
 import { FC, useEffect, useState } from 'react';
-import useFileContent from '../../utils/fetchOnMount';
-import FourOhFour from '../FourOhFour';
+import useFileContent from '../../../utils/fetchOnMount';
+import FourOhFour from '../../FourOhFour';
 import { MDXRemote } from 'next-mdx-remote';
 import { serialize } from 'next-mdx-remote/serialize';
-import MDXComponents from '../MDXComponents';
-import { LoadingIcon } from '../Loading';
+import MDXComponents from '../../MDXComponents';
+import { LoadingIcon } from '../../Loading';
 import { useTranslation } from 'next-i18next';
 
 interface MarkdownPreviewProps {
