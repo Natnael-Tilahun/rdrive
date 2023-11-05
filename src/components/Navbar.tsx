@@ -8,7 +8,7 @@ import { Search } from './Command/Search';
 
 const Navbar = () => {
   return (
-    <div className="sticky mx-auto w-full justify-between flex top-0 z-30 border-b bg-white bg-opacity-70 dark:bg-opacity-70 backdrop-blur-md dark:border-gray-700 dark:bg-black select-none px-2">
+    <div className="sticky mx-auto w-full justify-between flex top-0 z-40 border-b bg-white bg-opacity-70 dark:bg-opacity-70 backdrop-blur-md dark:border-gray-700 dark:bg-black select-none px-2">
       <div className="my-2 md:my-3">
             <Link href="/" passHref>
             <Image src={siteConfig.icon} alt={siteConfig.title} width={40} height={40} isBlurred disableSkeleton />
