@@ -64,7 +64,7 @@ const VideoPreview: FC<{ file: OdFileObject, path }> = ({ file, path }) => {
   }, [isFlv])
 
   return (
-      <main className="p-4 md:p-8 space-y-6">
+      <main className="p-2 md:p-4 space-y-6 max-h-[80vh]">
             {error ? (
               <FourOhFour errorMsg={error.message} />
             ) : loading && isFlv ? (

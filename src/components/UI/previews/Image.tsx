@@ -5,7 +5,7 @@ import { Image } from '@nextui-org/react'
 const ImagePreview: FC<{ file: OdFileObject, path }> = ({ file, path }) => {
 
   return (
-    <main className="p-4 md:p-8 space-y-6">
+    <main className="p-2 md:p-4 space-y-6 max-h-[80vh]">
         <Image
           className="mx-auto rounded-lg"
           src={`/api/raw/?path=${path}`}

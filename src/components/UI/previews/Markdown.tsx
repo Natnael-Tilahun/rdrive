@@ -49,7 +49,7 @@ const MarkdownPreview: FC<MarkdownPreviewProps> = ({ file, path, standalone = tr
 
   if (error) {
     return (
-      <div className="border dark:border-gray-700 rounded-lg bg-white p-3 dark:bg-black dark:text-white my-">
+      <div className="border dark:border-gray-700 rounded-lg bg-white p-3 dark:bg-black dark:text-white">
         <FourOhFour errorMsg={error} />
       </div>
     );
@@ -58,7 +58,7 @@ const MarkdownPreview: FC<MarkdownPreviewProps> = ({ file, path, standalone = tr
   if (validating || mdxSource === null) {
     return (
       <main>
-        <div className="border dark:border-gray-700 rounded-lg bg-white p-3 dark:bg-black dark:text-white my-5">
+        <div className="bg-white p-3 dark:bg-black dark:text-white my-5">
           <div className="items-center justify-center flex space-x-2">
             <LoadingIcon />
             <span>{t('Loading ...')}</span>
@@ -69,7 +69,7 @@ const MarkdownPreview: FC<MarkdownPreviewProps> = ({ file, path, standalone = tr
   }
 
   return (
-    <main className="mx-2 my-5">
+    <main className="p-2 md:p-4 max-h-[80vh] overflow-auto">
     <div className="markdown-body">
       <MDXRemote {...mdxSource} components={MDXComponents} />
     </div>
