@@ -27,4 +27,4 @@ const FilePreview: FC<{file: OdFolderChildren, path}> = ({file, path}) => {
     } 
   }
 
-  export default FilePreview;
+export default FilePreview;
