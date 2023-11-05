@@ -11,13 +11,13 @@ import { getRawExtension, getFileIcon } from '../utils/getFileIcon'
 import { layouts } from './SwitchLayout'
 import FourOhFour from './FourOhFour'
 import Auth from './Auth'
-import MarkdownPreview from './Previews/Markdown'
 import { PreviewContainer } from './UI/Containers'
 import FolderListLayout from './FolderListLayout'
 import FolderGridLayout from './FolderGridLayout'
 import Loading, { LoadingIcon } from './Loading'
 import { FaChevronCircleDown, FaFolder } from 'react-icons/fa'
 import { Image } from '@nextui-org/react'
+import MarkdownPreview from './UI/Markdown'
 
 /**
  * Convert url query into path string
