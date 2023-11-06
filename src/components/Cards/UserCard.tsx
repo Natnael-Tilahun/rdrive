@@ -10,7 +10,7 @@ import { UserData } from "../../types";
 
 
 export const UserCard = ({ username }) => {
-  const [userData, setUserData] = useState<UserData>(null);
+  const [userData, setUserData] = useState<UserData | null>(null);
 
   useEffect(() => {
     const fetchData = async () => {
