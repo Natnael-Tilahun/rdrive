@@ -3,9 +3,10 @@ import { Avatar, User } from "@nextui-org/react";
 import { fetchGitHubUser } from '../../utils/githubApi';
 import { UserCard } from "../Cards/UserCard";
 import Dropdown from "../UI/Dropdown";
+import { UserData } from "../../types";
 
 export const Author = ({ username }) => {
-  const [userData, setUserData] = useState(null);
+  const [userData, setUserData] = useState<UserData | null>(null);
 
   useEffect(() => {
     const fetchData = async () => {

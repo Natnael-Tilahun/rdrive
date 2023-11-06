@@ -265,6 +265,7 @@ export type MovieType = {
 
 
 export type UserData = {
+  location: string;
   followers: string;
   twitter_username: string;
   blog: string;

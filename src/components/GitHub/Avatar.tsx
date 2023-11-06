@@ -3,10 +3,11 @@ import { User } from "@nextui-org/react";
 import { fetchGitHubUser } from '../../utils/githubApi';
 import { UserCard } from "../Cards/UserCard";
 import Popover from "../UI/Popover";
+import { UserData } from "../../types";
 
 export const Avatar = ({ username }) => {
   const [openPopover, setOpenPopover] = useState(false);
-  const [userData, setUserData] = useState(null);
+  const [userData, setUserData] = useState<UserData | null>(null);
 
   useEffect(() => {
     const fetchData = async () => {
