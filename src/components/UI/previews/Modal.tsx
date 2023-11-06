@@ -3,8 +3,8 @@
 import { Dispatch, SetStateAction } from "react";
 import { Drawer } from "vaul";
 import * as Dialog from "@radix-ui/react-dialog";
-import useMediaQuery from "../../utils/hooks/use-media-query";
-import { cn } from "../../utils/utils";
+import useMediaQuery from "../../../utils/hooks/use-media-query";
+import { cn } from "../../../utils/utils";
 
 export default function Modal({
   children,
@@ -27,6 +27,9 @@ export default function Modal({
         />
         <Drawer.Portal>
           <Drawer.Content className="z-50 bottom-0 top-auto w-[100%] max-w-[100%] fixed max-h-[80vh] min-h-[5dvh] border-t-1.5 border-gray-400/30 rounded-t-lg bg-white dark:bg-black">
+          <div className="flex w-full items-center justify-center mb-2">
+            <div className="mt-3 h-1 w-12 rounded-full bg-gray-300" />
+          </div>
           {children}
           </Drawer.Content>
           <Drawer.Overlay />

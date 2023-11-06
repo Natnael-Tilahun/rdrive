@@ -12,7 +12,7 @@ import FolderCard from './Cards/FolderCard'
 import { Permalink } from '../utils/hooks/Permalink'
 import FileListItem from './UI/FileListItem'
 import FilePreview from './UI/FilePreview'
-import Modal from './UI/Modal'
+import Modal from './UI/previews/Modal'
 
 const FolderListLayout = ({ path, folderChildren }) => {
   const { t } = useTranslation();

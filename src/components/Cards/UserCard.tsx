@@ -6,9 +6,11 @@ import Hover from "../UI/Tooltip";
 import { UserLink, X } from "../icons";
 import { BsGithub } from "react-icons/bs";
 import { FiUsers } from "react-icons/fi";
+import { UserData } from "../../types";
+
 
 export const UserCard = ({ username }) => {
-  const [userData, setUserData] = useState(null);
+  const [userData, setUserData] = useState<UserData>(null);
 
   useEffect(() => {
     const fetchData = async () => {

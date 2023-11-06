@@ -262,3 +262,14 @@ export type MovieType = {
   watched: boolean;
   rating: number;
 };
+
+
+export type UserData = {
+  followers: string;
+  twitter_username: string;
+  blog: string;
+  bio: string;
+  avatar_url: string;
+  login: string;
+  name: string;
+};
