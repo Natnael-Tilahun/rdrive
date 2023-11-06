@@ -14,7 +14,7 @@ class MyDocument extends Document {
           <meta name="theme-color" content="#000000" />
           <link rel="manifest" href="/manifest.json" />
           <script async src="/index.js"></script>
-          <script src="https://uptime.betterstack.com/widgets/announcement.js" data-id="169513" async type="text/javascript"></script>
+         
         </Head>
         <body>
           <Main />

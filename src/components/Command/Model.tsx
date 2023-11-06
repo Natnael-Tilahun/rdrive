@@ -26,7 +26,7 @@ export default function Modal({
           className="fixed inset-0 z-40 bg-gray-100 bg-opacity-10 dark:bg-black dark:bg-opacity-10"
         />
         <Drawer.Portal>
-          <Drawer.Content className="z-30 bottom-0 top-auto w-[100%] max-w-[100%] fixed overscroll-none max-h-[80vh] min-h-[5dvh] border-t-1.5 border-gray-400/30 rounded-t-lg bg-white dark:bg-black">
+          <Drawer.Content className="z-50 bottom-0 top-auto w-[100%] max-w-[100%] fixed overscroll-none max-h-[80vh] min-h-[5dvh] border-t-1.5 border-gray-400/30 rounded-t-lg bg-white dark:bg-black">
           <div className="h-full overflow-hidden">{children}</div>
           </Drawer.Content>
           <Drawer.Overlay />
