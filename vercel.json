@@ -1,4 +1,13 @@
 {
-    "buildCommand": "pnpm build",
-    "installCommand": "pnpm install"
-  } 
+  "builds": [
+    {
+      "src": "package.json",
+      "use": "@vercel/static-build",
+      "config": {
+        "tsconfig": "tsconfig.vercel.json" 
+      }
+    }
+  ],
+  "buildCommand": "pnpm build", 
+  "installCommand": "pnpm install" 
+}
