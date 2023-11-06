@@ -1,7 +1,7 @@
 /* eslint-disable @next/next/no-img-element */
-import { ImageResponse, NextRequest } from 'next/server';
+import { ImageResponse } from 'next/og';
+import { NextRequest } from 'next/server';
 import siteConfig from '../../config/site.config';
-
 
 export const config = {
   runtime: 'edge',
@@ -63,7 +63,7 @@ export default async function handler(request: NextRequest) {
 
   return new ImageResponse(
     (
-      <main tw="h-full w-full flex flex-col p-6 rounded-lg" style={{ background: 'linear-gradient(360deg, #000000, #222222)' }}>
+      <main tw="h-full w-full flex flex-col p-6" style={{ background: 'linear-gradient(360deg, #000000, #222222)' }}>
         <div tw="w-full h-full flex flex-col p-16 rounded-lg">
           <div tw="w-full mt-auto flex justify-between item-center">
             <div tw="flex flex-col mt-auto max-w-2xl">
