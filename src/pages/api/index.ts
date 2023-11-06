@@ -3,7 +3,6 @@ import type { NextApiRequest, NextApiResponse } from 'next'
 import axios from 'axios'
 import apiConfig from '../../config/api.config'
 import siteConfig from '../../config/site.config'
-import { obfuscateToken, revealObfuscatedToken } from '../../utils/oAuthHandler'
 import { compareHashedToken } from '../../utils/protectedRouteHandler'
 import { getOdAccessTokens, readOdConcealedAccessTokens, storeOdAuthTokens } from '../../utils/odAuthTokenStore'
 import { runCorsMiddleware } from './raw'
@@ -38,7 +37,7 @@ export async function getAccessTokens(): Promise<string[]> {
 
 export async function getObfuscatedAccessTokens(): Promise<string> {
   const _tokens = await getAccessTokens()
-  return _tokens.map(obfuscateToken).join(',')
+  return _tokens.join(',')
 }
 
 /**
@@ -125,8 +124,8 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
   // If method is POST, then the API is called by the client to store acquired tokens
   if (req.method === 'POST') {
     const { obfuscatedAccessToken, accessTokenExpiry, obfuscatedRefreshToken, principal } = req.body
-    const accessToken = revealObfuscatedToken(obfuscatedAccessToken)
-    const refreshToken = revealObfuscatedToken(obfuscatedRefreshToken)
+    const accessToken = (obfuscatedAccessToken)
+    const refreshToken = (obfuscatedRefreshToken)
 
     if (typeof accessToken !== 'string' || typeof refreshToken !== 'string') {
       res.status(400).send('Invalid request body')

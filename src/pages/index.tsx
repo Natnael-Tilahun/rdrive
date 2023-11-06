@@ -2,13 +2,13 @@ import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import siteConfig from '../config/site.config';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
-import { getAccessToken, getOdConcealedAccessTokens } from '../utils/odAuthTokenStore';
+import { getOdConcealedAccessTokens } from '../utils/odAuthTokenStore';
 import Seo from '../components/Meta/Seo';
 import dynamic from 'next/dynamic';
 
 const FileListing = dynamic(() => import('../components/FileListing'));
 
-export default function Home({ connectedAccounts, token }) {
+export default function Home({ connectedAccounts }) {
   const seo = {
     title: `${siteConfig.title} - Get access to Flash File, Dump File, QCN File, MDM File, FRP, Flash Tool, EMMC ISP Pinouts, Windows Files.`,
     description: 'RDRIVE Provide Mobile Firmwares Drivers Flash Tool FRP Dump FIle EMMC ISP PinOut Samsung MDM File Windows Files.',
@@ -29,21 +29,18 @@ export default function Home({ connectedAccounts, token }) {
           </div>
         </div>
       </main>
-      <Footer token={token} />
+      <Footer />
       <input type="hidden" id="connectedAccounts" value={connectedAccounts} />
     </div>
   );
 }
 
-export async function getServerSideProps({ req, locale }) {
+export async function getServerSideProps({locale }) {
   const connectedAccounts = await getOdConcealedAccessTokens();
-  const token = await getAccessToken(0);
-
   return {
     props: {
       ...(await serverSideTranslations(locale, ['common'])),
       connectedAccounts,
-      token,
     },
   };
 }

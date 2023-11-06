@@ -6,7 +6,7 @@ import Seo from '../components/Meta/Seo';
 import siteConfig from '../config/site.config';
 import { Card, CardBody, Image } from '@nextui-org/react';
 
-export default function Sponsor({ connectedAccounts, token }) {
+export default function Sponsor({ connectedAccounts }) {
   const seo = {
     title: `Sponsor`,
     description: `Show your love ❤️ and support rdrive to grow us.`,
@@ -64,7 +64,7 @@ export default function Sponsor({ connectedAccounts, token }) {
               {/* Here will be Sponsor List */}
         </div>
       </main>
-      <Footer token={token} />
+      <Footer />
       <input type="hidden" id="connectedAccounts" value={connectedAccounts} />
     </div>
   );

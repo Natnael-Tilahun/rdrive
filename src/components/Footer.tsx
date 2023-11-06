@@ -8,7 +8,7 @@ import ThemeSwitcher from './Links/ThemeSwitcher';
 import { Image } from '@nextui-org/react';
 import { CommandMenu } from './Command/CommandMenu';
 
-const Footer = ({token}) => {
+const Footer = () => {
     
   return (
     <>
@@ -16,7 +16,7 @@ const Footer = ({token}) => {
       <div className="mx-auto w-full max-w-6xl my-4">
       <div className="flex justify-between items-center my-6 px-2">
           <SocialFooter />
-          <FooterLinks token={token} />
+          <FooterLinks />
       </div>
         <div className="flex justify-between items-center my-4">
           <Link href="/" passHref>
@@ -38,7 +38,7 @@ const Footer = ({token}) => {
                 <Image src={siteConfig.icon} alt={siteConfig.title} width={40} height={40} />
                 <span className="ml-1">&copy; {new Date().getFullYear()}</span>
           </Link>
-          <div className="px-6 my-4"><FooterLinks token={token} /></div>
+          <div className="px-6 my-4"><FooterLinks /></div>
       <div className="mx-auto flex items-center justify-between px-6">
           <SocialFooter />
           <ThemeSwitcher />

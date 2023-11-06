@@ -7,7 +7,7 @@ import Link from 'next/link'
 import Seo from '../components/Meta/Seo'
 import siteConfig from '../config/site.config'
 
-export default function Home({ connectedAccounts, token }) {
+export default function Home({ connectedAccounts }) {
   const seo = {
     title: `Terms and rules | ${siteConfig.title}`,
     description: `The providers (&quot;we&quot;, &quot;us&quot;, &quot;our&quot;) of the service provided by this web site (&quot;Service&quot;) are not responsible for any user-generated content and accounts. Content submitted express the views of their author only.`,
@@ -54,7 +54,7 @@ export default function Home({ connectedAccounts, token }) {
         </div>
       </main>
 
-      <Footer token={token}/>
+      <Footer />
       <input type="hidden" id="connectedAccounts" value={connectedAccounts} />
     </div>
   )

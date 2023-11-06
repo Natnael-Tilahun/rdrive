@@ -145,7 +145,7 @@ export default function OAuthStep1({ token }) {
         </div>
       </main>
 
-      <Footer token={token}/>
+      <Footer />
     </div>
   )
 }

@@ -10,7 +10,7 @@ import Link from 'next/link';
 
 const FileListing = dynamic(() => import('../components/FileListing'));
 
-export default function FRP({ connectedAccounts, token }) {
+export default function FRP({ connectedAccounts }) {
   const seo = {
     title: `FRP Bypass - ${siteConfig.title}`,
     description: `Unlock your device with FRP Bypass. Find the necessary tools and resources to bypass Google Factory Reset Protection (FRP).`,
@@ -203,7 +203,7 @@ export default function FRP({ connectedAccounts, token }) {
           </div>
         </div>
       </main>
-      <Footer token={token} />
+      <Footer />
       <input type="hidden" id="connectedAccounts" value={connectedAccounts} />
     </div>
   );

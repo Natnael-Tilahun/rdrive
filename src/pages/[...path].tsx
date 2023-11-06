@@ -10,7 +10,7 @@ import Description from '../utils/description'
 import dynamic from 'next/dynamic'
 const FileListing = dynamic(() => import('../components/FileListing'))
 
-export default function Route({ connectedAccounts, token, ogImage }) {
+export default function Route({ connectedAccounts, ogImage }) {
   const { query, asPath } = useRouter()
   const fileName = (query.path && Array.isArray(query.path) ? query.path[query.path.length - 1] : '').replaceAll('-', ' ').replaceAll('_', ' ');
   const extensionIndex = fileName.lastIndexOf('.');
@@ -39,7 +39,7 @@ export default function Route({ connectedAccounts, token, ogImage }) {
           </div>
         </div>
       </main>
-      <Footer token={token} />
+      <Footer />
       <input type="hidden" id="connectedAccounts" value={connectedAccounts} />
     </div>
   )

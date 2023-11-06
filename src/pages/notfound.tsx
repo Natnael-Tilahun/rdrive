@@ -13,7 +13,7 @@ import { Button } from '@nextui-org/react'
 import { GoSearch } from 'react-icons/go'
 import { Slash } from '../components/icons'
 
-export default function Custom404({ connectedAccounts, token }) {
+export default function Custom404({ connectedAccounts }) {
   const seo = {
     title: `Oops! That page can’t be found.`,
     description: `It looks like nothing was found at this location. Maybe try a search?`,
@@ -47,7 +47,7 @@ export default function Custom404({ connectedAccounts, token }) {
               </div>
             </div>
             </main>
-            <Footer token={token}/>
+            <Footer />
             <input type="hidden" id="connectedAccounts" value={connectedAccounts} />
           </div>)
 }

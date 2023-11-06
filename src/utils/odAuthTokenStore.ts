@@ -1,6 +1,5 @@
 import Redis from 'ioredis'
 import siteConfig from '../config/site.config'
-import { obfuscateToken, revealObfuscatedToken } from './oAuthHandler'
 
 // TODO: manage Redis connections more efficiently (or use @upstash/redis)
 // https://docs.upstash.com/redis/troubleshooting/max_concurrent_connections
@@ -74,12 +73,12 @@ export async function getOdAccessTokens(): Promise<string[]> {
 
 export async function getOdConcealedAccessTokens(): Promise<string> {
   let tokens = await getOdAccessTokens()
-  return tokens.map(token => obfuscateToken(token)).join(',')
+  return tokens.map(token => (token)).join(',')
 }
 
 export function readOdConcealedAccessTokens(connectedAccounts: string): string[] {
   if (!connectedAccounts) console.warn('no connected accounts')
-  return connectedAccounts.split(',').map(token => revealObfuscatedToken(token))
+  return connectedAccounts.split(',').map(token => (token))
 }
 
 export async function getNextKey(keyName): Promise<{ keyName: string; id: any }> {

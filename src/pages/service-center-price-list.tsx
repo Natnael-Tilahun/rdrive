@@ -8,7 +8,7 @@ import { getAccessToken, getOdConcealedAccessTokens } from '../utils/odAuthToken
 import Seo from '../components/Meta/Seo'
 import MarkdownPreview from '../components/UI/Markdown'
 
-export default function Home({ connectedAccounts, token }) {
+export default function Home({ connectedAccounts }) {
   const seo = {
     title: `Service Center Price List | ${siteConfig.title}`,
     description: `All Brand Service Center Price List`,
@@ -28,7 +28,7 @@ export default function Home({ connectedAccounts, token }) {
         </div>
       </main>
 
-      <Footer token={token}/>
+      <Footer />
       <input type="hidden" id="connectedAccounts" value={connectedAccounts} />
     </div>
   )

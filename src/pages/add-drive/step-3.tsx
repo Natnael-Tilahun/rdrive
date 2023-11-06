@@ -238,7 +238,7 @@ export default function OAuthStep3({
          </div>
        </main>
  
-       <Footer token={token}/>
+       <Footer />
      </div>
    )
  }

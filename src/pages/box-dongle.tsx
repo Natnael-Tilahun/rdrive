@@ -10,7 +10,7 @@ import MarkdownPreview from '../components/UI/Markdown'
 import { Card, CardBody, Image } from '@nextui-org/react'
 import Link from 'next/link'
 
-export default function Custom404({ connectedAccounts, token }) {
+export default function Custom404({ connectedAccounts }) {
   const seo = {
     title: `Box Dongle | ${siteConfig.title}`,
     description: `We provide the Box Dongle service for free, allowing you to use it on your PC without any cracks. Download the USB Redirector Client and Radmin VPN to get started. Follow our step-by-step instructions to set up the Box Dongle. Join our network using Radmin VPN and use the provided credentials. Stay tuned for our instructional video.`,
@@ -88,7 +88,7 @@ useEffect(() => {
       <MarkdownPreview file={{ name: 'readme.md' }} path={'Assets/Box'} standalone={false} />
     </div>
   </main>
-  <Footer token={token} />
+  <Footer />
   <input type="hidden" id="connectedAccounts" value={connectedAccounts} />
 </div>
 )

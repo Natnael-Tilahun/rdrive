@@ -5,7 +5,7 @@ import Hover from '../UI/Tooltip';
 import UnstyledLink from '../UI/UnstyledLink';
 import Storage from '../Storage';
 
-const FooterLinks = ({ token }) => {
+const FooterLinks = () => {
   const footerLinks: { href: string; text: string; tooltip: React.ReactNode }[] = [
     {
       href: '/FRP',
@@ -54,7 +54,7 @@ const FooterLinks = ({ token }) => {
     <div className="grid grid-cols-2 md:flex flex-wrap gap-3 md:gap-4 lg:gap-12 xl:gap-14 items-center text-sm cursor-default">
       {footerLinks.map(({ href, text, tooltip }, index) => (
         <React.Fragment key={href}>
-          {index === footerLinks.length - 1 && <><Storage token={token} /> <Legal /></>}
+          {index === footerLinks.length - 1 && <>{/*<Storage  />*/} <Legal /></>}
           <Hover tipChildren={tooltip}>
           <div>
             <UnstyledLink

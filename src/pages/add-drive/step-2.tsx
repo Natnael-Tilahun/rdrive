@@ -139,7 +139,7 @@ export default function OAuthStep2({ token }) {
         </div>
       </main>
 
-      <Footer token={token}/>
+      <Footer />
     </div>
   )
 }

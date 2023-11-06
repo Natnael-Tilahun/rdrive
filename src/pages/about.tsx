@@ -5,7 +5,7 @@ import { getAccessToken, getOdConcealedAccessTokens } from '../utils/odAuthToken
 import Seo from '../components/Meta/Seo'
 import siteConfig from '../config/site.config'
 
-export default function About({ connectedAccounts, token }) {
+export default function About({ connectedAccounts }) {
   const seo = {
     title: `About US | ${siteConfig.title}`,
     description: `Welcome to RDRIVE, your ultimate destination for all things mobile firmware. We pride ourselves on being the go-to platform for hosting a comprehensive collection of mobile firmwares, flash files, custom ROMs, recoveries, dump files, drivers combinations, and eMMC ISP pinouts. Our mission is to ensure that these vital resources are readily available to empower you in maximizing the potential of your mobile devices.`,
@@ -42,7 +42,7 @@ export default function About({ connectedAccounts, token }) {
         </div>
       </main>
 
-      <Footer token={token}/>
+      <Footer />
       <input type="hidden" id="connectedAccounts" value={connectedAccounts} />
     </div>
   )
