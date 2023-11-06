@@ -1,6 +1,4 @@
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
-import Navbar from '../components/Navbar';
-import Footer from '../components/Footer';
 import { getAccessToken, getOdConcealedAccessTokens } from '../utils/odAuthTokenStore';
 import Seo from '../components/Meta/Seo';
 import siteConfig from '../config/site.config';
@@ -164,11 +162,8 @@ export default function FRP({ connectedAccounts }) {
 ]
 
   return (
-    <div className="flex min-h-screen flex-col items-center justify-center bg-white dark:bg-black">
+    <main className="p-2">
       <Seo {...seo} />
-      <main className="flex w-full flex-1 flex-col bg-white dark:bg-black">
-        <Navbar />
-        <div className="mx-auto w-full max-w-6xl p-1">
           <h1 className="my-4 text-center text-4xl font-bold">FRP Bypass</h1>
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2">
             {links.map((link, index) => (
@@ -201,11 +196,8 @@ export default function FRP({ connectedAccounts }) {
           <div className="my-2">
             <FileListing query={{ path: ['FRP-Files'] }} />
           </div>
-        </div>
-      </main>
-      <Footer />
-      <input type="hidden" id="connectedAccounts" value={connectedAccounts} />
-    </div>
+          <input type="hidden" id="connectedAccounts" value={connectedAccounts} />
+        </main>
   );
 }
 

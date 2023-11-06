@@ -23,7 +23,7 @@ const Legal = () => {
           </ListboxItem>
           <ListboxItem
             key="Privacy Policy"
-            href='/privacy-policy'
+            href='/policy'
             startContent={<MdPrivacyTip className={Icon} />}
           >
             <p className="dark:text-white">Privacy Policy</p>

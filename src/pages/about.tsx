@@ -1,11 +1,7 @@
-import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
-import Navbar from '../components/Navbar'
-import Footer from '../components/Footer'
-import { getAccessToken, getOdConcealedAccessTokens } from '../utils/odAuthTokenStore'
 import Seo from '../components/Meta/Seo'
 import siteConfig from '../config/site.config'
 
-export default function About({ connectedAccounts }) {
+export default function About() {
   const seo = {
     title: `About US | ${siteConfig.title}`,
     description: `Welcome to RDRIVE, your ultimate destination for all things mobile firmware. We pride ourselves on being the go-to platform for hosting a comprehensive collection of mobile firmwares, flash files, custom ROMs, recoveries, dump files, drivers combinations, and eMMC ISP pinouts. Our mission is to ensure that these vital resources are readily available to empower you in maximizing the potential of your mobile devices.`,
@@ -16,12 +12,9 @@ export default function About({ connectedAccounts }) {
   };
 
   return (
-    <div className="flex min-h-screen flex-col items-center justify-center bg-white dark:bg-black">
+    <main className="p-2">
       <Seo {...seo} />
-      <main className="flex w-full flex-1 flex-col bg-white dark:bg-black">
-        <Navbar />
-        <div className="mx-auto w-full max-w-6xl p-4 text-black dark:text-white">
-          <h1 className="mb-4 text-center text-[30px] font-bold">
+          <h1 className="my-4 text-center text-4xl font-bold">
            About US
           </h1>
           <p className="py-2">
@@ -39,25 +32,6 @@ export default function About({ connectedAccounts }) {
           <p className="py-2">
             Remember, at <strong>RDRIVE</strong>, we&apos;re here to support you every step of the way. If you have any questions, suggestions, or need assistance, don&apos;t hesitate to reach out to our friendly team. Together, let&apos;s create a vibrant and knowledgeable community where mobile technology knows no boundaries. Start your journey with <strong>RDRIVE</strong> and unlock a world of possibilities for your mobile devices.
           </p>
-        </div>
-      </main>
-
-      <Footer />
-      <input type="hidden" id="connectedAccounts" value={connectedAccounts} />
-    </div>
+        </main>
   )
-}
-
-export async function getServerSideProps({req, locale }) {
-  const connectedAccounts = await getOdConcealedAccessTokens();
-
-  const token = await getAccessToken(0);
-
-  return {
-    props: {
-      ...(await serverSideTranslations(locale, ['common'])),
-      connectedAccounts,
-      token,
-    },
-  }
 }

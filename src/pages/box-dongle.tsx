@@ -1,8 +1,3 @@
-import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
-
-import Navbar from '../components/Navbar'
-import Footer from '../components/Footer'
-import { getAccessToken, getOdConcealedAccessTokens } from '../utils/odAuthTokenStore'
 import Seo from '../components/Meta/Seo'
 import siteConfig from '../config/site.config'
 import { useEffect, useState } from 'react';
@@ -10,7 +5,7 @@ import MarkdownPreview from '../components/UI/Markdown'
 import { Card, CardBody, Image } from '@nextui-org/react'
 import Link from 'next/link'
 
-export default function Custom404({ connectedAccounts }) {
+export default function BoxDongle() {
   const seo = {
     title: `Box Dongle | ${siteConfig.title}`,
     description: `We provide the Box Dongle service for free, allowing you to use it on your PC without any cracks. Download the USB Redirector Client and Radmin VPN to get started. Follow our step-by-step instructions to set up the Box Dongle. Join our network using Radmin VPN and use the provided credentials. Stay tuned for our instructional video.`,
@@ -49,11 +44,8 @@ useEffect(() => {
 
 
   return (    
-  <div className="flex min-h-screen flex-col items-center justify-center bg-white dark:bg-black">
+  <main className="p-2">
   <Seo {...seo} />
-  <main className="flex w-full flex-1 flex-col bg-white dark:bg-black">
-    <Navbar />
-    <div className="mx-auto w-full max-w-6xl p-1">
     <h1 className="my-4 text-center text-4xl font-bold">Still IN Production</h1>
       <h1 className="my-4 text-center text-4xl font-bold">Available Box & Dongle</h1>
       <div className="grid grid-cols-1 md:grid-cols-2 items-center justify-center gap-2">
@@ -86,25 +78,6 @@ useEffect(() => {
       </div>
       <h1 className="mt-6 text-center text-4xl font-bold">Status: {status}</h1>
       <MarkdownPreview file={{ name: 'readme.md' }} path={'Assets/Box'} standalone={false} />
-    </div>
-  </main>
-  <Footer />
-  <input type="hidden" id="connectedAccounts" value={connectedAccounts} />
-</div>
+    </main>
 )
-}
-
-export async function getServerSideProps({locale }) {
-  const connectedAccounts = await getOdConcealedAccessTokens();
-
-  const token = await getAccessToken(0);
-
-  return {
-          props: {
-                  ...(await serverSideTranslations(locale, ['common'])),
-                          connectedAccounts,
-                          token,
-                          
-          },
-  }
 }

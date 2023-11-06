@@ -1,14 +1,8 @@
-import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
-
 import siteConfig from '../config/site.config'
-import Navbar from '../components/Navbar'
-import Footer from '../components/Footer'
-import { getAccessToken, getOdConcealedAccessTokens } from '../utils/odAuthTokenStore'
-
 import Seo from '../components/Meta/Seo'
 import MarkdownPreview from '../components/UI/Markdown'
 
-export default function Home({ connectedAccounts }) {
+export default function PriceList() {
   const seo = {
     title: `Service Center Price List | ${siteConfig.title}`,
     description: `All Brand Service Center Price List`,
@@ -19,33 +13,9 @@ export default function Home({ connectedAccounts }) {
   };
 
   return (
-    <div className="flex min-h-screen flex-col items-center justify-center bg-white dark:bg-black">
+    <div className="p-2">
       <Seo {...seo} />
-      <main className="flex w-full flex-1 flex-col bg-white dark:bg-black">
-        <Navbar />
-        <div className="mx-auto w-full max-w-6xl p-4 text-black dark:text-white">
         <MarkdownPreview file={{ name: 'readme.md' }} path={'Assets/Price-List'} standalone={false} />
-        </div>
-      </main>
-
-      <Footer />
-      <input type="hidden" id="connectedAccounts" value={connectedAccounts} />
     </div>
   )
 }
-
-export async function getServerSideProps({req, locale }) {
-  const connectedAccounts = await getOdConcealedAccessTokens();
-
-  const token = await getAccessToken(0);
-
-  return {
-          props: {
-                  ...(await serverSideTranslations(locale, ['common'])),
-                          connectedAccounts,
-                          token,
-                          
-          },
-  }
-}
-

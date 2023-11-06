@@ -1,11 +1,8 @@
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 import siteConfig from '../config/site.config';
-import Navbar from '../components/Navbar';
-import Footer from '../components/Footer';
 import { getOdConcealedAccessTokens } from '../utils/odAuthTokenStore';
 import Seo from '../components/Meta/Seo';
 import dynamic from 'next/dynamic';
-
 const FileListing = dynamic(() => import('../components/FileListing'));
 
 export default function Home({ connectedAccounts }) {
@@ -19,19 +16,11 @@ export default function Home({ connectedAccounts }) {
   };
 
   return (
-    <div className="flex min-h-screen flex-col items-center justify-center bg-white dark:bg-black">
-      <Seo {...seo} />
-      <main className="flex w-full flex-1 flex-col bg-white dark:bg-black">
-        <Navbar />
-        <div className="mx-auto w-full max-w-6xl p-1">
-          <div className="my-4">
-            <FileListing />
-          </div>
-        </div>
+      <main className="my-4">
+        <Seo {...seo} />
+        <FileListing />
+        <input type="hidden" id="connectedAccounts" value={connectedAccounts} />
       </main>
-      <Footer />
-      <input type="hidden" id="connectedAccounts" value={connectedAccounts} />
-    </div>
   );
 }
 

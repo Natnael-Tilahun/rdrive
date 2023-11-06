@@ -1,13 +1,8 @@
-import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
-import Navbar from '../components/Navbar'
-import Footer from '../components/Footer'
-import { getAccessToken, getOdConcealedAccessTokens } from '../utils/odAuthTokenStore'
-
 import Link from 'next/link'
 import Seo from '../components/Meta/Seo'
 import siteConfig from '../config/site.config'
 
-export default function Home({ connectedAccounts }) {
+export default function Terms() {
   const seo = {
     title: `Terms and rules | ${siteConfig.title}`,
     description: `The providers (&quot;we&quot;, &quot;us&quot;, &quot;our&quot;) of the service provided by this web site (&quot;Service&quot;) are not responsible for any user-generated content and accounts. Content submitted express the views of their author only.`,
@@ -18,12 +13,9 @@ export default function Home({ connectedAccounts }) {
   };
 
   return (
-    <div className="flex min-h-screen flex-col items-center justify-center bg-white dark:bg-black">
-      <Seo {...seo} />
-      <main className="flex w-full flex-1 flex-col bg-white dark:bg-black">
-        <Navbar />
-        <div className="mx-auto w-full max-w-6xl p-4 text-black dark:text-white">
-          <h1 className="mb-4 text-center text-[30px] font-bold">
+        <main className="p-2">
+          <Seo {...seo} />
+          <h1 className="mb-4 text-center text-4xl font-bold">
            Terms and rules
           </h1>
           <p className="py-2">
@@ -49,28 +41,8 @@ export default function Home({ connectedAccounts }) {
           </p>
           <p className="py-2">
            If you do not agree with these terms, please do not register or use the Service. Use of the Service constitutes acceptance of these terms. If you wish to close your account, please 
-           <Link href={'/privacy-policy'} className='text-[#A020F0]' > Contact Us.</Link>
+           <Link href={'/policy'} className='text-[#A020F0]' > Contact Us.</Link>
           </p>
-        </div>
-      </main>
-
-      <Footer />
-      <input type="hidden" id="connectedAccounts" value={connectedAccounts} />
-    </div>
+        </main>
   )
-}
-
-export async function getServerSideProps({req, locale }) {
-  const connectedAccounts = await getOdConcealedAccessTokens();
-
-  const token = await getAccessToken(0);
-
-  return {
-          props: {
-                  ...(await serverSideTranslations(locale, ['common'])),
-                          connectedAccounts,
-                          token,
-                          
-          },
-  }
 }

@@ -1,12 +1,8 @@
-import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
-import Navbar from '../components/Navbar';
-import Footer from '../components/Footer';
-import { getAccessToken, getOdConcealedAccessTokens } from '../utils/odAuthTokenStore';
 import Seo from '../components/Meta/Seo';
 import siteConfig from '../config/site.config';
 import { Card, CardBody, Image } from '@nextui-org/react';
 
-export default function Sponsor({ connectedAccounts }) {
+export default function Sponsor() {
   const seo = {
     title: `Sponsor`,
     description: `Show your love ❤️ and support rdrive to grow us.`,
@@ -26,12 +22,9 @@ export default function Sponsor({ connectedAccounts }) {
         img: "/icons/pay/PayTM.png",
     }
 ]
-  return (
-    <div className="flex min-h-screen flex-col items-center justify-center bg-white dark:bg-black">
-      <Seo {...seo} />
-      <main className="flex w-full flex-1 flex-col bg-white dark:bg-black">
-        <Navbar />
-        <div className="mx-auto w-full max-w-6xl p-1">
+  return (      
+      <main className="p-2">
+        <Seo {...seo} />
           <h1 className="my-4 text-center text-4xl font-bold">Show Your Love ❤️</h1>
           <div className="grid grid-cols-1 md:grid-cols-2 items-center justify-center gap-2">
             {links.map((link, index) => (
@@ -61,24 +54,6 @@ export default function Sponsor({ connectedAccounts }) {
               </Card>
             ))}    
           </div>
-              {/* Here will be Sponsor List */}
-        </div>
       </main>
-      <Footer />
-      <input type="hidden" id="connectedAccounts" value={connectedAccounts} />
-    </div>
   );
-}
-
-export async function getServerSideProps({ req, locale }) {
-  const connectedAccounts = await getOdConcealedAccessTokens();
-  const token = await getAccessToken(0);
-
-  return {
-    props: {
-      ...(await serverSideTranslations(locale, ['common'])),
-      connectedAccounts,
-      token,
-    },
-  };
 }

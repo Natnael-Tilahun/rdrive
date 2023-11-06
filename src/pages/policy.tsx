@@ -1,14 +1,8 @@
-import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
-
 import siteConfig from '../config/site.config'
-import Navbar from '../components/Navbar'
-import Footer from '../components/Footer'
-import { getAccessToken, getOdConcealedAccessTokens } from '../utils/odAuthTokenStore'
-
 import Seo from '../components/Meta/Seo'
 import Link from 'next/link'
 
-export default function Home({ connectedAccounts }) {
+export default function PrivacyPolicy() {
   const seo = {
     title: `Privacy Policy | ${siteConfig.title}`,
     description: `This Privacy Policy governs the manner in which ${siteConfig.title} collects, uses, maintains and discloses information collected from users (each, a “User”) of the {siteConfig.title} website (“Site”). This privacy policy applies to the Site and all products and services offered by ${siteConfig.title}.`,
@@ -19,12 +13,9 @@ export default function Home({ connectedAccounts }) {
   };
 
   return (
-    <div className="flex min-h-screen flex-col items-center justify-center bg-white dark:bg-black">
+    <main className="p-2">
       <Seo {...seo} />
-      <main className="flex w-full flex-1 flex-col bg-white dark:bg-black">
-        <Navbar />
-        <div className="mx-auto w-full max-w-6xl p-4 text-black dark:text-white">
-          <h3 className="mb-4 text-center text-[30px] font-bold">
+          <h3 className="mb-4 text-center text-4xl font-bold">
            Privacy Policy
           </h3>
           <h3 className="font-bold">
@@ -117,27 +108,6 @@ export default function Home({ connectedAccounts }) {
           <p className="py-4">
            This document was last updated on Mar 03, 2022
           </p>
-        </div>
-      </main>
-
-      <Footer />
-      <input type="hidden" id="connectedAccounts" value={connectedAccounts} />
-    </div>
+    </main>
   )
 }
-
-export async function getServerSideProps({req, locale }) {
-  const connectedAccounts = await getOdConcealedAccessTokens();
-
-  const token = await getAccessToken(0);
-
-  return {
-          props: {
-                  ...(await serverSideTranslations(locale, ['common'])),
-                          connectedAccounts,
-                          token,
-                          
-          },
-  }
-}
-

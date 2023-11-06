@@ -18,6 +18,7 @@ import Loading, { LoadingIcon } from './Loading'
 import { FaChevronCircleDown, FaFolder } from 'react-icons/fa'
 import { Image } from '@nextui-org/react'
 import MarkdownPreview from './UI/Markdown'
+import NotFound from './UI/NotFound'
 
 /**
  * Convert url query into path string
@@ -78,8 +79,7 @@ const FileListing: FC<{ query?: ParsedUrlQuery }> = ({ query }) => {
     }
 
     if (error.status === 404) {
-      router.push('/notfound')
-      return <div />
+      return <NotFound />
     }
 
     return (
@@ -195,6 +195,12 @@ const FileListing: FC<{ query?: ParsedUrlQuery }> = ({ query }) => {
       </>
     )
   }
+
+  return (
+    <PreviewContainer>
+      <FourOhFour errorMsg={t('Cannot preview {{path}}', { path })} />
+    </PreviewContainer>
+  )
 }
 
 export default FileListing;
